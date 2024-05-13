@@ -1,17 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Agent
 {
-    [SerializeField] private float _moveSpeed = 4f;
-    [SerializeField] private bool _isStun;
+    private Vector3 mousePos;
     
-    public void OnMouse(InputValue value)
+
+    public void OnLeftClick()
     {
-        Vector2 mousePos = value.Get<Vector2>();
-        print(mousePos);
-        
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20);
+        if (hit.collider == null) return;
+        mousePos = hit.point;
+        Move(mousePos - transform.position);
     }
-    
+
+    public void OnMove(InputValue value)
+    {
+        Vector3 dir = value.Get<Vector3>();
+        Move(dir);
+    }
+
+
     
 }

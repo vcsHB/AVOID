@@ -6,11 +6,20 @@
             "id": "b70cb2c5-c129-4558-8157-5a0c1188dee1",
             "actions": [
                 {
-                    "name": "Mouse",
-                    "type": "Value",
+                    "name": "LeftClick",
+                    "type": "Button",
                     "id": "332b971b-d886-4054-b9d5-c53a4a05bb80",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "3deb5915-77e9-4f22-ace9-bc84a01b7eb1",
+                    "expectedControlType": "Vector3",
+                    "processors": "NormalizeVector3",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -19,13 +28,68 @@
                 {
                     "name": "",
                     "id": "077ea38b-edca-43b5-af73-6602f2fb5db4",
-                    "path": "<Pointer>/position",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Windows",
-                    "action": "Mouse",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "caf1d001-e00c-4ef9-973c-b416a21f9ac8",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "de173797-7d6d-44cd-a6c6-44ce115201c2",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "14d6d7c5-32e5-4021-9a6a-026cc02ca954",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "a126f511-8c14-4d56-b33a-a2eb7e909f64",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "e77f0ba2-cdd6-441a-b6f4-1e2f8ab52131",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
