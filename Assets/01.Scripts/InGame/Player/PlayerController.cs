@@ -5,7 +5,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : Agent
 {
     private Vector3 mousePos;
-    
+
+
+    private void FixedUpdate()
+    {
+        //OnLeftClick();
+    }
 
     public void OnLeftClick()
     {

@@ -42,7 +42,7 @@ public abstract class Agent : MonoBehaviour
             _currentMoveTime += Time.deltaTime;
             float ratio = _currentMoveTime / _moveTime;
             //transform.position = Vector3.Lerp(_beforePosition, _targetPos, ratio);
-            _visualTrm.rotation = Quaternion.Slerp(Quaternion.identity, _targetRotate, EaseInCircle(ratio));
+            _visualTrm.rotation = Quaternion.Slerp(Quaternion.identity, _targetRotate, EasingFunction.EaseInCircle(ratio));
             if (ratio >= 1f)
             {
                 _currentMoveTime = 0;
@@ -73,9 +73,6 @@ public abstract class Agent : MonoBehaviour
         _isMoving = true;
     }
 
-    private float EaseInCircle(float x)
-    {
-        return 1 - Mathf.Sqrt(1 - Mathf.Pow(x, 2));
-    }
+    
 
 }
