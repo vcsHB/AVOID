@@ -15,7 +15,7 @@ public class PlatformObject : MonoBehaviour
     }
 
     [ContextMenu("Init")]
-    public void Initialize()
+    public void Generate()
     {
 
         StartCoroutine(AppearCoroutine());
@@ -38,7 +38,7 @@ public class PlatformObject : MonoBehaviour
         
     }
 
-    public void Disappear()
+    public void Destroy()
     {
         StartCoroutine(DisappearCoroutine());
     }
@@ -57,7 +57,10 @@ public class PlatformObject : MonoBehaviour
             yield return null;
         }
         _platformTrm.position = targetPos;
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
+    
     
     
 }
