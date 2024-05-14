@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1109689886}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 15.88
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -258,7 +258,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.88
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1183,6 +1183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e295f0c441938488250841b782a057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _virCam: {fileID: 0}
+  _followingObject: {fileID: 0}
 --- !u!1 &1866858951
 GameObject:
   m_ObjectHideFlags: 0

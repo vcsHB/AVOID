@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private CinemachineVirtualCamera _virCam;
+    [SerializeField] private PlayerFollowingCameraObject _followingObject;
+
+    public void SetFollow(Transform followTarget)
     {
-        
+        _followingObject.SetTarget(followTarget);
+    }
+    
+
+    public void SetFollowOff()
+    {
+        _followingObject.SetFollowingState(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetFollowOn()
     {
-        
+        _followingObject.SetFollowingState(true);
     }
 }

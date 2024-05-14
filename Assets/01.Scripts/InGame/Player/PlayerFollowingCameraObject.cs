@@ -7,7 +7,8 @@ public class PlayerFollowingCameraObject : MonoBehaviour
 {
     [SerializeField] private Transform _playerTrm;
     [SerializeField] private Transform _currentFollowingTarget;
-
+    private bool isFollowing = true;
+    
     private void Start()
     {
         SetTarget(_playerTrm);
@@ -16,6 +17,8 @@ public class PlayerFollowingCameraObject : MonoBehaviour
 
     private void Update()
     {
+        if (!isFollowing) return;
+            
         transform.position = _currentFollowingTarget.position;
     }
 
@@ -23,4 +26,20 @@ public class PlayerFollowingCameraObject : MonoBehaviour
     {
         _currentFollowingTarget = target;
     }
+
+    /**
+     * <summary>
+     * 플레이어로 타겟을 설정함
+     * </summary>
+     */
+    public void SetTargetReset()
+    {
+        SetTarget(_playerTrm);
+    }
+
+    public void SetFollowingState(bool value)
+    {
+        isFollowing = value;
+    }
 }
+
