@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class Agent : MonoBehaviour
 {
     [SerializeField] protected float _moveTime = 0.5f;
     [SerializeField] protected float _moveCell = 2.5f;
+    [SerializeField] protected float _jumpScale = 0.5f;
+    [SerializeField] protected Transform _visualTrm;
+    
     protected bool _isStun;
     protected bool _isMoving;
     protected float _currentMoveTime = 0;
 
 
     protected Vector3 _moveDirection;
+    protected Vector3 _rotatePole;
+    protected Quaternion _targetRotate;
     protected Vector3 _beforePosition;
     protected Vector3 _targetPos;
     
@@ -22,22 +28,25 @@ public abstract class Agent : MonoBehaviour
         _rigid = GetComponent<Rigidbody>();
     }
     
-    private void Update()
+    protected virtual void Update()
     {
         if (_isStun || TimeManager.TimeScale == 0)
         {
             return;
         }
-
+        
         if (_isMoving)
         {
-            
+            _rotatePole = Vector3.Cross(Vector3.up, _moveDirection);
+
             _currentMoveTime += Time.deltaTime;
             float ratio = _currentMoveTime / _moveTime;
-            transform.position = Vector3.Lerp(_beforePosition, _targetPos, ratio);
+            //transform.position = Vector3.Lerp(_beforePosition, _targetPos, ratio);
+            _visualTrm.rotation = Quaternion.Slerp(Quaternion.identity, _targetRotate, EaseInCircle(ratio));
             if (ratio >= 1f)
             {
                 _currentMoveTime = 0;
+                //_visualTrm.rotation = Quaternion.identity;
                 _isMoving = false;
             }
         }
@@ -59,8 +68,14 @@ public abstract class Agent : MonoBehaviour
         print(_moveDirection);
         if (_moveDirection.magnitude < 0.1f) return;
         _targetPos = transform.position + _moveDirection;
-        
+        _targetRotate = Quaternion.Euler(_moveDirection.z * 180f, 0, _moveDirection.x * -180f);
+        transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
+    }
+
+    private float EaseInCircle(float x)
+    {
+        return 1 - Mathf.Sqrt(1 - Mathf.Pow(x, 2));
     }
 
 }
