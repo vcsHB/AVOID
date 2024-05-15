@@ -14,11 +14,9 @@ public abstract class Agent : MonoBehaviour
     protected bool _isMoving;
     protected float _currentMoveTime = 0;
 
-
-    protected Vector3 _moveDirection;
-    protected Vector3 _rotatePole;
+    [HideInInspector]
+    public Vector3 moveDirection;
     protected Quaternion _targetRotate;
-    protected Vector3 _beforePosition;
     protected Vector3 _targetPos;
     
     protected Rigidbody _rigid;
@@ -37,7 +35,6 @@ public abstract class Agent : MonoBehaviour
         
         if (_isMoving)
         {
-            _rotatePole = Vector3.Cross(Vector3.up, _moveDirection);
 
             _currentMoveTime += Time.deltaTime;
             float ratio = _currentMoveTime / _moveTime;
@@ -57,18 +54,17 @@ public abstract class Agent : MonoBehaviour
     {
         if (_isMoving) return;
         
-        _beforePosition = transform.position;
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
-        _moveDirection = new Vector3(
+        moveDirection = new Vector3(
             x,
             0,
             x == 0 ? z : 0
             ) * _moveCell;
-        print(_moveDirection);
-        if (_moveDirection.magnitude < 0.1f) return;
-        _targetPos = transform.position + _moveDirection;
-        _targetRotate = Quaternion.Euler(_moveDirection.z * 180f, 0, _moveDirection.x * -180f);
+        print(moveDirection);
+        if (moveDirection.magnitude < 0.1f) return;
+        _targetPos = transform.position + moveDirection;
+        _targetRotate = Quaternion.Euler(moveDirection.z * 180f, 0, moveDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
     }

@@ -11,7 +11,11 @@ public abstract class InteractObject : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (isActive || !canInteract) return;
-        Interact();
+        if (other.TryGetComponent(out Agent agent))
+        {
+            Interact(agent);
+
+        }
         
     }
 
@@ -30,7 +34,7 @@ public abstract class InteractObject : MonoBehaviour
     }
 
 
-    public abstract void Interact();
+    public abstract void Interact(Agent agent);
 
 
 

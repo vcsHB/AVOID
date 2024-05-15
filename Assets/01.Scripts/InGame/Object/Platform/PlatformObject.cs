@@ -2,8 +2,16 @@
 using System.Collections;
 using UnityEngine;
 
+public enum LocalDirection
+{
+    Default = 0,
+    Left = -125,
+    Right = 125
+}
+
 public class PlatformObject : MonoBehaviour
 {
+    [SerializeField] private LocalDirection _platformDirection;
     [SerializeField] private float _generateDuration = 1.5f;
     [SerializeField] private float _destoryDuration = 1.5f;
     [SerializeField] private Transform _platformTrm;
@@ -30,11 +38,11 @@ public class PlatformObject : MonoBehaviour
         {
             if(TimeManager.TimeScale == 0) continue;
             float ratio = currentTime / _generateDuration;
-            _platformTrm.position = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
+            _platformTrm.localPosition = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
             currentTime += TimeManager.TimeScale * Time.deltaTime;
             yield return null;
         }
-        _platformTrm.position = targetPos;
+        _platformTrm.localPosition = targetPos;
         
     }
 
@@ -52,11 +60,11 @@ public class PlatformObject : MonoBehaviour
         {
             if(TimeManager.TimeScale == 0) continue;
             float ratio = currentTime / _destoryDuration;
-            _platformTrm.position = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
+            _platformTrm.localPosition = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
             currentTime += TimeManager.TimeScale * Time.deltaTime;
             yield return null;
         }
-        _platformTrm.position = targetPos;
+        _platformTrm.localPosition = targetPos;
         yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }

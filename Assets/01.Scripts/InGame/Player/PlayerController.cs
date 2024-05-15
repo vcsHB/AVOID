@@ -25,6 +25,11 @@ public class PlayerController : Agent
         Vector3 dir = value.Get<Vector3>();
         Move(dir);
     }
+    
+    private void ChangeGravity()
+    {
+        
+    }
 
 
     
