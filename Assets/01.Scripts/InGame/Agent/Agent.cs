@@ -61,7 +61,7 @@ public abstract class Agent : MonoBehaviour
             0,
             x == 0 ? z : 0
             ) * _moveCell;
-        print(moveDirection);
+        //print(moveDirection);
         if (moveDirection.magnitude < 0.1f) return;
         _targetPos = transform.position + moveDirection;
         _targetRotate = Quaternion.Euler(moveDirection.z * 180f, 0, moveDirection.x * -180f);

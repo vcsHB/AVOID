@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class VirtualRigidbody : MonoBehaviour
@@ -9,8 +10,13 @@ public class VirtualRigidbody : MonoBehaviour
     public Vector3 velocity => _rigid.velocity;
     private Vector3 _currentVelocity;
     private bool _isStop;
-    
-    
+
+
+    private void Awake()
+    {
+        _rigid = GetComponent<Rigidbody>();
+    }
+
     private void FixedUpdate()
     {
         if (TimeManager.TimeScale == 0)
@@ -33,6 +39,6 @@ public class VirtualRigidbody : MonoBehaviour
 
     private void ApplyGravity()
     {
-        _rigid.AddForce(_gravityDirection * _gravityAcceleration * Time.deltaTime);
+        _rigid.AddForce(_gravityDirection * _gravityAcceleration );
     }
 }

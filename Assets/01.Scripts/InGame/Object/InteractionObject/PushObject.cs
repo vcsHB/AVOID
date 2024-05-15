@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PushObject : InteractObject
 {
-    private float _moveTime = 1.2f;
+    [SerializeField]
+    private float _moveTime = 0.7f;
     private Vector3 _direction;
     private Rigidbody _rigid;
 
@@ -32,12 +33,12 @@ public class PushObject : InteractObject
         Vector3 targetPosition = _direction + beforePosition;
         while (currentTime <= _moveTime)
         {
-            _rigid.MovePosition(
-                    Vector3.Lerp(
-                            beforePosition,
-                            targetPosition,
-                            currentTime/_moveTime
-                        )    
+            currentTime += Time.deltaTime;
+            transform.position =
+                Vector3.Lerp(
+                    beforePosition,
+                    targetPosition,
+                    currentTime / _moveTime
                 );
             yield return null;
         }

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class GravityManager
+﻿public class GravityManager
 {
     public static void SetGravity(LocalDirection gravityDirection)
     {
@@ -10,5 +8,5 @@ public class GravityManager
         }
     }
     
-    //public static Quaternion
+
 }
