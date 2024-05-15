@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class InteractObject : MonoBehaviour
@@ -6,15 +7,23 @@ public abstract class InteractObject : MonoBehaviour
     public bool isActive;
     public bool canInteract = true;    
     protected float _currentTime = 0;
-    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private LayerMask _detectLayer;
     [SerializeField] private float _detectRadius = 1.5f;
-    
+    protected Collider _collider;
+
+
+    protected virtual void Awake()
+    {
+        _collider = GetComponent<Collider>();
+    }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (isActive || !canInteract) return;
-        if (other.TryGetComponent(out Agent agent))
+        if (other.TryGetComponent(out IInteractable interactable))
         {
-            Interact(agent);
+            print("감ㅈ됨");
+            Interact(interactable);
         }
         
     }
@@ -38,27 +47,27 @@ public abstract class InteractObject : MonoBehaviour
             return;
         }
         
-        DetectPlayer();
+        //DetectTarget();
     }
 
-    protected void DetectPlayer()
+    protected void DetectTarget()
     {
         Collider[] detect = new Collider[1];
-        int detectAmount = Physics.OverlapSphereNonAlloc(transform.position, _detectRadius, detect, _playerLayer);
-
+        int detectAmount = Physics.OverlapSphereNonAlloc(transform.position, _detectRadius, detect, _detectLayer);
+        
         if (detectAmount == 0)
         {
             return;
         }
 
-        Agent agent = detect[0].GetComponent<Agent>();
+        IInteractable interactable = detect[0].GetComponent<IInteractable>();
         canInteract = false;
-        Interact(agent);
+        Interact(interactable);
         
     }
 
 
-    public abstract void Interact(Agent agent);
+    public abstract void Interact(IInteractable interactable);
 
 
 

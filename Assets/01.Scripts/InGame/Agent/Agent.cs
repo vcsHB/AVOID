@@ -3,13 +3,16 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public abstract class Agent : MonoBehaviour
+public abstract class Agent : MonoBehaviour, IInteractable
 {
     [SerializeField] protected float _moveTime = 0.5f;
     [SerializeField] protected float _moveCell = 2.5f;
     [SerializeField] protected float _jumpScale = 0.5f;
     [SerializeField] protected Transform _visualTrm;
     
+    public Vector3 MoveDirection { get; set; }
+    
+
     protected bool _isStun;
     protected bool _isMoving;
     protected float _currentMoveTime = 0;
@@ -20,6 +23,7 @@ public abstract class Agent : MonoBehaviour
     protected Vector3 _targetPos;
     
     protected Rigidbody _rigid;
+    [SerializeField] private LayerMask _objectLayer;
 
     protected virtual void Awake()
     {
@@ -61,14 +65,29 @@ public abstract class Agent : MonoBehaviour
             0,
             x == 0 ? z : 0
             ) * _moveCell;
+        MoveDirection = moveDirection;
         //print(moveDirection);
         if (moveDirection.magnitude < 0.1f) return;
+        DetectInteraction();
+
         _targetPos = transform.position + moveDirection;
         _targetRotate = Quaternion.Euler(moveDirection.z * 180f, 0, moveDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
     }
-
     
+    public void DetectInteraction()
+    {
+         RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, moveDirection, 1.5f, _objectLayer);
+         foreach (RaycastHit hit in hits)
+         {
+             if (hit.transform.TryGetComponent(out InteractObject interactObject))
+             {
+                 interactObject.Interact(this);
+             }
+         }
+    }
+
+
 
 }

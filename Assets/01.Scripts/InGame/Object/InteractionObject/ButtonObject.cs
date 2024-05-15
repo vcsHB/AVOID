@@ -6,7 +6,7 @@ public class ButtonObject : InteractObject
     [SerializeField] private Transform _buttonPanel;
     public UnityEvent OnButtonTriggerEvent;
     
-    public override void Interact(Agent agent)
+    public override void Interact(IInteractable interactable)
     {
         OnButtonTriggerEvent?.Invoke();
     }

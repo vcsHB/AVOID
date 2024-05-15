@@ -1,22 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PushObject : InteractObject
+public class PushObject : InteractObject, IInteractable
 {
     [SerializeField]
     private float _moveTime = 0.7f;
     private Vector3 _direction;
     private Rigidbody _rigid;
+    [SerializeField]
+    private LayerMask _objectLayer;
+
+    public Vector3 MoveDirection { get; set; }
 
 
-    private void Awake()
+    
+    protected override void Awake()
     {
+        base.Awake();
         _rigid = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(Agent agent)
+    public override void Interact(IInteractable interactable)
     {
-        _direction = agent.moveDirection;
+        print("밀쳐짐");
+        _direction = interactable.MoveDirection;
+        MoveDirection = _direction;
+        _collider.enabled = false;
+        DetectInteraction();
+        _collider.enabled = true;
         Move();
 
     }
@@ -43,5 +54,17 @@ public class PushObject : InteractObject
             yield return null;
         }
         transform.position = targetPosition;
+    }
+
+    public void DetectInteraction()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, _direction, 1.5f, _objectLayer);
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.transform.TryGetComponent(out InteractObject interactObject))
+            {
+                interactObject.Interact(this);
+            }
+        }
     }
 }
