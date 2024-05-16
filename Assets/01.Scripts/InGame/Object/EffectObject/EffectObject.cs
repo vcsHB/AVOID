@@ -1,7 +1,8 @@
 ﻿using System.Collections;
+using ObjectPooling;
 using UnityEngine;
 
-public class EffectObject : MonoBehaviour
+public class EffectObject : PoolableMono
 {
     [SerializeField] private ParticleSystem[] _particles;
     [SerializeField] private float _lifeTime = 1f;
@@ -24,5 +25,13 @@ public class EffectObject : MonoBehaviour
     private void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public override void ResetItem()
+    {
+        for (int i = 0; i < _particles.Length; i++)
+        {
+            _particles[i].Stop();
+        }
     }
 }

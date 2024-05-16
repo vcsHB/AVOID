@@ -78,4 +78,11 @@ public class ButtonObject : InteractObject
         _collider.enabled = true;
         isActive = false;
     }
+
+    public override void ResetItem()
+    {
+        canInteract = true;
+        isActive = false;
+        _currentTime = 0;
+    }
 }

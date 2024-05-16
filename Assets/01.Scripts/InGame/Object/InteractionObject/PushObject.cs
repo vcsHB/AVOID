@@ -65,4 +65,11 @@ public class PushObject : InteractObject, IInteractable
             }
         }
     }
+
+    public override void ResetItem()
+    {
+        canInteract = true;
+        isActive = false;
+        _currentTime = 0;
+    }
 }

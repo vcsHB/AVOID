@@ -4927,6 +4927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16d64842b3f44c39bf248472bfce2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _interactCoolTime: 0.4
   isActive: 0
   canInteract: 1
@@ -4934,7 +4935,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _detectRadius: 1.2
-  _moveTime: 0.15
+  _moveTime: 0.2
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -4952,6 +4953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityDirection: {x: 0, y: -1, z: 0}
   _gravityAcceleration: 98
+  _useDeadZone: 0
+  _deadZoneY: -20
 --- !u!1001 &5504068917009234565
 PrefabInstance:
   m_ObjectHideFlags: 0
