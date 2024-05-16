@@ -7,8 +7,8 @@ public abstract class InteractObject : MonoBehaviour
     public bool isActive;
     public bool canInteract = true;    
     protected float _currentTime = 0;
-    [SerializeField] private LayerMask _detectLayer;
-    [SerializeField] private float _detectRadius = 1.5f;
+    [SerializeField] protected LayerMask _detectLayer;
+    [SerializeField] protected float _detectRadius = 1.5f;
     protected Collider _collider;
 
 
@@ -16,17 +16,7 @@ public abstract class InteractObject : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
     }
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (isActive || !canInteract) return;
-        if (other.TryGetComponent(out IInteractable interactable))
-        {
-            print("감ㅈ됨");
-            Interact(interactable);
-        }
-        
-    }
+    
 
     protected virtual void Update()
     {
@@ -50,7 +40,7 @@ public abstract class InteractObject : MonoBehaviour
         //DetectTarget();
     }
 
-    protected void DetectTarget()
+    protected virtual void DetectTarget()
     {
         Collider[] detect = new Collider[1];
         int detectAmount = Physics.OverlapSphereNonAlloc(transform.position, _detectRadius, detect, _detectLayer);
@@ -69,7 +59,7 @@ public abstract class InteractObject : MonoBehaviour
 
     public abstract void Interact(IInteractable interactable);
 
-
+    
 
 
 }

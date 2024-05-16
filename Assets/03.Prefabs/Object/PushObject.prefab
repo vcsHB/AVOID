@@ -4933,11 +4933,8 @@ MonoBehaviour:
   _detectLayer:
     serializedVersion: 2
     m_Bits: 128
-  _agentLayer:
-    serializedVersion: 2
-    m_Bits: 256
   _detectRadius: 1.2
-  _moveTime: 0.3
+  _moveTime: 0.15
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128

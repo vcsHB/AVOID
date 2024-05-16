@@ -9,7 +9,7 @@ public abstract class Agent : MonoBehaviour, IInteractable
     [SerializeField] protected float _moveCell = 2.5f;
     [SerializeField] protected float _jumpScale = 0.5f;
     [SerializeField] protected Transform _visualTrm;
-    
+    [SerializeField] private Vector3 _boxCastSize = Vector3.one;
     public Vector3 MoveDirection { get; set; }
     
 
@@ -17,8 +17,6 @@ public abstract class Agent : MonoBehaviour, IInteractable
     protected bool _isMoving;
     protected float _currentMoveTime = 0;
 
-    [HideInInspector]
-    public Vector3 moveDirection;
     protected Quaternion _targetRotate;
     protected Vector3 _targetPos;
     
@@ -60,34 +58,40 @@ public abstract class Agent : MonoBehaviour, IInteractable
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
-        moveDirection = new Vector3(
+        MoveDirection = new Vector3(
             x,
             0,
             x == 0 ? z : 0
-            ) * _moveCell;
-        MoveDirection = moveDirection;
+            ).normalized * _moveCell;
         //print(moveDirection);
-        if (moveDirection.magnitude < 0.1f) return;
+        if (MoveDirection.magnitude < 0.1f) return;
         DetectInteraction();
 
-        _targetPos = transform.position + moveDirection;
-        _targetRotate = Quaternion.Euler(moveDirection.z * 180f, 0, moveDirection.x * -180f);
+        _targetPos = transform.position + MoveDirection;
+        _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
     }
     
     public void DetectInteraction()
     {
-         RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, moveDirection, 1.5f, _objectLayer);
-         foreach (RaycastHit hit in hits)
-         {
-             if (hit.transform.TryGetComponent(out InteractObject interactObject))
-             {
-                 interactObject.Interact(this);
-             }
-         }
+        RaycastHit[] hits = new RaycastHit[5];
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 1.5f, _objectLayer);
+        if (amount == 0) return;
+
+        for (int i = 0; i < amount; i++)
+        {
+            if (hits[i].transform.TryGetComponent(out InteractObject interactObject))
+            {
+                interactObject.Interact(this);
+            }
+        }
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + Vector3.up, _targetPos);
+    }
 
 }

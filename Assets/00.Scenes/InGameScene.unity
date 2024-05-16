@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 422595489}
   - component: {fileID: 422595490}
   - component: {fileID: 422595491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ButtonObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ Transform:
   m_GameObject: {fileID: 422595488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.95, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -654,7 +654,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 1.5}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &422595491
 MonoBehaviour:
@@ -673,12 +673,12 @@ MonoBehaviour:
   canInteract: 1
   _detectLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _agentLayer:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
   _detectRadius: 1.5
   _buttonPanel: {fileID: 1106931277}
+  _buttonHoldDuration: 0.5
+  _buttonDefaultPosY: 0.09
+  _buttonOnPosY: -0.09
   OnButtonTriggerEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -978,8 +978,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 0.6, z: 0.8}
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Size: {x: 0.9, y: 0.8, z: 0.9}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &1109689885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   _moveCell: 2.5
   _jumpScale: 0.5
   _visualTrm: {fileID: 755418433}
-  moveDirection: {x: 0, y: 0, z: 0}
+  _boxCastSize: {x: 1, y: 2, z: 1}
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1135,7 +1135,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1521,6 +1521,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1237214709239841597, guid: 3941f639bd4865349bd013a4882ddca0,
+        type: 3}
+      propertyPath: _moveTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1354967354615791159, guid: 3941f639bd4865349bd013a4882ddca0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1658,6 +1663,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2034820638293895475, guid: a06c87a9c12f86d409d3c921ea04abc6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: -1592605597954897764, guid: a06c87a9c12f86d409d3c921ea04abc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a06c87a9c12f86d409d3c921ea04abc6,
         type: 3}

@@ -5,7 +5,6 @@ public class PushObject : InteractObject, IInteractable
 {
     [SerializeField]
     private float _moveTime = 0.7f;
-    private Vector3 _direction;
     private Rigidbody _rigid;
     [SerializeField]
     private LayerMask _objectLayer;
@@ -22,9 +21,9 @@ public class PushObject : InteractObject, IInteractable
 
     public override void Interact(IInteractable interactable)
     {
-        print("밀쳐짐");
-        _direction = interactable.MoveDirection;
-        MoveDirection = _direction;
+        MoveDirection = interactable.MoveDirection;
+        print(MoveDirection);
+
         _collider.enabled = false;
         DetectInteraction();
         _collider.enabled = true;
@@ -41,24 +40,25 @@ public class PushObject : InteractObject, IInteractable
     {
         float currentTime = 0;
         Vector3 beforePosition = transform.position;
-        Vector3 targetPosition = _direction + beforePosition;
-        while (currentTime <= _moveTime)
+        Vector3 targetPosition = beforePosition + MoveDirection;
+        while (currentTime < _moveTime)
         {
             currentTime += Time.deltaTime;
             transform.position =
                 Vector3.Lerp(
                     beforePosition,
                     targetPosition,
-                    currentTime / _moveTime
+                    Mathf.Clamp01(currentTime / _moveTime)
                 );
             yield return null;
         }
         transform.position = targetPosition;
+        print(targetPosition); 
     }
 
     public void DetectInteraction()
     {
-        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, _direction, 1.5f, _objectLayer);
+        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, MoveDirection, 1.5f, _objectLayer);
         foreach (RaycastHit hit in hits)
         {
             if (hit.transform.TryGetComponent(out InteractObject interactObject))
