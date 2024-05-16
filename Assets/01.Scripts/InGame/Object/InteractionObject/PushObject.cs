@@ -22,7 +22,6 @@ public class PushObject : InteractObject, IInteractable
     public override void Interact(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
-        print(MoveDirection);
 
         _collider.enabled = false;
         DetectInteraction();
@@ -53,7 +52,6 @@ public class PushObject : InteractObject, IInteractable
             yield return null;
         }
         transform.position = targetPosition;
-        print(targetPosition); 
     }
 
     public void DetectInteraction()

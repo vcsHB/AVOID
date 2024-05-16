@@ -63,7 +63,6 @@ public abstract class Agent : MonoBehaviour, IInteractable
             0,
             x == 0 ? z : 0
             ).normalized * _moveCell;
-        //print(moveDirection);
         if (MoveDirection.magnitude < 0.1f) return;
         DetectInteraction();
 
