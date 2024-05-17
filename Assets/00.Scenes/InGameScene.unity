@@ -1404,7 +1404,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1582810484}
-  m_Layer: 0
+  - component: {fileID: 1582810485}
+  - component: {fileID: 1582810486}
+  m_Layer: 7
   m_Name: CoreObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1427,6 +1429,40 @@ Transform:
   - {fileID: 1102127266}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1582810485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582810483}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
+  m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &1582810486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582810483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c22862a6fa1444cb6760a472da9e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicEvents: []
 --- !u!1 &1724760475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,11 +1595,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1237214709239841597, guid: 3941f639bd4865349bd013a4882ddca0,
-        type: 3}
-      propertyPath: _moveTime
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1354967354615791159, guid: 3941f639bd4865349bd013a4882ddca0,
         type: 3}
       propertyPath: m_LocalPosition.x

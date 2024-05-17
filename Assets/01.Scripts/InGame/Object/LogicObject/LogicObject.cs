@@ -5,6 +5,7 @@ public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
     public LogicEvent[] logicEvents;
+    
     public bool SolveLogic
     {
         get

@@ -60,7 +60,12 @@ public abstract class InteractObject : PoolableMono
 
     public abstract void Interact(IInteractable interactable);
 
-    
+    public override void ResetItem()
+    {
+        canInteract = true;
+        isActive = false;
+        _currentTime = 0;
+    }
 
 
 }

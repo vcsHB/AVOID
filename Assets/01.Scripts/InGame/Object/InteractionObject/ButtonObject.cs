@@ -79,10 +79,4 @@ public class ButtonObject : InteractObject
         isActive = false;
     }
 
-    public override void ResetItem()
-    {
-        canInteract = true;
-        isActive = false;
-        _currentTime = 0;
-    }
 }
