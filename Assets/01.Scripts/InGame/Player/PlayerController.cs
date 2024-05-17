@@ -84,25 +84,16 @@ public class PlayerController : Agent
     protected override bool Move(Vector3 direction)
     {
         if (_isMoving) return false;
-
-        // Normalize the direction
-        //Vector3 normalizedDirection = direction.normalized;
-
-        // Create move direction based on gravity direction
-        //Vector3 moveDirection = Vector3.zero;
-
         switch (_gravityDirection)
         {
             case LocalDirection.Default:
                 print("Default 방향");
-                // Default x, z movement on the ground
                 int x = Mathf.Clamp((int)direction.x, -1, 1);
                 int z = Mathf.Clamp((int)direction.z, -1, 1);
                 MoveDirection = new Vector3(x, 0, z).normalized * _moveCell;
                 break;
 
             case LocalDirection.Left:
-                // Wall climbing: x, y movement
                 int xForRight = Mathf.Clamp((int)direction.x, -1, 1);
                 int yForRight = Mathf.Clamp((int)direction.y, -1, 1);
                 MoveDirection = new Vector3(xForRight, yForRight, 0).normalized * _moveCell;
@@ -110,17 +101,14 @@ public class PlayerController : Agent
                 break;
 
             case LocalDirection.Right:
-                // Wall climbing: x, y movement
                 int xForLeft = Mathf.Clamp((int)direction.x, -1, 1);
                 int yForLeft = Mathf.Clamp((int)direction.y, -1, 1);
                 MoveDirection = new Vector3(xForLeft, yForLeft, 0).normalized * _moveCell;
                 break;
         }
 
-        // If movement is too small, do not proceed
         if (MoveDirection.magnitude < 0.1f) return false;
 
-        // Check for new platform in the move direction
         bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection, out RaycastHit hit, 3f,
             _groundLayer);
         if (isHitNewPlatform)
@@ -131,13 +119,13 @@ public class PlayerController : Agent
                 if (_gravityDirection != platform.PlatformDirection)
                 {
                     // Move towards the platform
-                    Vector3 targetPos = transform.position + MoveDirection;
+                    _targetPos = transform.position + MoveDirection;
                     _isMoving = true;
-                    transform.DOJump(targetPos, _jumpScale, 1, _moveTime).OnComplete(() =>
+                    transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() =>
                     {
                         // Attach to the new platform after moving
                         _gravityDirection = platform.PlatformDirection;
-                        GravityManager.SetGravity(_gravityDirection);
+                        GravityManager.Instance.SetGravity(_gravityDirection);
                         _isMoving = false;
                     });
                     return true;
