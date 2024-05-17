@@ -1073,6 +1073,10 @@ MonoBehaviour:
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _gravityDirection: 0
 --- !u!4 &1346787090
 Transform:
   m_ObjectHideFlags: 0
@@ -1288,6 +1292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752021943814856764, guid: e99b43e4b45e5254ca0936eef42a9195,
+        type: 3}
+      propertyPath: _platformDirection
+      value: -125
       objectReference: {fileID: 0}
     - target: {fileID: 5904366002895753992, guid: e99b43e4b45e5254ca0936eef42a9195,
         type: 3}

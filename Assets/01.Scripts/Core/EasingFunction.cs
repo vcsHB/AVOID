@@ -9,6 +9,13 @@ public class EasingFunction
 
     public static float EaseInOutCubic(float x)
     {
-        return x < 0.5 ? 4 * x * x * x : 1 - Mathf.Pow(-2 * x + 2, 3) / 2;
+        return x < 0.5f ? 4 * x * x * x : 1 - Mathf.Pow(-2 * x + 2, 3) / 2;
     }
+
+    public static float EaseInOutQuint(float x)
+    {
+        return x < 0.5f ? 16 * x * x * x * x * x : 1 - Mathf.Pow(-2f * x + 2f, 5) / 2f;
+    }
+    
+    
 }

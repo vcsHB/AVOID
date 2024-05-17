@@ -52,9 +52,9 @@ public abstract class Agent : MonoBehaviour, IInteractable
     }
 
     
-    protected virtual void Move(Vector3 direction)
+    protected virtual bool Move(Vector3 direction)
     {
-        if (_isMoving) return;
+        if (_isMoving) return false;
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
@@ -63,13 +63,14 @@ public abstract class Agent : MonoBehaviour, IInteractable
             0,
             x == 0 ? z : 0
             ).normalized * _moveCell;
-        if (MoveDirection.magnitude < 0.1f) return;
+        if (MoveDirection.magnitude < 0.1f) return false;
         DetectInteraction();
 
         _targetPos = transform.position + MoveDirection;
         _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
+        return true;
     }
     
     public void DetectInteraction()
