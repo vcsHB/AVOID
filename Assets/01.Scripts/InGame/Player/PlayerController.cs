@@ -1,8 +1,6 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Debug = System.Diagnostics.Debug;
 
 public class PlayerController : Agent
 {
