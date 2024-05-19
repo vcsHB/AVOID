@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Agent
 {
-    private Vector3 mousePos;
+    private Vector3 _mousePos;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LocalDirection _gravityDirection;
 
@@ -15,10 +15,10 @@ public class PlayerController : Agent
 
     public void OnLeftClick()
     {
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20);
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 50);
         if (hit.collider == null) return;
-        mousePos = hit.point;
-        Move(mousePos - transform.position);
+        _mousePos = hit.point;
+        Move(_mousePos - transform.position);
     }
 
     public void OnMove(InputValue value)
@@ -53,7 +53,7 @@ public class PlayerController : Agent
     //             if (_gravityDirection != platform.PlatformDirection)
     //             {
     //                 _gravityDirection = platform.PlatformDirection;
-    //                 GravityManager.SetGravity(_gravityDirection);
+    //                 GravityManager.Instance.SetGravity(_gravityDirection);
     //                 
     //             }
     //         }
@@ -70,8 +70,7 @@ public class PlayerController : Agent
     //         case LocalDirection.Right:
     //             _targetRotate = Quaternion.Euler(0, MoveDirection.z * 180, MoveDirection.y * 180f);
     //             break;
-    //         default:
-    //             throw new ArgumentOutOfRangeException();
+    //         
     //     }
     //     //_targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
     //     transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
@@ -88,60 +87,59 @@ public class PlayerController : Agent
                 print("Default 방향");
                 int x = Mathf.Clamp((int)direction.x, -1, 1);
                 int z = Mathf.Clamp((int)direction.z, -1, 1);
-                MoveDirection = new Vector3(x, 0, z).normalized * _moveCell;
+                MoveDirection = new Vector3(x, 0,  x == 0 ? z : 0).normalized * _moveCell;
                 break;
-
+    
             case LocalDirection.Left:
                 int xForRight = Mathf.Clamp((int)direction.x, -1, 1);
                 int yForRight = Mathf.Clamp((int)direction.y, -1, 1);
-                MoveDirection = new Vector3(xForRight, yForRight, 0).normalized * _moveCell;
+                MoveDirection = new Vector3(xForRight,  xForRight == 0 ? yForRight : 0, 0).normalized * _moveCell;
                 
                 break;
-
+    
             case LocalDirection.Right:
                 int xForLeft = Mathf.Clamp((int)direction.x, -1, 1);
                 int yForLeft = Mathf.Clamp((int)direction.y, -1, 1);
-                MoveDirection = new Vector3(xForLeft, yForLeft, 0).normalized * _moveCell;
+                MoveDirection = new Vector3(xForLeft, xForLeft == 0 ? yForLeft : 0, 0).normalized * _moveCell;
                 break;
         }
-
+    
         if (MoveDirection.magnitude < 0.1f) return false;
-
-        bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection, out RaycastHit hit, 3f,
-            _groundLayer);
+    
+        bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection.normalized, out RaycastHit hit, 4f, _groundLayer);
         if (isHitNewPlatform)
         {
             print("새 플랫폼 감지됨");
             if (hit.transform.parent.TryGetComponent(out PlatformObject platform))
             {
-                if (_gravityDirection != platform.PlatformDirection)
+                if (_gravityDirection != platform.PlatformInfo.localDirection)
                 {
                     // Move towards the platform
-                    _targetPos = transform.position + MoveDirection;
+                    _targetPos = transform.position + MoveDirection * 0.5f;
                     _isMoving = true;
                     transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() =>
                     {
                         // Attach to the new platform after moving
-                        _gravityDirection = platform.PlatformDirection;
-                        GravityManager.Instance.SetGravity(_gravityDirection);
+                        _gravityDirection = platform.PlatformInfo.localDirection;
+                        GravityManager.Instance.SetGravity(platform.PlatformInfo);
                         _isMoving = false;
                     });
                     return true;
                 }
             }
         }
-
+    
         // Detect interaction if any
         DetectInteraction();
-
+    
         // Set the target position and rotation
         _targetPos = transform.position + MoveDirection;
         _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
-
+    
         // Use DOJump to move and set _isMoving to true
         _isMoving = true;
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() => _isMoving = false);
-
+    
         return true;
     }
 
@@ -151,6 +149,9 @@ public class PlayerController : Agent
 
     }
 
-
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, MoveDirection);
+    }
 }

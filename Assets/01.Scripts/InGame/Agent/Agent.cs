@@ -88,10 +88,6 @@ public abstract class Agent : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + Vector3.up, _targetPos);
-    }
+    
 
 }

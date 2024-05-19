@@ -11,8 +11,8 @@ public enum LocalDirection
 
 public class PlatformObject : MonoBehaviour
 {
-    [SerializeField] private LocalDirection _platformDirection;
-    public LocalDirection PlatformDirection => _platformDirection;
+    [SerializeField] private PlatformInfo _platformInfo;
+    public PlatformInfo PlatformInfo => _platformInfo;
     [SerializeField] private float _generateDuration = 1.5f;
     [SerializeField] private float _destoryDuration = 1.5f;
     [SerializeField] private Transform _platformTrm;
