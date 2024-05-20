@@ -14,16 +14,19 @@ public class PlatformObject : MonoBehaviour
     [SerializeField] private PlatformInfo _platformInfo;
     public PlatformInfo PlatformInfo => _platformInfo;
     [SerializeField] private float _generateDuration = 1.5f;
+    [SerializeField] private float _destroyTerm = 2f;
     [SerializeField] private float _destoryDuration = 1.5f;
     [SerializeField] private Transform _platformTrm;
     private Collider _collider;
+    private MeshRenderer _DeadZoneRenderer;
 
     private void Awake()
     {
         _collider = _platformTrm.GetComponent<Collider>();
+        _DeadZoneRenderer = _platformTrm.Find("DeadZone").GetComponent<MeshRenderer>();
     }
 
-    [ContextMenu("Init")]
+    [ContextMenu("Generate")]
     public void Generate()
     {
 
@@ -46,7 +49,8 @@ public class PlatformObject : MonoBehaviour
         _platformTrm.localPosition = targetPos;
         
     }
-
+    
+    [ContextMenu("Destroy")]
     public void Destroy()
     {
         StartCoroutine(DisappearCoroutine());
@@ -55,8 +59,12 @@ public class PlatformObject : MonoBehaviour
     private IEnumerator DisappearCoroutine()
     {
         float currentTime = 0;
+        _DeadZoneRenderer.enabled = true;
+        yield return new WaitForSeconds(_destroyTerm);
+        _DeadZoneRenderer.enabled = false;
+
         Vector3 beforePos = transform.position;
-        Vector3 targetPos = new Vector3(beforePos.x, beforePos.y-10, beforePos.z);
+        Vector3 targetPos = beforePos + -_platformInfo.NormalDirection * 10;
         while (currentTime <= _destoryDuration)
         {
             if(TimeManager.TimeScale == 0) continue;
@@ -65,6 +73,7 @@ public class PlatformObject : MonoBehaviour
             currentTime += TimeManager.TimeScale * Time.deltaTime;
             yield return null;
         }
+
         _platformTrm.localPosition = targetPos;
         yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);

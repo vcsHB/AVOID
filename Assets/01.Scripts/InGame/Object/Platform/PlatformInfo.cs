@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[System.Serializable]
 public struct PlatformInfo
 {
     public LocalDirection localDirection;

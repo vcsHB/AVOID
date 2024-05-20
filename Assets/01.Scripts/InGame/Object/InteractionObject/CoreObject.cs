@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CoreObject : InteractObject
 {
     public UnityEvent interactEvent;
+
+    [SerializeField] private float _speed = 2;
     
     protected override void Update()
     {
@@ -24,5 +27,10 @@ public class CoreObject : InteractObject
     {
         
         interactEvent?.Invoke();
+    }
+
+    private void Blink()
+    {
+        
     }
 }
