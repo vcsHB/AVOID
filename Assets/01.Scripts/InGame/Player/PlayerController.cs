@@ -6,7 +6,7 @@ public class PlayerController : Agent
 {
     private Vector3 _mousePos;
     [SerializeField] private LayerMask _groundLayer;
-    [SerializeField] private LocalDirection _gravityDirection;
+    [SerializeField] private PlatformInfo _currentPlatformInfo;
 
     private void FixedUpdate()
     {
@@ -81,7 +81,7 @@ public class PlayerController : Agent
     protected override bool Move(Vector3 direction)
     {
         if (_isMoving) return false;
-        switch (_gravityDirection)
+        switch (_currentPlatformInfo.localDirection)
         {
             case LocalDirection.Default:
                 print("Default 방향");
@@ -112,16 +112,19 @@ public class PlayerController : Agent
             print("새 플랫폼 감지됨");
             if (hit.transform.parent.TryGetComponent(out PlatformObject platform))
             {
-                if (_gravityDirection != platform.PlatformInfo.localDirection)
+                if (_currentPlatformInfo.localDirection != platform.PlatformInfo.localDirection)
                 {
-                    // Move towards the platform
-                    _targetPos = transform.position + MoveDirection * 0.5f;
+                    _targetPos = (transform.position + MoveDirection.normalized * 1.95f )+ _currentPlatformInfo.NormalDirection * 1.95f;
+                    //_targetPos = VectorCalculate.CalcSafeVector(transform.position, _currentPlatformInfo.NormalDirection * 1.95f);
                     _isMoving = true;
-                    transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() =>
+                    print(_targetPos);
+                    _rigid.useGravity = false;
+                    transform.DOMove(_targetPos, _moveTime).OnComplete(() =>
                     {
-                        // Attach to the new platform after moving
-                        _gravityDirection = platform.PlatformInfo.localDirection;
+                        _currentPlatformInfo = platform.PlatformInfo;
                         GravityManager.Instance.SetGravity(platform.PlatformInfo);
+                        _rigid.useGravity = true;
+                        transform.position = _targetPos;
                         _isMoving = false;
                     });
                     return true;

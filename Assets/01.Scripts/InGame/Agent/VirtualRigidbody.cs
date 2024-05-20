@@ -7,16 +7,18 @@ public class VirtualRigidbody : MonoBehaviour
     [SerializeField] private float _gravityAcceleration = 9.8f;
     [SerializeField] private bool _useDeadZone;
     [SerializeField] private float _deadZoneY = -20f;
+
+    [SerializeField] private bool _useGravity = true;
     
-    private Rigidbody _rigid;
-    public Vector3 velocity => _rigid.velocity;
+    //private Rigidbody _rigid;
+    public Vector3 velocity;
     private Vector3 _currentVelocity;
     private bool _isStop;
 
 
     private void Awake()
     {
-        _rigid = GetComponent<Rigidbody>();
+        //_rigid = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -50,5 +52,10 @@ public class VirtualRigidbody : MonoBehaviour
     private void ApplyGravity()
     {
         _rigid.AddForce(_gravityDirection * _gravityAcceleration );
+    }
+
+    public void AddForce(Vector3 direction)
+    {
+        
     }
 }

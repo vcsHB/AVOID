@@ -21,7 +21,7 @@ public class GravityManager : MonoSingleton<GravityManager>
                 Debug.LogWarning("can't Apply Gravity");
                 break;
         }
-        Physics.gravity = -platformInfo.NormalDirection * 9.8f;
+        PlayerVirtualRigidbody.PlayerGravity = -platformInfo.NormalDirection * 9.8f;
 
     }
 

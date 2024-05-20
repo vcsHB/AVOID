@@ -36,8 +36,8 @@ public class PlatformObject : MonoBehaviour
     private IEnumerator AppearCoroutine()
     {
         float currentTime = 0;
-        Vector3 targetPos = transform.position;
-        Vector3 beforePos = new Vector3(targetPos.x, targetPos.y +10, targetPos.z);
+        Vector3 targetPos = _platformTrm.localPosition;
+        Vector3 beforePos = (targetPos + _platformInfo.NormalDirection) * 10;
         while (currentTime <= _generateDuration)
         {
             if(TimeManager.TimeScale == 0) continue;
@@ -63,8 +63,8 @@ public class PlatformObject : MonoBehaviour
         yield return new WaitForSeconds(_destroyTerm);
         _DeadZoneRenderer.enabled = false;
 
-        Vector3 beforePos = transform.position;
-        Vector3 targetPos = beforePos + -_platformInfo.NormalDirection * 10;
+        Vector3 beforePos = _platformTrm.localPosition;
+        Vector3 targetPos = (beforePos + -_platformInfo.NormalDirection) * 10;
         while (currentTime <= _destoryDuration)
         {
             if(TimeManager.TimeScale == 0) continue;
