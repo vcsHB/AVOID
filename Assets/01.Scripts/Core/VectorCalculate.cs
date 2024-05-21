@@ -28,4 +28,9 @@ public class VectorCalculate
             vec1.z + vec2.z
         );
     }
+
+    // public static Vector3 ClampVectorCell()
+    // {
+    //     
+    // }
 }

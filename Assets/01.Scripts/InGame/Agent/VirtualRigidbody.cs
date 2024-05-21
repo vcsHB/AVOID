@@ -27,15 +27,15 @@ public class VirtualRigidbody : MonoBehaviour
         {
             if (!_isStop)
             {
-                _currentVelocity = _rigid.velocity;
-                _rigid.velocity = Vector3.zero;
+                _currentVelocity = velocity;
+                velocity = Vector3.zero;
             }
             return;
         }
 
         if (_isStop)
         {
-            _rigid.velocity = _currentVelocity;
+            velocity = _currentVelocity;
             _isStop = false;
         }
         ApplyGravity();
@@ -51,11 +51,11 @@ public class VirtualRigidbody : MonoBehaviour
 
     private void ApplyGravity()
     {
-        _rigid.AddForce(_gravityDirection * _gravityAcceleration );
+        AddForce(_gravityDirection * _gravityAcceleration );
     }
 
     public void AddForce(Vector3 direction)
     {
-        
+        velocity += direction;
     }
 }
