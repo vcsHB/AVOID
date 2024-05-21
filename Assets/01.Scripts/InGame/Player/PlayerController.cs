@@ -106,7 +106,7 @@ public class PlayerController : Agent
     
         if (MoveDirection.magnitude < 0.1f) return false;
     
-        bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection.normalized, out RaycastHit hit, 4f, _groundLayer);
+        bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection.normalized, out RaycastHit hit, 7f, _groundLayer);
         if (isHitNewPlatform)
         {
             print("새 플랫폼 감지됨");
@@ -114,7 +114,7 @@ public class PlayerController : Agent
             {
                 if (_currentPlatformInfo.localDirection != platform.PlatformInfo.localDirection)
                 {
-                    _targetPos = (transform.position + MoveDirection.normalized * 1.95f )+ _currentPlatformInfo.NormalDirection * 1.95f;
+                    _targetPos = (transform.position + MoveDirection.normalized * 4 )+ _currentPlatformInfo.NormalDirection * 4;
                     //_targetPos = VectorCalculate.CalcSafeVector(transform.position, _currentPlatformInfo.NormalDirection * 1.95f);
                     _isMoving = true;
                     print(_targetPos);

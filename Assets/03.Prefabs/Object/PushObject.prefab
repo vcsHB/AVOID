@@ -4955,6 +4955,8 @@ MonoBehaviour:
   _gravityAcceleration: 98
   _useDeadZone: 0
   _deadZoneY: -20
+  _useGravity: 1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &5504068917009234565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4966,17 +4968,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cd865df97c906aa45bc0df915f82c142,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd865df97c906aa45bc0df915f82c142,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd865df97c906aa45bc0df915f82c142,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd865df97c906aa45bc0df915f82c142,
         type: 3}
