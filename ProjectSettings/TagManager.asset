@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Object
+  - Player
+  - ObjectDetect
+  - Obstacle
   - 
   - 
   - 
