@@ -76,7 +76,7 @@ public abstract class Agent : MonoBehaviour, IInteractable
     public void DetectInteraction()
     {
         RaycastHit[] hits = new RaycastHit[5];
-        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 1.5f, _objectLayer);
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _objectLayer);
         if (amount == 0) return;
 
         for (int i = 0; i < amount; i++)
