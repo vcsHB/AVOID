@@ -104,8 +104,8 @@ public class PlayerController : Agent
                 break;
         }
     
-        if (MoveDirection.magnitude < 0.1f) return false;
-    
+        if (MoveDirection.magnitude < 0.1f || DetectObstacle()) return false;
+
         bool isHitNewPlatform = Physics.Raycast(transform.position, MoveDirection.normalized, out RaycastHit hit, 7f, _groundLayer);
         if (isHitNewPlatform)
         {

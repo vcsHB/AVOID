@@ -1,8 +1,6 @@
-using System;
-using ObjectPooling;
 using UnityEngine;
 
-public abstract class InteractObject : PoolableMono
+public abstract class InteractObject : FieldObject
 {
     [SerializeField] protected float _interactCoolTime;
     public bool isActive;

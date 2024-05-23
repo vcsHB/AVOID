@@ -22,6 +22,7 @@ public abstract class Agent : MonoBehaviour, IInteractable
     
     protected Rigidbody _rigid;
     [SerializeField] private LayerMask _objectLayer;
+    [SerializeField] private LayerMask _obstacleLayer;
 
     protected virtual void Awake()
     {
@@ -71,6 +72,13 @@ public abstract class Agent : MonoBehaviour, IInteractable
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
         return true;
+    }
+
+    public bool DetectObstacle()
+    {
+        RaycastHit[] hits = new RaycastHit[5];
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _obstacleLayer);
+        return amount == 0;
     }
     
     public void DetectInteraction()

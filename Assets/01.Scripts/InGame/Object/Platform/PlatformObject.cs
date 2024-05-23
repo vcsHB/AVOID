@@ -19,11 +19,15 @@ public class PlatformObject : MonoBehaviour
     [SerializeField] private Transform _platformTrm;
     private Collider _collider;
     private MeshRenderer _DeadZoneRenderer;
+    private Material _deadZoneMaterial;
+    private int _deadZoneAlphaHash;
 
     private void Awake()
     {
         _collider = _platformTrm.GetComponent<Collider>();
         _DeadZoneRenderer = _platformTrm.Find("DeadZone").GetComponent<MeshRenderer>();
+        _deadZoneMaterial = _DeadZoneRenderer.material;
+        _deadZoneAlphaHash = Shader.PropertyToID("_Alpha");
     }
 
     [ContextMenu("Generate")]
@@ -62,7 +66,8 @@ public class PlatformObject : MonoBehaviour
         _DeadZoneRenderer.enabled = true;
         yield return new WaitForSeconds(_destroyTerm);
         _DeadZoneRenderer.enabled = false;
-
+        StartCoroutine(SetDeadZone(true, 0.5f));
+        
         Vector3 beforePos = _platformTrm.localPosition;
         Vector3 targetPos = (beforePos + -_platformInfo.NormalDirection) * 10;
         while (currentTime <= _destoryDuration)
@@ -73,10 +78,35 @@ public class PlatformObject : MonoBehaviour
             currentTime += TimeManager.TimeScale * Time.deltaTime;
             yield return null;
         }
+        StartCoroutine(SetDeadZone(false, 0.5f));
 
         _platformTrm.localPosition = targetPos;
         yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
+    }
+
+    private IEnumerator SetDeadZone(bool value, float settingDuration)
+    {
+        int beforeValue, targetValue;
+        if (value)
+        {
+            beforeValue = 0;
+            targetValue = 1;
+        }
+        else
+        {
+            beforeValue = 1;
+            targetValue = 0;
+        }
+
+        float currentTime = 0;
+        while (currentTime <= settingDuration)
+        {
+            currentTime += Time.deltaTime;
+            float ratio = Mathf.Lerp(beforeValue, targetValue, currentTime / settingDuration);
+            _deadZoneMaterial.SetFloat(_deadZoneAlphaHash, ratio);
+            yield return null;
+        }
     }
     
     
