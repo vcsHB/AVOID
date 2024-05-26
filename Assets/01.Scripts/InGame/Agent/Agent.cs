@@ -53,7 +53,7 @@ public abstract class Agent : MonoBehaviour, IInteractable
     }
 
     
-    protected virtual bool Move(Vector3 direction)
+    public virtual bool Move(Vector3 direction)
     {
         if (_isMoving) return false;
         
@@ -77,7 +77,9 @@ public abstract class Agent : MonoBehaviour, IInteractable
     public bool DetectObstacle()
     {
         RaycastHit[] hits = new RaycastHit[5];
+        //Collider[] colliders = new Collider[5];
         int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _obstacleLayer);
+        //int obstacleAmount = Physics.OverlapSphereNonAlloc(_targetPos, 2, colliders, _obstacleLayer);
         return amount == 0;
     }
     

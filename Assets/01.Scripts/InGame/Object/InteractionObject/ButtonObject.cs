@@ -68,7 +68,7 @@ public class ButtonObject : InteractObject
 
     protected override void DetectTarget()
     {
-        Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, 1.5f, _detectLayer);
+        Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, _detectRadius, _detectLayer);
         if (hit.collider != null)
         {
             return;

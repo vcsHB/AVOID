@@ -63,6 +63,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 5288858527454928, guid: 83589886464cfb940aeae09af960511f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218584670966743582, guid: 83589886464cfb940aeae09af960511f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6444511889271178394, guid: 83589886464cfb940aeae09af960511f,
         type: 3}
       propertyPath: m_LocalPosition.x

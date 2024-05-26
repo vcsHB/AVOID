@@ -45,6 +45,7 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     public void RotateCamera(int rotate, float duration = 1)
     {
+        StopAllCoroutines();
         StartCoroutine(RotateCameraCoroutine(rotate, duration));
     }
 

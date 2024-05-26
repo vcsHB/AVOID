@@ -18,8 +18,8 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "3deb5915-77e9-4f22-ace9-bc84a01b7eb1",
-                    "expectedControlType": "Vector3",
-                    "processors": "NormalizeVector3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -37,9 +37,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "3D Vector",
+                    "name": "2D Vector",
                     "id": "caf1d001-e00c-4ef9-973c-b416a21f9ac8",
-                    "path": "3DVector",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -48,7 +48,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
+                    "name": "Up",
                     "id": "de173797-7d6d-44cd-a6c6-44ce115201c2",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -59,7 +59,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "Down",
                     "id": "14d6d7c5-32e5-4021-9a6a-026cc02ca954",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -70,7 +70,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "forward",
+                    "name": "Left",
                     "id": "a126f511-8c14-4d56-b33a-a2eb7e909f64",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -81,7 +81,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "backward",
+                    "name": "Right",
                     "id": "e77f0ba2-cdd6-441a-b6f4-1e2f8ab52131",
                     "path": "<Keyboard>/s",
                     "interactions": "",
