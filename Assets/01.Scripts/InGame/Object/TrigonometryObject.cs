@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Math;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TrigonometryObject : MonoBehaviour
@@ -8,13 +9,22 @@ public class TrigonometryObject : MonoBehaviour
     [SerializeField] private float _waveWidth;
     [SerializeField] private float _rotateBy;
     [SerializeField] private Vector3 _offset;
-    [SerializeField] private float _timeOffset;
+    [SerializeField] private bool _useSpiralRotate;
+    [SerializeField] private float _sprialRotateSpeed = 1.5f;
+    [SerializeField] private float _currentTime = 0;
+    [SerializeField]  private float _timeOffset;
     [SerializeField] private List<Trigonometry> _triFunction;
 
     
     private void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, _waveWidth * Wave(), transform.localPosition.z) + _offset;
+        if (_useSpiralRotate)
+            _currentTime += Time.deltaTime * _sprialRotateSpeed;
+        transform.localPosition = 
+            (_waveWidth * Wave()) * new Vector3(
+                Mathf.Cos(_timeOffset+_currentTime),
+                Mathf.Sin(_timeOffset+_currentTime),
+                0);
     }
 
     private float Wave()

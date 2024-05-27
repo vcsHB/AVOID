@@ -30,11 +30,6 @@ public class VectorCalculate
         );
     }
 
-    // public static Vector3 ClampVectorCell()
-    // {
-    //     
-    // }
-
     public static Vector3 GetMoveDirection(PlayerInputDirection inputDirection, LocalDirection localDirection)
     {
         switch (localDirection)

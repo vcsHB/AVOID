@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
@@ -8,12 +9,26 @@ public abstract class Projectile : MonoBehaviour
     
     protected Vector3 _direction;
 
+    private Rigidbody _rigid;
+
+
+    protected virtual void Awake()
+    {
+        _rigid = GetComponent<Rigidbody>();
+    }
+
+
+    [ContextMenu("DebugShoot")]
+    private void DebugShoot()
+    {
+        Fire(new Vector3(0,1,1));
+    }
+    
     public void Fire(Vector3 direction)
     {
         _direction = direction;
-           
-        
-        
+        transform.forward = _direction;
+        _rigid.velocity = _direction * _speed;
     }
     
 
