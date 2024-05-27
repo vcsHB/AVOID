@@ -14,7 +14,6 @@ public class TrigonometryObject : MonoBehaviour
     [SerializeField] private float _currentTime = 0;
     [SerializeField]  private float _timeOffset;
     [SerializeField] private List<Trigonometry> _triFunction;
-
     
     private void Update()
     {
@@ -24,7 +23,7 @@ public class TrigonometryObject : MonoBehaviour
             (_waveWidth * Wave()) * new Vector3(
                 Mathf.Cos(_timeOffset+_currentTime),
                 Mathf.Sin(_timeOffset+_currentTime),
-                0);
+                0) + _offset;
     }
 
     private float Wave()

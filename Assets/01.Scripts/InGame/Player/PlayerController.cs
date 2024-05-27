@@ -37,13 +37,16 @@ public class PlayerController : Agent
             0,
             x == 0 ? z : 0
         ).normalized * _moveCell;
-        if (MoveDirection.magnitude < 0.1f) return false;
+        if (MoveDirection.magnitude < 0.1f || !DetectObstacle()) return false;
         DetectInteraction();
+
+        _isMoving = true;
 
         _targetPos = transform.position + MoveDirection;
         _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
-        transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
-        _isMoving = true;
+        transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() => _isMoving = false);
+        // 새 플랫폼 감지를 추가해야함
+        
         return true;
     }
     

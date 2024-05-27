@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace Math
 {
-    
     public enum TrigonometryFunctions
     {
         Sin,
         Cos,
         Tan
     }
-    [System.Serializable]
+    [Serializable]
     public struct Trigonometry
     {
         public float height;
@@ -29,7 +28,6 @@ namespace Math
                 case TrigonometryFunctions.Tan:
                     return height * Mathf.Tan(time * x);
             }
-
             return 0f;
         }
     }
