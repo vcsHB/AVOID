@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class VectorCalculate
 {
@@ -33,4 +34,53 @@ public class VectorCalculate
     // {
     //     
     // }
+
+    public static Vector3 GetMoveDirection(PlayerInputDirection inputDirection, LocalDirection localDirection)
+    {
+        switch (localDirection)
+        {
+            case LocalDirection.Default:
+                switch (inputDirection)
+                {
+                    case PlayerInputDirection.LeftUp:
+                        return Vector3.forward; 
+                    case PlayerInputDirection.RightUp:
+                        return Vector3.right;
+                    case PlayerInputDirection.LeftDown:
+                        return Vector3.left;
+                    case PlayerInputDirection.RightDown:
+                        return Vector3.back;
+                }
+                break;
+            case LocalDirection.Left:
+                switch (inputDirection)
+                {
+                    case PlayerInputDirection.LeftUp:
+                        return Vector3.right; 
+                    case PlayerInputDirection.RightUp:
+                        return Vector3.down;
+                    case PlayerInputDirection.LeftDown:
+                        return Vector3.up;
+                    case PlayerInputDirection.RightDown:
+                        return Vector3.left;
+                }
+                break;
+            case LocalDirection.Right:
+                switch (inputDirection)
+                {
+                    case PlayerInputDirection.LeftUp:
+                        return Vector3.down; 
+                    case PlayerInputDirection.RightUp:
+                        return Vector3.forward;
+                    case PlayerInputDirection.LeftDown:
+                        return Vector3.back;
+                    case PlayerInputDirection.RightDown:
+                        return Vector3.up;
+                }
+                break;
+            
+        }
+
+        return Vector3.zero;
+    }
 }

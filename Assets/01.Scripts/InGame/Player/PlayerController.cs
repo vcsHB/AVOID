@@ -2,14 +2,6 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum PlayerLocalDirection
-{
-    LeftUp,
-    RightUp,
-    LeftDown,
-    RightDown
-}
-
 public class PlayerController : Agent
 {
     [SerializeField] private LayerMask _groundLayer;
@@ -34,8 +26,9 @@ public class PlayerController : Agent
     }
 
 
-    public override bool Move(Vector3 direction)
+    public bool Move(PlayerInputDirection inputDir)
     {
+        Vector3 direction = VectorCalculate.GetMoveDirection(inputDir, _currentPlatformInfo.localDirection);
         if (_isMoving) return false;
         switch (_currentPlatformInfo.localDirection)
         {

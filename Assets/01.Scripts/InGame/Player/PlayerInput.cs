@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
+
 
 public class PlayerInput : MonoBehaviour
 {
@@ -28,8 +25,33 @@ public class PlayerInput : MonoBehaviour
     {
         _mousePos = Input.mousePosition;
         //if()
-        print(_mousePos);
+        //print(_mousePos);
     }
+    
+    #region Main Player Input
+
+    public void OnKeyMoveW()
+    {
+        print("W input");
+        _playerController.Move(PlayerInputDirection.LeftUp);
+    }
+    
+    public void OnKeyMoveA()
+    {
+        _playerController.Move(PlayerInputDirection.LeftDown);
+    }
+    
+    public void OnKeyMoveS()
+    {
+        _playerController.Move(PlayerInputDirection.RightDown);
+    }
+    
+    public void OnKeyMoveD()
+    {
+        _playerController.Move(PlayerInputDirection.RightUp);
+    }
+    
+    #endregion
 
     public void OnLeftClick()
     {
