@@ -6,19 +6,11 @@ public class PlayerController : Agent
 {
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
-
-    protected override void Update()
-    {
-        
-    }
-
+    
     private void FixedUpdate()
     {
         //OnLeftClick();
     }
-
-   
-
     public void OnMove(InputValue value)
     {
         Vector3 dir = value.Get<Vector3>();
@@ -46,15 +38,44 @@ public class PlayerController : Agent
         _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() => _isMoving = false);
         // 새 플랫폼 감지를 추가해야함
+        if (CheckNewPlatform())
+        {
+            print("New Platform");
+        }
         
         return true;
     }
-    
 
+    private bool CheckNewPlatform()
+    {
+        RaycastHit[] hitGrounds = new RaycastHit[4];
+
+        int hitGroundAmount = Physics.BoxCastNonAlloc(transform.position, Vector3.one, MoveDirection.normalized, hitGrounds, Quaternion.identity, 7f, _groundLayer);
+
+        if (hitGroundAmount == 0) return false;
+
+        for (int i = 0; i < hitGroundAmount; i++)
+        {
+            if (hitGrounds[i].transform.parent.TryGetComponent(out PlatformObject platform))
+            {
+                if (platform.PlatformInfo.localDirection == _currentPlatformInfo.localDirection)
+                {
+                    continue;
+                }
+
+                _currentPlatformInfo = platform.PlatformInfo;
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private void ChangeGravity()
     {
-
+        
+        // 부모를 변경하는 방식으로 플랫폼에 붙을 것인가?
+        
     }
 
     private void OnDrawGizmos()

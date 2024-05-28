@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PlatformGroup : MonoBehaviour
 {
+    [SerializeField] private LogicObject mainLogic;
     [SerializeField] private PlatformObject[] platforms;
 
+    
     public void DestroyPlatforms()
     {
         for (int i = 0; i < platforms.Length; i++)

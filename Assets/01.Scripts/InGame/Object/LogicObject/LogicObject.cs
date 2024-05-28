@@ -1,33 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
-    public LogicEvent[] logicEvents;
-    
-    public bool SolveLogic
-    {
-        get
-        {
-            foreach (Logic logic in logics)
-            {
-                if (!logic.isActive)
-                {
-                    return false;
-                }
-            }
+    public event Action logicSolvedEvent;
 
-            return true;
-        }
-        private set { }
-    }
+    private bool _isSolvedLogic;
+    public bool IsSolvedLogic => _isSolvedLogic;
 
     private Logic FindLogic(LogicType type)
     {
         for (int i = 0; i < logics.Length; i++)
         {
-            if (!logics[i].isActive|| logics[i].logicType == type)
+            if (!logics[i].isActive && logics[i].logicType == type)
             {
                 return logics[i];
             }
@@ -40,14 +27,15 @@ public class LogicObject : MonoBehaviour
     {
         Logic logic = FindLogic(logicType);
         logic.Trigger();
-        
-        if (SolveLogic)
-        {
-            for (int i = 0; i < logicEvents.Length; i++)
-            {
-                logicEvents[i].SolveLogic();
 
+        if (_isSolvedLogic) return;
+        for (int i = 0; i < logics.Length; i++)
+        {
+            if (!logics[i].isActive)
+            {
+                return;
             }
         }
+        logicSolvedEvent?.Invoke();
     }
 }

@@ -7,7 +7,7 @@ public class TrigonometryObject : MonoBehaviour
 {
     [SerializeField] private float _waveSpeed;
     [SerializeField] private float _waveWidth;
-    [SerializeField] private float _rotateBy;
+    [SerializeField] private float _rotateBy; 
     [SerializeField] private Vector3 _offset;
     [SerializeField] private bool _useSpiralRotate;
     [SerializeField] private float _sprialRotateSpeed = 1.5f;
