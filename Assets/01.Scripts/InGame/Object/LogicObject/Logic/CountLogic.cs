@@ -9,6 +9,7 @@ public class CountLogic : Logic
     [SerializeField]
     private int goalCount = 1;
     public int GoalCount => goalCount;
+    
     protected override void TriggerLogic()
     {
         count++;
