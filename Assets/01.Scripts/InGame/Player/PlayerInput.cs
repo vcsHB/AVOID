@@ -37,37 +37,8 @@ public class PlayerInput : MonoBehaviour
         _playerController.Move(dir);
     }
     
-    // public void OnKeyMoveW()
-    // {
-    //     print("W input");
-    //     _playerController.Move(PlayerInputDirection.LeftUp);
-    // }
-    //
-    // public void OnKeyMoveA()
-    // {
-    //     _playerController.Move(PlayerInputDirection.LeftDown);
-    // }
-    //
-    // public void OnKeyMoveS()
-    // {
-    //     _playerController.Move(PlayerInputDirection.RightDown);
-    // }
-    //
-    // public void OnKeyMoveD()
-    // {
-    //     _playerController.Move(PlayerInputDirection.RightUp);
-    // }
-    //
     #endregion
 
-    // public void OnLeftClick()
-    // {
-    //     Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 50);
-    //     if (hit.collider == null) return;
-    //     //_mousePos = hit.point;
-    //     _playerController.Move(_mousePos - transform.position);
-    // }
-    
     
 
 

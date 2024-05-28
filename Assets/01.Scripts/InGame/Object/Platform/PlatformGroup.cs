@@ -7,6 +7,7 @@ public class PlatformGroup : MonoBehaviour
     [SerializeField] private PlatformObject[] platforms;
 
     
+    [ContextMenu("DebugAllDestroy")]
     public void DestroyPlatforms()
     {
         for (int i = 0; i < platforms.Length; i++)

@@ -6,7 +6,7 @@ public class PlayerController : Agent
 {
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
-    
+    private Vector3 newPlatformHit;
     private void FixedUpdate()
     {
         //OnLeftClick();
@@ -63,6 +63,7 @@ public class PlayerController : Agent
                     continue;
                 }
 
+                newPlatformHit = hitGrounds[i].point;
                 _currentPlatformInfo = platform.PlatformInfo;
                 return true;
             }
@@ -82,5 +83,6 @@ public class PlayerController : Agent
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, MoveDirection);
+        Gizmos.DrawWireCube(newPlatformHit, Vector3.one * 2);
     }
 }
