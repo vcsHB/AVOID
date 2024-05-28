@@ -260,7 +260,7 @@ public class UtilityWindow : EditorWindow
 
         string code = string.Format(CodeFormat.PoolingTypeFormat, codeBuilder.ToString());
 
-        string path =  $"{Application.dataPath}/01_Scripts/ObjectPool/PoolingType.cs";
+        string path =  $"{Application.dataPath}/01.Scripts/ObjectPool/PoolingType.cs";
 
         File.WriteAllText(path, code);
         AssetDatabase.Refresh(); //다시 컴파일 시작
