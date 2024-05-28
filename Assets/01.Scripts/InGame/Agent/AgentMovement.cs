@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-public class AgentMovement : MonoBehaviour
+public class AgentMovement : MonoBehaviour, IInteractable
 {
     protected Agent _agent;
     
@@ -10,8 +10,6 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] protected float _jumpScale = 0.5f;
     [SerializeField] protected Transform _visualTrm;
     [SerializeField] private Vector3 _boxCastSize = Vector3.one;
-    public Vector3 MoveDirection { get; set; }
-    
 
     protected bool _isStun;
     protected bool _isMoving;
@@ -22,6 +20,8 @@ public class AgentMovement : MonoBehaviour
     
     [SerializeField] private LayerMask _objectLayer;
     [SerializeField] private LayerMask _obstacleLayer;
+
+    public Vector3 MoveDirection { get; set; }
 
     protected virtual void Awake()
     {
@@ -59,16 +59,17 @@ public class AgentMovement : MonoBehaviour
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
-        MoveDirection = new Vector3(
+        Vector3 totalDirection = new Vector3(
             x,
             0,
             x == 0 ? z : 0
-            ).normalized * _moveCell;
+        ).normalized * _moveCell;
+        MoveDirection = totalDirection;
         if (MoveDirection.magnitude < 0.1f) return false;
         DetectInteraction();
 
-        _targetPos = transform.position + MoveDirection;
-        _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
+        _targetPos = transform.position + totalDirection;
+        _targetRotate = Quaternion.Euler(totalDirection.z * 180f, 0, totalDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
         _isMoving = true;
         return true;
@@ -82,7 +83,8 @@ public class AgentMovement : MonoBehaviour
         //int obstacleAmount = Physics.OverlapSphereNonAlloc(_targetPos, 2, colliders, _obstacleLayer);
         return amount == 0;
     }
-    
+
+
     public void DetectInteraction()
     {
         RaycastHit[] hits = new RaycastHit[5];
@@ -93,7 +95,7 @@ public class AgentMovement : MonoBehaviour
         {
             if (hits[i].transform.TryGetComponent(out InteractObject interactObject))
             {
-                interactObject.Interact(_agent);
+                interactObject.Interact(this);
             }
         }
     }

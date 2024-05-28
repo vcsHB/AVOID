@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Collections;
-using DG.Tweening;
+using ObjectPooling;
 using UnityEngine;
 
-public abstract class Agent : MonoBehaviour, IInteractable
+public abstract class Agent : MonoBehaviour
 {
     #region Component
 
     public AgentMovement MovementCompo { get; protected set; }
-    public Rigidbody rigid { get; protected set; }
-
+    public Rigidbody RigidCompo { get; protected set; }
+    public Health HealthCompo { get; protected set; }
+    public AgentVFX VFXCompo { get; protected set; }
 
     #endregion
 
+    [Header("Agent Setting Values")] 
+    [SerializeField] protected PoolingType _destroyVFX;
 
-    public Vector3 MoveDirection { get; set; }
-    public void DetectInteraction()
+    private void Awake()
     {
-        throw new NotImplementedException();
+        MovementCompo = GetComponent<AgentMovement>();
+        RigidCompo = GetComponent<Rigidbody>();
+        HealthCompo = GetComponent<Health>();
+        VFXCompo = GetComponent<AgentVFX>();
     }
 }

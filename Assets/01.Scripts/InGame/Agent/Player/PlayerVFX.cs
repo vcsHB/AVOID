@@ -7,9 +7,9 @@ public class PlayerVFX : AgentVFX
 {
 
 
-    [SerializeField] private VisualEffect _footStep;
+    [SerializeField] private ParticleSystem _footStep;
 
-    [SerializeField] private ParticleSystem _oraParticle;
+    [SerializeField] private MeshRenderer _shieldMesh;
     [SerializeField] private ParticleSystem _collectParticle;
 
     public void PlayCollectParticle()
@@ -31,14 +31,11 @@ public class PlayerVFX : AgentVFX
         }
     }
 
-    public void PlayStartOraParticle()
+    public void SetShield(bool value)
     {
-        _oraParticle.Play();
+        _shieldMesh.enabled = value;
     }
 
-    public void PlayStopOraParticle()
-    {
-        _oraParticle.Stop();
-    }
+    
 
 }

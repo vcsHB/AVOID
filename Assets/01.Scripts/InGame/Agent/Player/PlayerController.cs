@@ -24,18 +24,19 @@ public class PlayerController : AgentMovement
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
-        MoveDirection = new Vector3(
+        Vector3 totalDirection = new Vector3(
             x,
             0,
             x == 0 ? z : 0
         ).normalized * _moveCell;
-        if (MoveDirection.magnitude < 0.1f || !DetectObstacle()) return false;
+        MoveDirection = totalDirection;
+        if (totalDirection.magnitude < 0.1f || !DetectObstacle()) return false;
         DetectInteraction();
 
         _isMoving = true;
 
-        _targetPos = transform.position + MoveDirection;
-        _targetRotate = Quaternion.Euler(MoveDirection.z * 180f, 0, MoveDirection.x * -180f);
+        _targetPos = transform.position + totalDirection;
+        _targetRotate = Quaternion.Euler(totalDirection.z * 180f, 0, totalDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() => _isMoving = false);
         // 새 플랫폼 감지를 추가해야함
         if (CheckNewPlatform())
