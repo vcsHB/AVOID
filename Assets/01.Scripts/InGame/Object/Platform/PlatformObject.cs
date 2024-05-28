@@ -20,6 +20,7 @@ public class PlatformObject : MonoBehaviour
     private MeshRenderer _DeadZoneRenderer;
     private Material _deadZoneMaterial;
     private int _deadZoneAlphaHash;
+    private Transform _objectsTrm;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class PlatformObject : MonoBehaviour
         _DeadZoneRenderer = _platformTrm.Find("DeadZone").GetComponent<MeshRenderer>();
         _deadZoneMaterial = _DeadZoneRenderer.material;
         _deadZoneAlphaHash = Shader.PropertyToID("_Alpha");
+        _objectsTrm = _platformTrm.Find("Objects");
     }
 
     [ContextMenu("Generate")]

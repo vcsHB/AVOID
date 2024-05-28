@@ -5,7 +5,23 @@ public class PlatformGroup : MonoBehaviour
 {
     [SerializeField] private LogicObject mainLogic;
     [SerializeField] private PlatformObject[] platforms;
+    [SerializeField] private Transform _playerStartPositionTrm;
 
+    public void GeneratePlatforms()
+    {
+        
+        StartCoroutine(GenerateCoroutine());
+    }
+
+    private IEnumerator GenerateCoroutine()
+    {  
+        WaitForSeconds ws = new WaitForSeconds(0.2f);
+        for (int i = 0; i < platforms.Length; i++)
+        {
+            yield return ws;
+            platforms[i].Generate();
+        }
+    }
     
     [ContextMenu("DebugAllDestroy")]
     public void DestroyPlatforms()
