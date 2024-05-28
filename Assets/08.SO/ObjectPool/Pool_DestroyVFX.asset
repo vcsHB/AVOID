@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Pool_DestroyVFX
   m_EditorClassIdentifier: 
   enumName: DestroyVFX
-  poolingName: DestroyVFX_
-  description: 
-  poolCount: 0
-  prefab: {fileID: 0}
+  poolingName: DestroyVFX
+  description: "\uC624\uBE0C\uC81D\uD2B8\uAC00 \uD30C\uAD34\uB420\uB54C \uC0DD\uC131\uB418\uB294
+    \uD30C\uD2F0\uD074 \uC624\uBE0C\uC81D\uD2B8"
+  poolCount: 5
+  prefab: {fileID: 2172973941042107423, guid: 39a41680577f8b543a39dab78f16273e, type: 3}
