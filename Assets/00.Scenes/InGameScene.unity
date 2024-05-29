@@ -1079,7 +1079,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -6008,6 +6008,7 @@ Transform:
   - {fileID: 599648247}
   - {fileID: 1630736009}
   - {fileID: 1026896031}
+  - {fileID: 1869329417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026896030
@@ -6366,8 +6367,10 @@ GameObject:
   - component: {fileID: 1346787090}
   - component: {fileID: 1346787092}
   - component: {fileID: 1346787093}
+  - component: {fileID: 1346787096}
   - component: {fileID: 1346787094}
   - component: {fileID: 1346787089}
+  - component: {fileID: 1346787095}
   - component: {fileID: 1346787091}
   m_Layer: 8
   m_Name: Player
@@ -6513,6 +6516,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isMouseUp: 0
+--- !u!114 &1346787095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346787088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291781b4635a4e0ea5a81314f462f756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1346787096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346787088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd30378262644440bf44567d6b0e4994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyVFX: 0
 --- !u!1001 &1465674793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6948,6 +6976,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce05eae3a6342c790448be38d6187f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1869329416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1869329417}
+  - component: {fileID: 1869329418}
+  m_Layer: 0
+  m_Name: PlayerSkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1869329417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869329416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1000551975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1869329418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869329416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bf50a9204a431099156d259628ed11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSkillList: []
 --- !u!1001 &1914510686
 PrefabInstance:
   m_ObjectHideFlags: 0

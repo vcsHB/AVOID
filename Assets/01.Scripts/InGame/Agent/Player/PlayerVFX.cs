@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class PlayerVFX : AgentVFX
 {
@@ -12,13 +9,23 @@ public class PlayerVFX : AgentVFX
     [SerializeField] private MeshRenderer _shieldMesh;
     [SerializeField] private ParticleSystem _collectParticle;
 
+    [ContextMenu("DebugSetShieldOn")]
+    public void DebugSetOnShield()
+    {
+        SetShield(true);
+    }
+    
+    [ContextMenu("DebugSetShieldOff")]
+    public void DebugSetOffShield()
+    {
+        SetShield(false);
+    }
+    
     public void PlayCollectParticle()
     {
         _collectParticle.Play();
     }
     
-    
-
     public void UpdateFootStep(bool value)
     {
         if (value)

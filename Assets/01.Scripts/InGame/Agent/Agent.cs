@@ -16,11 +16,28 @@ public abstract class Agent : MonoBehaviour
     [Header("Agent Setting Values")] 
     [SerializeField] protected PoolingType _destroyVFX;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody>();
         HealthCompo = GetComponent<Health>();
-        VFXCompo = GetComponent<AgentVFX>();
+        VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
+    }
+
+    protected virtual void Start()
+    {
+        HealthCompo.OnDieEvent += HandleAgentDie;
+        
+    }
+
+    private void OnDestroy()
+    {
+        HealthCompo.OnDieEvent -= HandleAgentDie;
+    }
+
+    public virtual void HandleAgentDie()
+    { 
+        EffectObject effect = PoolManager.Instance.Pop(PoolingType.DestroyVFX) as EffectObject;
+        effect.Initialize(transform.position);
     }
 }

@@ -9,7 +9,6 @@ public class Health : MonoBehaviour, IDamageable
     
     public int hp { get; private set; }
     public int maxHp { get; private set; }
-    [SerializeField] private EffectObject _destroyEffect;
     
     
     public void TakeDamage(int damage)
