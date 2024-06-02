@@ -71,8 +71,11 @@ public class Cannon : FieldObject
                 _isTargetDetected = true;
                 _targetTrm = hits[0].transform;
                 TargetingStart();
+                return true;
+
             }
-            return true;
+
+            return false;
         }
         Vector3 direction = _targetTrm.position - transform.position;
         if (direction.magnitude > _targetDetectRadius)
@@ -80,9 +83,10 @@ public class Cannon : FieldObject
             _isTargetDetected = false;
             _targetTrm = null;
             StopAllCoroutines();
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     private void TargetingStart()
