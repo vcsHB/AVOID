@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using ObjectPooling;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Cannon : FieldObject
 {
@@ -11,7 +9,8 @@ public class Cannon : FieldObject
     [SerializeField] private float _shootPower;
     [SerializeField] private float _targetDetectRadius = 7f;
     [SerializeField] private LayerMask _targetLayer;
-
+    [SerializeField] private DropProjectile _dropProjectilePrefab;
+    
     [Header("Targeting Setting")]    
     [SerializeField] private float _areaSize = 1.5f;
     [SerializeField] private TargetArea _targetArea;
@@ -22,6 +21,7 @@ public class Cannon : FieldObject
     [Header("Essential Setting")]
     [SerializeField] private Transform _cannonHeadTrm;
     private Transform _gunTipTrm;
+    private ParticleSystem _shootParticle;
     private bool _isTargetDetected;
     private Collider[] hits;
     private Transform _targetTrm;
@@ -33,24 +33,29 @@ public class Cannon : FieldObject
     {
         base.Awake();
         _gunTipTrm = _cannonHeadTrm.Find("GunTip");
+        _shootParticle = _cannonHeadTrm.Find("ShootParticle").GetComponent<ParticleSystem>();
         hits = new Collider[1];
     }
 
     private void Update()
     {
-        if (!_isCoolTimed)
-        {
-            _currentTime += Time.deltaTime;
-            if (_currentTime > _attackCoolTime)
-                _isCoolTimed = true;
-
-            return;
-        }
+       
 
         if (DetectTarget())
         {
+            
             _targetArea.SetArea(true);
             FollowTargetArea();
+            
+            if (!_isCoolTimed)
+            {
+                _currentTime += Time.deltaTime;
+                if (_currentTime > _attackCoolTime)
+                {
+                    _isCoolTimed = true;
+                    StartCoroutine(FireCoroutine());
+                }
+            }
         }
         else
         {
@@ -114,9 +119,18 @@ public class Cannon : FieldObject
 
     }
 
+    private IEnumerator FireCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        Fire();
+    }
+    
     private void Fire()
     {
-        
+        _shootParticle.Play();
+        _isCoolTimed = false;
+        _currentTime = 0;
+        DropProjectile projectile = PoolManager.Instance.Pop(PoolingType.DropProjectile) as DropProjectile;
     }
     
 

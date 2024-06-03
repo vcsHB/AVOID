@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4144abc974f44b09e3c21d7e1938ec9, type: 3}
-  m_Name: Pool_CannonObject
+  m_Name: Pool_DropProjectile
   m_EditorClassIdentifier: 
-  enumName: CannonObject
-  poolingName: CannonObject
-  description: 
-  poolCount: 2
-  prefab: {fileID: 1641770861984193650, guid: 6e15dcd1dd63ef74988d353cb614e0c8, type: 3}
+  enumName: DropProjectile
+  poolingName: DropProjectile
+  description: "\uB5A8\uC5B4\uC9C0\uB294 \uD22C\uC0AC\uCCB4"
+  poolCount: 4
+  prefab: {fileID: 2279676451886599496, guid: 14fd527d8d7e67c4dabb51f432716beb, type: 3}
