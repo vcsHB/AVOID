@@ -50,7 +50,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -97,10 +97,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   _damage: 10
-  _speed: 4
+  _speed: 10
   _lifeTime: 10
-  _visualTrm: {fileID: 0}
-  _dropOffset: 10
+  _visualTrm: {fileID: 120703085659497744}
+  _isRangeDamage: 1
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _limitTargetCount: 2
+  _attackRange: 3
+  _dropOffset: 50
 --- !u!1001 &8163371452291390226
 PrefabInstance:
   m_ObjectHideFlags: 0

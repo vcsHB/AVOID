@@ -131,6 +131,7 @@ public class Cannon : FieldObject
         _isCoolTimed = false;
         _currentTime = 0;
         DropProjectile projectile = PoolManager.Instance.Pop(PoolingType.DropProjectile) as DropProjectile;
+        projectile.Fire(_targetArea.transform.position, Vector3.zero, 10);
     }
     
 

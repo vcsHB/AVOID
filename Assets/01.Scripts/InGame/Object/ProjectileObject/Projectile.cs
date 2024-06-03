@@ -42,6 +42,7 @@ public abstract class Projectile : PoolableMono
         if (_isRangeDamage)
         {
             RangeDamage();
+            PoolManager.Instance.Push(this);
             return;
         }
         
@@ -49,6 +50,7 @@ public abstract class Projectile : PoolableMono
         {
             target.TakeDamage(_damage);
         }
+        PoolManager.Instance.Push(this);
     }
 
     protected virtual void RangeDamage()
