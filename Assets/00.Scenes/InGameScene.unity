@@ -6534,13 +6534,14 @@ GameObject:
   - component: {fileID: 879105599}
   - component: {fileID: 879105601}
   - component: {fileID: 879105600}
+  - component: {fileID: 879105602}
   m_Layer: 5
   m_Name: SettingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &879105599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6598,6 +6599,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879105598}
   m_CullTransparentMesh: 1
+--- !u!114 &879105602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879105598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdd2fad4d7347a186fa1b9e8e6b12d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rectTrm: {fileID: 0}
+  _isActive: 0
 --- !u!1 &925994885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8333,6 +8348,7 @@ GameObject:
   - component: {fileID: 1874496547}
   - component: {fileID: 1874496549}
   - component: {fileID: 1874496548}
+  - component: {fileID: 1874496550}
   m_Layer: 5
   m_Name: PauseUI
   m_TagString: Untagged
@@ -8402,6 +8418,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874496546}
   m_CullTransparentMesh: 1
+--- !u!114 &1874496550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874496546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4426c10ff57f4d9ffca49e06fb9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rectTrm: {fileID: 0}
+  _isActive: 1
+  _selectEdge: {fileID: 708219208}
+  _buttons:
+  - {fileID: 733175174}
+  - {fileID: 1536780558}
+  - {fileID: 760257791}
+  _currentSelect: 0
+  _selectMoveDuration: 0.1
 --- !u!1 &1904748130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,6 +8451,9 @@ GameObject:
   - component: {fileID: 1904748133}
   - component: {fileID: 1904748132}
   - component: {fileID: 1904748131}
+  - component: {fileID: 1904748137}
+  - component: {fileID: 1904748136}
+  - component: {fileID: 1904748135}
   m_Layer: 5
   m_Name: SystemCanvas
   m_TagString: Untagged
@@ -8496,8 +8536,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 879105599}
   - {fileID: 1874496547}
+  - {fileID: 879105599}
   m_Father: {fileID: 1752178288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8505,6 +8545,63 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1904748135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904748130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: bbedcda93c6f52d459e7a4a0f070d3e1,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Windows
+  m_DefaultActionMap: GameControl
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1904748136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904748130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d5dc2d2cbcd8f48a9f5ab0b2646b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pausePanel: {fileID: 1874496550}
+  _settingPanel: {fileID: 879105602}
+--- !u!225 &1904748137
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904748130}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1914510686
 PrefabInstance:
   m_ObjectHideFlags: 0
