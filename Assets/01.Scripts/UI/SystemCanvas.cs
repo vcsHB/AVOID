@@ -14,12 +14,12 @@ public class SystemCanvas : MonoBehaviour
         if (_pausePanel.IsActive)
         {
             _pausePanel.DisableUI();
-
+            
         }
         else
         {
             _pausePanel.ShowUI();
-
+            PlayerManager.Instance.Player.MovementCompo.SetStun(true);
         }
     }
 

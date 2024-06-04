@@ -29,6 +29,7 @@ public class Player : Agent
     public override void HandleAgentDie()
     {
         base.HandleAgentDie();
+        MovementCompo.SetStun(true);
         PlayerVFXCompo.UpdateFootStep(false);
         gameObject.layer = _deadBodyLayer;
         StartCoroutine(DissolveCoroutine());
@@ -49,6 +50,7 @@ public class Player : Agent
     public void Revive()
     {
         // 부활하는 코드
+        MovementCompo.SetStun(false);
         PlayerVFXCompo.UpdateFootStep(true);
         _visualRenderer.material.SetFloat(_playerDissolveHash, 2);
         gameObject.layer = _playerDefaultLayer;

@@ -42,6 +42,7 @@ public class PausePanel : WindowPanel
     public override void DisableUI()
     {
         if (!_isActive) return;
+        PlayerManager.Instance.Player.MovementCompo.SetStun(false);
         _isActive = false;
         _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime);
 

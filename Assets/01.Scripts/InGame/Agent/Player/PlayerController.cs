@@ -9,15 +9,11 @@ public class PlayerController : AgentMovement
     private Vector3 newPlatformHit;
    
     
-    public void OnMove(InputValue value)
-    {
-        Vector3 dir = value.Get<Vector3>();
-        Move(dir);
-    }
+    
 
     public override bool Move(Vector3 direction)
     {
-        if (_isMoving) return false;
+        if (_isMoving || _isStun) return false;
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
