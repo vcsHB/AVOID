@@ -16,8 +16,12 @@ public abstract class Agent : MonoBehaviour
     [Header("Agent Setting Values")] 
     [SerializeField] protected PoolingType _destroyVFX;
 
+    [SerializeField] private AgentStat _defaultStat;
+    [field: SerializeField] public AgentStat Stat { get; protected set; }
+
     protected virtual void Awake()
     {
+        Stat = Instantiate(_defaultStat);
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody>();
         HealthCompo = GetComponent<Health>();
@@ -39,5 +43,6 @@ public abstract class Agent : MonoBehaviour
     { 
         EffectObject effect = PoolManager.Instance.Pop(PoolingType.DestroyVFX) as EffectObject;
         effect.Initialize(transform.position);
+        effect.Play();
     }
 }

@@ -7,7 +7,7 @@ public class Health : MonoBehaviour, IDamageable
     public event OnValueChanged OnHealthChanged;
     public event Action OnDieEvent;
     
-    public int hp { get; private set; }
+    [field: SerializeField] public int hp { get; private set; }
     public int maxHp { get; private set; }
     
     
@@ -15,6 +15,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         hp -= damage;
         OnHealthChanged?.Invoke(hp, maxHp);
+        CheckDie();
     }
 
     public void RestoreHealth(int amount)

@@ -6381,6 +6381,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2895756879917743736, guid: e99b43e4b45e5254ca0936eef42a9195,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3398287042352760645, guid: e99b43e4b45e5254ca0936eef42a9195,
         type: 3}
       propertyPath: m_Name
@@ -6601,6 +6606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2895756879917743736, guid: e99b43e4b45e5254ca0936eef42a9195,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3398287042352760645, guid: e99b43e4b45e5254ca0936eef42a9195,
         type: 3}
@@ -7435,6 +7445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291781b4635a4e0ea5a81314f462f756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <hp>k__BackingField: 0
 --- !u!114 &1346787096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7448,6 +7459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyVFX: 0
+  _defaultStat: {fileID: 11400000, guid: 5f56d2a103e3cde47af6f24b684448db, type: 2}
+  <Stat>k__BackingField: {fileID: 0}
 --- !u!4 &1385064602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a06c87a9c12f86d409d3c921ea04abc6,

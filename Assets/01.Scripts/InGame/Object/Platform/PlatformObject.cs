@@ -52,6 +52,7 @@ public class PlatformObject : MonoBehaviour
 
     private IEnumerator AppearCoroutine()
     {
+        _collider.enabled = true;
         _platformRenderer.enabled = true;
         _DeadZoneRenderer.enabled = true;
         float currentTime = 0;
@@ -77,6 +78,7 @@ public class PlatformObject : MonoBehaviour
         _DeadZoneRenderer.enabled = true;
         yield return new WaitForSeconds(_destroyTerm);
         _DeadZoneRenderer.enabled = false;
+        _collider.enabled = false;
         StartCoroutine(SetDeadZone(true, 0.5f));
         
         Vector3 beforePos = _platformTrm.position;
@@ -93,7 +95,7 @@ public class PlatformObject : MonoBehaviour
 
         _platformTrm.position = targetPos;
         yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private IEnumerator SetDeadZone(bool value, float settingDuration)

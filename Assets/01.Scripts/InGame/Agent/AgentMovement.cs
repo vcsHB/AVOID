@@ -100,4 +100,9 @@ public class AgentMovement : MonoBehaviour, IInteractable
         }
     }
 
+    public void SetStun(bool value)
+    {
+        _isStun = value;
+    }
+
 }
