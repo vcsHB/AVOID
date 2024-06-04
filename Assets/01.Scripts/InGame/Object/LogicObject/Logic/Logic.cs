@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 [System.Serializable]
 public abstract class Logic : ScriptableObject
@@ -11,6 +12,11 @@ public abstract class Logic : ScriptableObject
     {
         if (isActive) return;
         TriggerLogic();
+    }
+
+    public void SetActive(bool value)
+    {
+        isActive = value;
     }
 
     protected abstract void TriggerLogic();

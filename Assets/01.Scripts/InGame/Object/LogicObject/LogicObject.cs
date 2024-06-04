@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
-    public event Action logicSolvedEvent;
-    public InteractObject[] interactObjects;
+    public UnityEvent logicSolvedEvent;
+    //public InteractObject[] interactObjects;
 
     private bool _isSolvedLogic;
     public bool IsSolvedLogic => _isSolvedLogic;
@@ -23,11 +24,43 @@ public class LogicObject : MonoBehaviour
         return null;
     }
 
-    public void TriggerLogic(LogicType logicType)
-    {
-        Logic logic = FindLogic(logicType);
-        logic.Trigger();
 
+    protected virtual void Awake()
+    {
+        for (int i = 0; i < logics.Length; i++)
+        {
+            logics[i] = Instantiate(logics[i]);
+        }
+    }
+
+
+    // public void TriggerLogic(LogicType logicType)
+    // {
+    //     Logic logic = FindLogic(logicType);
+    //     logic.Trigger();
+    //
+    //     if (_isSolvedLogic) return;
+    //     for (int i = 0; i < logics.Length; i++)
+    //     {
+    //         if (!logics[i].isActive)
+    //         {
+    //             return;
+    //         }
+    //     }
+    //     logicSolvedEvent?.Invoke();
+    // }
+    
+    public void TriggerLogic(int logicIndex, bool triggerValue)
+    {
+        if (logicIndex >= logics.Length) return;
+        
+        logics[logicIndex].SetActive(triggerValue);
+
+        CheckSolved();
+    }
+
+    protected void CheckSolved()
+    {
         if (_isSolvedLogic) return;
         for (int i = 0; i < logics.Length; i++)
         {
@@ -38,5 +71,6 @@ public class LogicObject : MonoBehaviour
         }
         logicSolvedEvent?.Invoke();
     }
+    
     
 }

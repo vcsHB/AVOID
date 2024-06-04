@@ -16,7 +16,9 @@ public class PlatformObject : MonoBehaviour
     [SerializeField] private float _destroyTerm = 2f;
     [SerializeField] private float _destoryDuration = 1.5f;
     [SerializeField] private Transform _platformTrm;
+    [SerializeField] private bool _isActive;
     private Collider _collider;
+    private MeshRenderer _platformRenderer;
     private MeshRenderer _DeadZoneRenderer;
     private Material _deadZoneMaterial;
     private int _deadZoneAlphaHash;
@@ -26,6 +28,7 @@ public class PlatformObject : MonoBehaviour
     {
         _collider = _platformTrm.GetComponent<Collider>();
         _DeadZoneRenderer = _platformTrm.Find("DeadZone").GetComponent<MeshRenderer>();
+        _platformRenderer = _platformTrm.GetComponent<MeshRenderer>();
         _deadZoneMaterial = _DeadZoneRenderer.material;
         _deadZoneAlphaHash = Shader.PropertyToID("_Alpha");
         _objectsTrm = _platformTrm.Find("Objects");
@@ -34,12 +37,23 @@ public class PlatformObject : MonoBehaviour
     [ContextMenu("Generate")]
     public void Generate()
     {
-
+        if (_isActive) return;
+        _isActive = true;
         StartCoroutine(AppearCoroutine());
+    }
+    
+    [ContextMenu("Destroy")]
+    public void Destroy()
+    {
+        if (!_isActive) return;
+        _isActive = false;
+        StartCoroutine(DisappearCoroutine());
     }
 
     private IEnumerator AppearCoroutine()
     {
+        _platformRenderer.enabled = true;
+        _DeadZoneRenderer.enabled = true;
         float currentTime = 0;
         Vector3 targetPos = _platformTrm.position;
         Vector3 beforePos = targetPos + _platformInfo.NormalDirection * 10;
@@ -52,14 +66,10 @@ public class PlatformObject : MonoBehaviour
             yield return null;
         }
         _platformTrm.position = targetPos;
-        
+        _DeadZoneRenderer.enabled = false;
     }
     
-    [ContextMenu("Destroy")]
-    public void Destroy()
-    {
-        StartCoroutine(DisappearCoroutine());
-    }
+    
 
     private IEnumerator DisappearCoroutine()
     {

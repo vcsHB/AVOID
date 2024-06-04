@@ -52,6 +52,7 @@ MonoBehaviour:
   _destroyTerm: 2
   _destoryDuration: 1.5
   _platformTrm: {fileID: 4719250862239353739}
+  _isActive: 0
 --- !u!1 &7422983175010405209
 GameObject:
   m_ObjectHideFlags: 0
