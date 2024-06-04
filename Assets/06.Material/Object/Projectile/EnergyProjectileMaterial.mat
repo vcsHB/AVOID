@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_EnergyProjectile
+  m_Name: EnergyProjectileMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 0403fc1c0c2b2124b8cde57ed8470307,
     type: 3}
   m_Parent: {fileID: 0}

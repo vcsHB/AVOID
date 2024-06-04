@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CannonEmissionMaterial
+  m_Name: UpCannonEmissionMaterial
   m_Shader: {fileID: -6465566751694194690, guid: e4dd635bd194e6e4ea32a214da3a7046,
     type: 3}
   m_Parent: {fileID: 0}
@@ -136,7 +136,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 2, g: 2, b: 2, a: 1}
-    - _Main_EmissionColor: {r: 21.361254, g: 7.7953877, b: 0, a: 1}
+    - _Main_EmissionColor: {r: 85.445015, g: 2.3607435, b: 0, a: 1}
     - _MaskColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SubColor: {r: 0, g: 0, b: 0, a: 0}

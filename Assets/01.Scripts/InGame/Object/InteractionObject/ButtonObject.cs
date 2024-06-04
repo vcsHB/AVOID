@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -71,6 +72,11 @@ public class ButtonObject : InteractObject
         Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, _detectRadius, _detectLayer);
         if (hit.collider != null)
         {
+            if (isActive == false)
+            {
+                hit.transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
+                
+            }
             return;
         }
         print("버튼 빠짐");

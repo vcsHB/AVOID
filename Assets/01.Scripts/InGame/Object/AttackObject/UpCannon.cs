@@ -2,21 +2,19 @@ using System.Collections;
 using ObjectPooling;
 using UnityEngine;
 
-public class Cannon : FieldObject
+public class UpCannon : FieldObject
 {
     [Header("Cannon Setting")] 
     [SerializeField] private float _attackCoolTime;
     [SerializeField] private float _shootPower;
     [SerializeField] private float _targetDetectRadius = 7f;
     [SerializeField] private LayerMask _targetLayer;
-    [SerializeField] private DropProjectile _dropProjectilePrefab;
     
     [Header("Targeting Setting")]    
     [SerializeField] private float _areaSize = 1.5f;
     [SerializeField] private TargetArea _targetArea;
     [SerializeField] private float _targetingSpeed = 3f;
     [SerializeField] private float _targetingDuration = 5f;    
-
    
     [Header("Essential Setting")]
     [SerializeField] private Transform _cannonHeadTrm;
@@ -27,7 +25,6 @@ public class Cannon : FieldObject
     private Transform _targetTrm;
     private float _currentTime = 0;
     private bool _isCoolTimed;
-
 
     protected override void Awake()
     {

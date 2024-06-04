@@ -26,15 +26,16 @@ public abstract class Projectile : PoolableMono
         _rigid = GetComponent<Rigidbody>();
     }
 
-    
 
-    
-    public virtual void Fire(Vector3 firePos, Vector3 direction, int damage = 5)
+
+
+    public virtual void Fire(Vector3 firePos, Vector3 direction, int damage = 5, float speed = 5f)
     {
         transform.position = firePos;
         _damage = damage;
         _direction = direction;
         transform.forward = _direction;
+        _speed = speed;
         _rigid.velocity = _direction * _speed;
     }
 
