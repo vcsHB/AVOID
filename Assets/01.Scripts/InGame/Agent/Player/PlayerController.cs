@@ -7,16 +7,13 @@ public class PlayerController : AgentMovement
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
     private Vector3 newPlatformHit;
-    private void FixedUpdate()
-    {
-        //OnLeftClick();
-    }
+   
+    
     public void OnMove(InputValue value)
     {
         Vector3 dir = value.Get<Vector3>();
         Move(dir);
     }
-
 
     public override bool Move(Vector3 direction)
     {

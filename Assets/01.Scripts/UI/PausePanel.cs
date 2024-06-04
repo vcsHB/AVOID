@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +6,8 @@ public class PausePanel : WindowPanel
 {
     [SerializeField] private RectTransform _selectEdge;
     [SerializeField] private Button[] _buttons;
-    //private Vector2 _continuePos, _settingPos, _exitPos;
     private float[] _yDeltaPositions = new float[3];
-    
+
     [Header("Select Setting")]
     [SerializeField] private int _currentSelect;
     [SerializeField] private float _selectMoveDuration = 0.1f;
@@ -31,17 +26,26 @@ public class PausePanel : WindowPanel
 
     private void Start()
     {
+        print("이벤트 등록");
         _buttons[0].onClick.AddListener(DisableUI);
     }
 
 
     public override void ShowUI()
     {
+        if (_isActive) return;
+        _isActive = true;
+        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime);
+
     }
 
     public override void DisableUI()
     {
-    }
+        if (!_isActive) return;
+        _isActive = false;
+        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime);
+
+    }       
 
     public void ControlUp()
     {
@@ -66,7 +70,8 @@ public class PausePanel : WindowPanel
 
     public void Select()
     {
-
+        print("Invoke");
+        _buttons[_currentSelect].onClick?.Invoke();
         
     }
     

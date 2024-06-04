@@ -98,7 +98,7 @@ MonoBehaviour:
   type: 4
   _damage: 0
   _speed: 4
-  _lifeTime: 10
+  _lifeTime: 3
   _visualTrm: {fileID: 6436992885747477772}
   _isRangeDamage: 0
   _targetLayer:

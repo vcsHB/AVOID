@@ -24,8 +24,6 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         _mousePos = Input.mousePosition;
-        //if()
-        //print(_mousePos);
     }
     
     #region Main Player Input
@@ -33,14 +31,11 @@ public class PlayerInput : MonoBehaviour
     
     public void OnMove(InputValue value)
     {
+        print("이동입력");
         Vector3 dir = value.Get<Vector3>();
         _playerController.Move(dir);
     }
     
     #endregion
-
-    
-
-
 
 }

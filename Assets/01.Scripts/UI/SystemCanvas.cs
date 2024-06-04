@@ -9,7 +9,19 @@ public class SystemCanvas : MonoBehaviour
     [SerializeField] private PausePanel _pausePanel;
     [SerializeField] private SettingPanel _settingPanel;
 
+    private void OnEsc()
+    {
+        if (_pausePanel.IsActive)
+        {
+            _pausePanel.DisableUI();
 
+        }
+        else
+        {
+            _pausePanel.ShowUI();
+
+        }
+    }
 
     private void OnUpControl()
     {
@@ -29,7 +41,7 @@ public class SystemCanvas : MonoBehaviour
     {
         if (!_pausePanel.IsActive)
             return;
-        
+        print("선택됨");
         _pausePanel.Select();
     }
 

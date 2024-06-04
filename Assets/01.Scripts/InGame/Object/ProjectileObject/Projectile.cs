@@ -19,6 +19,7 @@ public abstract class Projectile : PoolableMono
     protected Vector3 _direction;
 
     protected Rigidbody _rigid;
+    private float _currentLifeTimeCount = 0;
 
 
     protected virtual void Awake()
@@ -27,6 +28,17 @@ public abstract class Projectile : PoolableMono
     }
 
 
+    protected virtual void Update()
+    {
+        _currentLifeTimeCount += Time.deltaTime;
+        if (_currentLifeTimeCount >= _lifeTime)
+        {
+            EffectObject vfx = PoolManager.Instance.Pop(_destroyVFX) as EffectObject;
+            vfx.Initialize(transform.position);
+            vfx.Play();
+            PoolManager.Instance.Push(this);
+        }
+    }
 
 
     public virtual void Fire(Vector3 firePos, Vector3 direction, int damage = 5, float speed = 5f)
@@ -73,5 +85,10 @@ public abstract class Projectile : PoolableMono
                 rangeTarget.TakeDamage(_damage);
             }
         }
+    }
+    
+    public override void ResetItem()
+    {
+        _currentLifeTimeCount = 0;
     }
 }

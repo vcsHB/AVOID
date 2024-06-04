@@ -4,6 +4,12 @@ public abstract class WindowPanel : MonoBehaviour
 {
     [SerializeField] protected RectTransform _rectTrm;
     [SerializeField] protected bool _isActive;
+    
+    
+    [SerializeField] protected Vector2 _defaultPosition;
+    [SerializeField] protected Vector2 _targetPosition;
+    [SerializeField] protected float _onOffTime;
+
     public bool IsActive => _isActive;
     
     
