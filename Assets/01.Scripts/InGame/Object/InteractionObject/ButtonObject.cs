@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ public class ButtonObject : InteractObject
     [SerializeField] private float _buttonHoldDuration = 1f;
     [SerializeField] private float _buttonDefaultPosY;
     [SerializeField] private float _buttonOnPosY;
-    public UnityEvent OnButtonTriggerEvent;
+    public UnityEvent<int, bool> OnButtonTriggerEvent;
    
     private Tween _currentTween;
     
@@ -33,7 +34,7 @@ public class ButtonObject : InteractObject
         
     }
 
-    public override void Interact(IInteractable interactable)
+    protected override void HandlerInteraction(IInteractable interactable)
     {
         print("버튼 눌림");
         StartCoroutine(InteractCoroutine());
@@ -45,7 +46,7 @@ public class ButtonObject : InteractObject
         yield return new WaitForSeconds(_buttonHoldDuration);
         isActive = true;
         _collider.enabled = false;
-        OnButtonTriggerEvent?.Invoke();
+        OnButtonTriggerEvent?.Invoke(_logicIndex, true);
 
     }
 
@@ -68,9 +69,14 @@ public class ButtonObject : InteractObject
 
     protected override void DetectTarget()
     {
-        Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, 1.5f, _detectLayer);
+        Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, _detectRadius, _detectLayer);
         if (hit.collider != null)
         {
+            if (isActive == false)
+            {
+                hit.transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 2, ForceMode.Impulse);
+                
+            }
             return;
         }
         print("버튼 빠짐");

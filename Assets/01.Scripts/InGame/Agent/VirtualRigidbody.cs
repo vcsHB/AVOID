@@ -10,7 +10,7 @@ public class VirtualRigidbody : MonoBehaviour
 
     [SerializeField] private bool _useGravity = true;
     
-    //private Rigidbody _rigid;
+    private Rigidbody _rigid;
     public Vector3 velocity;
     private Vector3 _currentVelocity;
     private bool _isStop;
@@ -18,7 +18,7 @@ public class VirtualRigidbody : MonoBehaviour
 
     private void Awake()
     {
-        //_rigid = GetComponent<Rigidbody>();
+        _rigid = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -56,6 +56,7 @@ public class VirtualRigidbody : MonoBehaviour
 
     public void AddForce(Vector3 direction)
     {
-        velocity += direction;
+        //velocity += direction;
+        _rigid.AddForce(direction, ForceMode.Impulse);
     }
 }

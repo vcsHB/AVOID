@@ -8,6 +8,9 @@ public class CameraManager : MonoSingleton<CameraManager>
     [SerializeField] private CinemachineVirtualCamera _virCam;
     [SerializeField] private PlayerFollowingCameraObject _followingObject;
 
+    [Header("Setting Values")] 
+    [SerializeField] private float _rotateDuration = 1f; 
+    
     public void SetFollow(Transform followTarget)
     {
         _followingObject.SetTarget(followTarget);
@@ -27,21 +30,22 @@ public class CameraManager : MonoSingleton<CameraManager>
     [ContextMenu("DebugReset")]
     public void RotateReset()
     {
-        RotateCamera(0, 2);
+        RotateCamera(0, _rotateDuration);
     }
     [ContextMenu("DebugLeft")]
     public void RotateLeft()
     {
-        RotateCamera(-125, 2);
+        RotateCamera(-125, _rotateDuration);
     }
     [ContextMenu("DebugRight")]
     public void RotateRight()
     {
-        RotateCamera(125, 2);
+        RotateCamera(125, _rotateDuration);
     }
 
     public void RotateCamera(int rotate, float duration = 1)
     {
+        StopAllCoroutines();
         StartCoroutine(RotateCameraCoroutine(rotate, duration));
     }
 

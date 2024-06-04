@@ -19,7 +19,7 @@ public class PushObject : InteractObject, IInteractable
         _rigid = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(IInteractable interactable)
+    protected override void HandlerInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
 
@@ -56,7 +56,7 @@ public class PushObject : InteractObject, IInteractable
 
     public void DetectInteraction()
     {
-        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, MoveDirection, 1.5f, _objectLayer);
+        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, MoveDirection, 4f, _objectLayer);
         foreach (RaycastHit hit in hits)
         {
             if (hit.transform.TryGetComponent(out InteractObject interactObject))

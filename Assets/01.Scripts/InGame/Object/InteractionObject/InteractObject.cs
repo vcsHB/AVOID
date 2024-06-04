@@ -1,8 +1,7 @@
-using System;
-using ObjectPooling;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class InteractObject : PoolableMono
+public abstract class InteractObject : FieldObject
 {
     [SerializeField] protected float _interactCoolTime;
     public bool isActive;
@@ -11,10 +10,13 @@ public abstract class InteractObject : PoolableMono
     [SerializeField] protected LayerMask _detectLayer;
     [SerializeField] protected float _detectRadius = 1.5f;
     protected Collider _collider;
+    public UnityEvent<int, bool> interactEvent;
+    [SerializeField] protected int _logicIndex;
 
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _collider = GetComponent<Collider>();
     }
     
@@ -58,7 +60,13 @@ public abstract class InteractObject : PoolableMono
     }
 
 
-    public abstract void Interact(IInteractable interactable);
+    public virtual void Interact(IInteractable interactable)
+    {
+        interactEvent?.Invoke(_logicIndex, true);
+        HandlerInteraction(interactable);
+    }
+
+    protected abstract void HandlerInteraction(IInteractable interactable);
 
     public override void ResetItem()
     {
