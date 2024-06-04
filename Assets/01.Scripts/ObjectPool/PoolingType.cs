@@ -2,6 +2,6 @@ namespace ObjectPooling
 {
     public enum PoolingType
     {
-        DestroyVFX,CannonObject,DropProjectile,
+        DestroyVFX,CannonObject,DropProjectile,ProjectileDestroyVFX,
     }
 }

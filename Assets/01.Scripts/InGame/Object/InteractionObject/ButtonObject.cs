@@ -33,7 +33,7 @@ public class ButtonObject : InteractObject
         
     }
 
-    public override void Interact(IInteractable interactable)
+    protected override void HandlerInteraction(IInteractable interactable)
     {
         print("버튼 눌림");
         StartCoroutine(InteractCoroutine());

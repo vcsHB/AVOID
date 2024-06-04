@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
     public event Action logicSolvedEvent;
+    public InteractObject[] interactObjects;
 
     private bool _isSolvedLogic;
     public bool IsSolvedLogic => _isSolvedLogic;
@@ -38,4 +38,5 @@ public class LogicObject : MonoBehaviour
         }
         logicSolvedEvent?.Invoke();
     }
+    
 }

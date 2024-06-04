@@ -13,7 +13,8 @@ public abstract class Projectile : PoolableMono
     [SerializeField] protected bool _isRangeDamage;
     [SerializeField] protected LayerMask _targetLayer;
     [SerializeField] protected int _limitTargetCount = 2;
-    [SerializeField] private float _attackRange = 3;
+    [SerializeField] protected float _attackRange = 3;
+    [SerializeField] protected PoolingType _destroyVFX;
     
     protected Vector3 _direction;
 
@@ -39,10 +40,16 @@ public abstract class Projectile : PoolableMono
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        EffectObject vfx = PoolManager.Instance.Pop(_destroyVFX) as EffectObject;
+        vfx.Initialize(transform.position);
+        vfx.Play();
+        
         if (_isRangeDamage)
         {
             RangeDamage();
+            
             PoolManager.Instance.Push(this);
+            
             return;
         }
         

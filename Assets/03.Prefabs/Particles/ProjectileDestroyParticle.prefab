@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5235246850940818973}
   - component: {fileID: 2172973941042107423}
   m_Layer: 0
-  m_Name: DestoryParticle
+  m_Name: ProjectileDestroyParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4836,7 +4836,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6be185f3a0795840b9ae0bdd4b2f52f, type: 2}
+  - {fileID: 2100000, guid: cd33b4ab9a1319f44a1b2c0230545008, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4901,7 +4901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fe75c1191f4dd89802295e7c983e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 3
   _isOnEnablePlay: 1
   _particles:
   - {fileID: 936166922848811443}

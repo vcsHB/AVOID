@@ -121,7 +121,7 @@ public class Cannon : FieldObject
 
     private IEnumerator FireCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         Fire();
     }
     

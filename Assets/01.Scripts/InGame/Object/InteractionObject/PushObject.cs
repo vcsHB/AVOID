@@ -19,7 +19,7 @@ public class PushObject : InteractObject, IInteractable
         _rigid = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(IInteractable interactable)
+    protected override void HandlerInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
 

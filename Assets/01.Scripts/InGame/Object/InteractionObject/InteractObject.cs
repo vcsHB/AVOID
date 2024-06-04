@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(LogicObject))]
 public abstract class InteractObject : FieldObject
 {
     [SerializeField] protected float _interactCoolTime;
@@ -9,6 +11,8 @@ public abstract class InteractObject : FieldObject
     [SerializeField] protected LayerMask _detectLayer;
     [SerializeField] protected float _detectRadius = 1.5f;
     protected Collider _collider;
+    private LogicObject _logicObject;
+    public UnityEvent interactEvent;
 
 
     protected override void Awake()
@@ -57,7 +61,13 @@ public abstract class InteractObject : FieldObject
     }
 
 
-    public abstract void Interact(IInteractable interactable);
+    public void Interact(IInteractable interactable)
+    {
+        interactEvent?.Invoke();
+        HandlerInteraction(interactable);
+    }
+
+    protected abstract void HandlerInteraction(IInteractable interactable);
 
     public override void ResetItem()
     {

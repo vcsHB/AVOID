@@ -5164,6 +5164,7 @@ MonoBehaviour:
     m_Bits: 0
   _limitTargetCount: 2
   _attackRange: 3
+  _destroyVFX: 0
 --- !u!54 &229078358
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8109,6 +8110,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641770861984193650, guid: 6e15dcd1dd63ef74988d353cb614e0c8,
+        type: 3}
+      propertyPath: _attackCoolTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641770861984193650, guid: 6e15dcd1dd63ef74988d353cb614e0c8,
+        type: 3}
+      propertyPath: _targetingDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1779477430580465024, guid: 6e15dcd1dd63ef74988d353cb614e0c8,
         type: 3}
