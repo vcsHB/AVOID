@@ -25,6 +25,7 @@ public abstract class Agent : MonoBehaviour
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody>();
         HealthCompo = GetComponent<Health>();
+        HealthCompo.Initialize(this);
         VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
     }
 

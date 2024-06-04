@@ -47,12 +47,15 @@ public class Player : Agent
         _visualRenderer.material.SetFloat(_playerDissolveHash, -2);
     }
 
+    [ContextMenu("Revive")]
     public void Revive()
     {
         // 부활하는 코드
         MovementCompo.SetStun(false);
         PlayerVFXCompo.UpdateFootStep(true);
+        HealthCompo.Initialize(this);
         _visualRenderer.material.SetFloat(_playerDissolveHash, 2);
         gameObject.layer = _playerDefaultLayer;
+        PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
     }
 }
