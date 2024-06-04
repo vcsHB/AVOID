@@ -10,7 +10,7 @@ public class ButtonObject : InteractObject
     [SerializeField] private float _buttonHoldDuration = 1f;
     [SerializeField] private float _buttonDefaultPosY;
     [SerializeField] private float _buttonOnPosY;
-    public UnityEvent OnButtonTriggerEvent;
+    public UnityEvent<int, bool> OnButtonTriggerEvent;
    
     private Tween _currentTween;
     
@@ -45,7 +45,7 @@ public class ButtonObject : InteractObject
         yield return new WaitForSeconds(_buttonHoldDuration);
         isActive = true;
         _collider.enabled = false;
-        OnButtonTriggerEvent?.Invoke();
+        OnButtonTriggerEvent?.Invoke(_logicIndex, true);
 
     }
 

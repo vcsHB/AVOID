@@ -10,9 +10,8 @@ public abstract class InteractObject : FieldObject
     [SerializeField] protected LayerMask _detectLayer;
     [SerializeField] protected float _detectRadius = 1.5f;
     protected Collider _collider;
-    private LogicObject _logicObject;
     public UnityEvent<int, bool> interactEvent;
-    [SerializeField] private int _logicIndex;
+    [SerializeField] protected int _logicIndex;
 
 
     protected override void Awake()
@@ -61,7 +60,7 @@ public abstract class InteractObject : FieldObject
     }
 
 
-    public void Interact(IInteractable interactable)
+    public virtual void Interact(IInteractable interactable)
     {
         interactEvent?.Invoke(_logicIndex, true);
         HandlerInteraction(interactable);
