@@ -31,7 +31,7 @@ public class AgentMovement : MonoBehaviour, IInteractable
     
     protected virtual void Update()
     {
-        if (_isStun || TimeManager.TimeScale == 0)
+        if (_isStun)
         {
             return;
         }

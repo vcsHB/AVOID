@@ -34,8 +34,7 @@ public class PausePanel : WindowPanel
     {
         if (_isActive) return;
         _isActive = true;
-        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime);
-
+        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);;
     }
 
     public override void DisableUI()
@@ -43,7 +42,7 @@ public class PausePanel : WindowPanel
         if (!_isActive) return;
         PlayerManager.Instance.Player.MovementCompo.SetStun(false);
         _isActive = false;
-        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime);
+        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime).SetUpdate(true);;
 
     }       
 
@@ -64,7 +63,7 @@ public class PausePanel : WindowPanel
     {
         _canControl = false;
 
-        _selectEdge.DOAnchorPosY(_yDeltaPositions[_currentSelect], _selectMoveDuration).SetEase(Ease.InOutExpo).
+        _selectEdge.DOAnchorPosY(_yDeltaPositions[_currentSelect], _selectMoveDuration).SetEase(Ease.InOutExpo).SetUpdate(true).
             OnComplete(() => _canControl = true);
     }
 

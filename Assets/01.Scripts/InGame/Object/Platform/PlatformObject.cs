@@ -60,10 +60,10 @@ public class PlatformObject : MonoBehaviour
         Vector3 beforePos = targetPos + _platformInfo.NormalDirection * 10;
         while (currentTime <= _generateDuration)
         {
-            if(TimeManager.TimeScale == 0) continue;
+            //if(TimeManager.TimeScale == 0) continue;
             float ratio = currentTime / _generateDuration;
             _platformTrm.position = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
-            currentTime += TimeManager.TimeScale * Time.deltaTime;
+            currentTime += Time.deltaTime;
             yield return null;
         }
         _platformTrm.position = targetPos;
@@ -85,10 +85,10 @@ public class PlatformObject : MonoBehaviour
         Vector3 targetPos = beforePos + (-_platformInfo.NormalDirection * 10);
         while (currentTime <= _destoryDuration)
         {
-            if(TimeManager.TimeScale == 0) continue;
+            //if(TimeManager.TimeScale == 0) continue;
             float ratio = currentTime / _destoryDuration;
             _platformTrm.position = Vector3.Lerp(beforePos, targetPos, EasingFunction.EaseInOutCubic(ratio));
-            currentTime += TimeManager.TimeScale * Time.deltaTime;
+            currentTime +=  Time.deltaTime;
             yield return null;
         }
         StartCoroutine(SetDeadZone(false, 0.5f));

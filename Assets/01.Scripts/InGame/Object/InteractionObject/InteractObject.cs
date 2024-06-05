@@ -23,14 +23,14 @@ public abstract class InteractObject : FieldObject
 
     protected virtual void Update()
     {
-        if (isActive || TimeManager.TimeScale == 0)
+        if (isActive)
         {
             return;
         }
 
         if (!canInteract)
         {
-            _currentTime += TimeManager.TimeScale * Time.deltaTime;
+            _currentTime += Time.deltaTime;
             if (_currentTime >= _interactCoolTime)
             {
                 _currentTime = 0;
