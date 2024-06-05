@@ -12,10 +12,9 @@ public class SystemCanvas : MonoBehaviour
     private void OnEsc()
     {
         if (_pausePanel.IsActive)
-        {
             _pausePanel.DisableUI();
-            
-        }
+        if (_settingPanel.IsActive)
+            _settingPanel.DisableUI();
         else
         {
             _pausePanel.ShowUI();
@@ -25,9 +24,12 @@ public class SystemCanvas : MonoBehaviour
 
     private void OnUpControl()
     {
-        if (!_pausePanel.IsActive)
-            return;
-        _pausePanel.ControlUp();
+        if (_pausePanel.IsActive)
+            _pausePanel.ControlUp();
+        else if (_settingPanel.IsActive)
+        {
+            _settingPanel.ControlUp();
+        }
     }
 
     private void OnDownControl()
@@ -36,13 +38,29 @@ public class SystemCanvas : MonoBehaviour
             return;
         _pausePanel.ControlDown();
     }
+
+    private void OnLeftControl()
+    {
+        if (_settingPanel.IsActive)
+        {
+            _settingPanel.ControlLeft();
+        }
+    }
+
+    private void OnRightControl()
+    {
+        if (_settingPanel.IsActive)
+        {
+            _settingPanel.ControlRight();
+        }
+    }
     
     private void OnSelect()
     {
-        if (!_pausePanel.IsActive)
-            return;
-        print("선택됨");
-        _pausePanel.Select();
+        if (_pausePanel.IsActive)
+            _pausePanel.Select();
+        else if (_settingPanel.IsActive)
+            _settingPanel.Select();
     }
 
 }

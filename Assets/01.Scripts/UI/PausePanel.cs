@@ -13,7 +13,6 @@ public class PausePanel : WindowPanel
     [SerializeField] private float _selectMoveDuration = 0.1f;
 
     private bool _canControl;
-    private Tween _currentTween;
 
     protected override void Awake()
     {
@@ -26,6 +25,7 @@ public class PausePanel : WindowPanel
 
     private void Start()
     {
+        // CONTINUE 버튼에 이벤트 구독
         _buttons[0].onClick.AddListener(DisableUI);
     }
 
@@ -34,7 +34,8 @@ public class PausePanel : WindowPanel
     {
         if (_isActive) return;
         _isActive = true;
-        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);;
+        SetVisible(true);
+        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);
     }
 
     public override void DisableUI()
@@ -42,7 +43,7 @@ public class PausePanel : WindowPanel
         if (!_isActive) return;
         PlayerManager.Instance.Player.MovementCompo.SetStun(false);
         _isActive = false;
-        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime).SetUpdate(true);;
+        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime).SetUpdate(true).OnComplete(() => SetVisible(false));
 
     }       
 
@@ -69,7 +70,6 @@ public class PausePanel : WindowPanel
 
     public void Select()
     {
-        print("Invoke");
         _buttons[_currentSelect].onClick?.Invoke();
         
     }

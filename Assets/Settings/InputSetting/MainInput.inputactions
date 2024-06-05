@@ -125,6 +125,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RightControl",
+                    "type": "Button",
+                    "id": "aec930aa-e743-491f-bbb5-020426630244",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftControl",
+                    "type": "Button",
+                    "id": "b82623c0-58d9-43f2-b726-23209fee2315",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Select",
                     "type": "Button",
                     "id": "9637e259-972f-4eb8-b64b-52596d195b04",
@@ -198,6 +216,50 @@
                     "processors": "",
                     "groups": "Windows",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2516ce7e-e43e-4384-a313-b43715486e38",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3ae0712-f7f4-4254-aa42-62417abe424f",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bac0f81-ee9b-4085-85cd-119546147006",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40d70c49-a3d4-4355-9045-5590db49b969",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControl",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
