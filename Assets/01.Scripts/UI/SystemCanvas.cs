@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SystemCanvas : MonoBehaviour
@@ -9,16 +7,20 @@ public class SystemCanvas : MonoBehaviour
     [SerializeField] private PausePanel _pausePanel;
     [SerializeField] private SettingPanel _settingPanel;
 
+    private void Start()
+    {
+        _pausePanel.AddEvent(1, _settingPanel.ShowUI);
+    }
+
     private void OnEsc()
     {
         if (_pausePanel.IsActive)
             _pausePanel.DisableUI();
-        if (_settingPanel.IsActive)
+        else if (_settingPanel.IsActive)
             _settingPanel.DisableUI();
         else
         {
             _pausePanel.ShowUI();
-            PlayerManager.Instance.Player.MovementCompo.SetStun(true);
         }
     }
 

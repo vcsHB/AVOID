@@ -33,6 +33,7 @@ public class SettingPanel : WindowPanel
     public override void ShowUI()
     {
         if (_isActive) return;
+        PlayerManager.Instance.Player.MovementCompo.SetStun(true);
         _isActive = true;
         SetVisible(true);
         _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);;

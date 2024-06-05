@@ -1,5 +1,7 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PausePanel : WindowPanel
@@ -26,13 +28,20 @@ public class PausePanel : WindowPanel
     private void Start()
     {
         // CONTINUE 버튼에 이벤트 구독
-        _buttons[0].onClick.AddListener(DisableUI);
+        AddEvent(0, DisableUI);
+        AddEvent(1, DisableUI);
+    }
+
+    public void AddEvent(int index, UnityAction callBack)
+    {
+        _buttons[index].onClick.AddListener(callBack);
     }
 
 
     public override void ShowUI()
     {
         if (_isActive) return;
+        PlayerManager.Instance.Player.MovementCompo.SetStun(true);
         _isActive = true;
         SetVisible(true);
         _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);
