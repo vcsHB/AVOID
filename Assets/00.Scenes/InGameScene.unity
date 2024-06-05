@@ -6652,6 +6652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _laserActive: 1
   _reflectAmount: 1
+  _laserSize: {x: 1, y: 1, z: 1}
   _limitDistance: 10
   _collisionParticle: 5
   _useDamageCast: 1
@@ -7216,7 +7217,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -25, y: 2, z: 10}
-  - {x: -48.8, y: 2, z: 10}
+  - {x: -40, y: 2, z: 10}
   - {x: -28.874516, y: 2, z: -5.41255}
   m_Parameters:
     serializedVersion: 3

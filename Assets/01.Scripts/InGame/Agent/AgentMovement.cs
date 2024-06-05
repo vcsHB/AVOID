@@ -105,4 +105,9 @@ public class AgentMovement : MonoBehaviour, IInteractable
         _isStun = value;
     }
 
+    public void SetDefaultRotate()
+    {
+        _visualTrm.rotation = Quaternion.identity;
+    }
+
 }

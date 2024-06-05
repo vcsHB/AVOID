@@ -26,7 +26,6 @@ public class PausePanel : WindowPanel
 
     private void Start()
     {
-        print("이벤트 등록");
         _buttons[0].onClick.AddListener(DisableUI);
     }
 

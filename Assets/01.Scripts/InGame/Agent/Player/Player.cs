@@ -69,7 +69,7 @@ public class Player : Agent
     private IEnumerator ReviveCoroutine()
     {
         yield return LevelManager.Instance.ResetLevel();
-
+        MovementCompo.SetDefaultRotate();
         _visualRenderer.material.SetFloat(_playerDissolveHash, 2);
         gameObject.layer = _playerDefaultLayer;
         PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();

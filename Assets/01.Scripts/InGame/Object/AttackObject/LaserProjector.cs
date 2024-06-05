@@ -76,7 +76,6 @@ public class LaserProjector : MonoBehaviour
         {
             Vector3 origin = _lineRenderer.GetPosition(i);
             Vector3 direction = _lineRenderer.GetPosition(i + 1) - origin;
-            print(direction);
             //RaycastHit[] hits = Physics.RaycastAll(origin, direction.normalized, direction.magnitude, _damageTargetLayer);
             RaycastHit[] hits = new RaycastHit[2];
             int amount = Physics.BoxCastNonAlloc(origin, _laserSize, direction.normalized, hits,
@@ -85,7 +84,6 @@ public class LaserProjector : MonoBehaviour
             
             for (int j = 0; j < amount; j++)
             {
-                print("타겟 감지됨");
                 if (hits[j].transform.TryGetComponent(out Health health))
                 {
                     health.TakeDamage(_damage);
