@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoSingleton<LevelManager>
@@ -14,9 +12,9 @@ public class LevelManager : MonoSingleton<LevelManager>
         ResetLevel();
     }
 
-    public void ResetLevel()
+    public Coroutine ResetLevel()
     {
-        StartCoroutine(ResetCoroutine());
+         return StartCoroutine(ResetCoroutine());
     }
 
     private IEnumerator ResetCoroutine()
@@ -24,9 +22,10 @@ public class LevelManager : MonoSingleton<LevelManager>
         if (_currentStageLevel != null) 
             _currentStageLevel.Destroy();
         
-        yield return new WaitForSeconds(2f);
+        PlayerManager.Instance.PlayerTrm.position = _currentStageLevel.playerStartPos;
+
+        yield return new WaitForSeconds(0.5f);
         Destroy(_currentStageLevel.gameObject);
         _currentStageLevel = Instantiate(_currentStage.levelPrefab, _stageBaseTrm);
-        PlayerManager.Instance.PlayerTrm.position = _currentStageLevel.playerStartPos;
     }
 }

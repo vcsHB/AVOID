@@ -32,9 +32,15 @@ public class Player : Agent
         MovementCompo.SetStun(true);
         PlayerVFXCompo.UpdateFootStep(false);
         gameObject.layer = _deadBodyLayer;
-        StartCoroutine(DissolveCoroutine());
+        StartCoroutine(DieCoroutine());
     }
 
+    private IEnumerator DieCoroutine()
+    {
+        yield return DissolveCoroutine();
+        yield return new WaitForSeconds(1f);
+        Revive();
+    }
     private IEnumerator DissolveCoroutine()
     {
         float currentTime = 0;
@@ -47,6 +53,8 @@ public class Player : Agent
         _visualRenderer.material.SetFloat(_playerDissolveHash, -2);
     }
 
+    
+
     [ContextMenu("Revive")]
     public void Revive()
     {
@@ -54,8 +62,19 @@ public class Player : Agent
         MovementCompo.SetStun(false);
         PlayerVFXCompo.UpdateFootStep(true);
         HealthCompo.Initialize(this);
+        StartCoroutine(ReviveCoroutine());
+        
+    }
+
+    private IEnumerator ReviveCoroutine()
+    {
+        yield return LevelManager.Instance.ResetLevel();
+
         _visualRenderer.material.SetFloat(_playerDissolveHash, 2);
         gameObject.layer = _playerDefaultLayer;
         PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
+
+
+        
     }
 }

@@ -22,7 +22,7 @@ public class Health : MonoBehaviour, IDamageable
     
     public void TakeDamage(int damage)
     {
-        if(_owner.Stat.IsResist) return;
+        if(_owner.Stat.IsResist || hp <= 0) return;
         hp -= damage;
         OnHealthChanged?.Invoke(hp, maxHp);
         CheckDie();
