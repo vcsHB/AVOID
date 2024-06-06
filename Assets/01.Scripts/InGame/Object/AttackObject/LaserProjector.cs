@@ -59,12 +59,16 @@ public class LaserProjector : MonoBehaviour
     
     private void UpdateLaser()
     {
-        if(_useDamageCast)
+        if (_useDamageCast && _currentTime >= _damageCastCoolTime)
+        {
             DamageCast();
+            _currentTime = 0;
+        }
         
         if (!_isStatic)
         {
             _fireDirection = (_aimTrm.position - _laserFirePosTrm.position).normalized;
+            UpdateLaserPos();
         }
 
 
@@ -78,6 +82,32 @@ public class LaserProjector : MonoBehaviour
             Vector3 direction = _lineRenderer.GetPosition(i + 1) - origin;
             //RaycastHit[] hits = Physics.RaycastAll(origin, direction.normalized, direction.magnitude, _damageTargetLayer);
             RaycastHit[] hits = new RaycastHit[2];
+            int amount = Physics.BoxCastNonAlloc(origin, _laserSize, direction.normalized, hits,
+                Quaternion.LookRotation(direction.normalized), direction.magnitude);
+            if (amount == 0) return;
+            
+            for (int j = 0; j < amount; j++)
+            {
+                if (hits[j].transform.TryGetComponent(out Health health))
+                {
+                    health.TakeDamage(_damage);
+                }
+            }
+        }
+    }
+
+    private void UpdateLaserPos()
+    {
+        _lineRenderer.SetPosition(0, _laserFirePosTrm.position);
+        Vector3 origin = _lineRenderer.GetPosition(0);
+        Vector3 direction = _fireDirection;
+        for (int i = 0; i < _laserLineAmount; i++)
+        {
+            direction = _lineRenderer.GetPosition(i + 1) - origin;
+            RaycastHit[] hits = Physics.RaycastAll(origin, direction.normalized, direction.magnitude, _damageTargetLayer);
+            
+            
+            //RaycastHit[] hits = new RaycastHit[2];
             int amount = Physics.BoxCastNonAlloc(origin, _laserSize, direction.normalized, hits,
                 Quaternion.LookRotation(direction.normalized), direction.magnitude);
             if (amount == 0) return;
