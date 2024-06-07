@@ -61,8 +61,8 @@ public class LaserProjector : MonoBehaviour
     {
         if (_useDamageCast && _currentTime >= _damageCastCoolTime)
         {
-            DamageCast();
-            _currentTime = 0;
+            if(DamageCast())
+                _currentTime = 0;
         }
         
         if (!_isStatic)
@@ -74,7 +74,7 @@ public class LaserProjector : MonoBehaviour
 
     }
 
-    private void DamageCast()
+    private bool DamageCast()
     {
         for (int i = 0; i < _laserLineAmount; i++)
         {
@@ -84,7 +84,7 @@ public class LaserProjector : MonoBehaviour
             RaycastHit[] hits = new RaycastHit[2];
             int amount = Physics.BoxCastNonAlloc(origin, _laserSize, direction.normalized, hits,
                 Quaternion.LookRotation(direction.normalized), direction.magnitude);
-            if (amount == 0) return;
+            if (amount == 0) return false;
             
             for (int j = 0; j < amount; j++)
             {
@@ -94,6 +94,8 @@ public class LaserProjector : MonoBehaviour
                 }
             }
         }
+
+        return true;
     }
 
     private void UpdateLaserPos()
