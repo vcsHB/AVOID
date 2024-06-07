@@ -6,7 +6,6 @@ public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
     public UnityEvent logicSolvedEvent;
-    //public InteractObject[] interactObjects;
 
     private bool _isSolvedLogic;
     public bool IsSolvedLogic => _isSolvedLogic;
@@ -34,22 +33,6 @@ public class LogicObject : MonoBehaviour
     }
 
 
-    // public void TriggerLogic(LogicType logicType)
-    // {
-    //     Logic logic = FindLogic(logicType);
-    //     logic.Trigger();
-    //
-    //     if (_isSolvedLogic) return;
-    //     for (int i = 0; i < logics.Length; i++)
-    //     {
-    //         if (!logics[i].isActive)
-    //         {
-    //             return;
-    //         }
-    //     }
-    //     logicSolvedEvent?.Invoke();
-    // }
-    
     public void TriggerLogic(int logicIndex, bool triggerValue)
     {
         if (logicIndex >= logics.Length) return;
