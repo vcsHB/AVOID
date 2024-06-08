@@ -7,13 +7,22 @@ public class PlayerController : AgentMovement
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
     private Vector3 newPlatformHit;
-   
-    
-    
+    private bool _isGround;
+    private Vector3 _groundDetectSize = Vector3.one * 0.5f;
+
+    [SerializeField]
+    private float _limitedAirHoldTime = 10f;
+
+    private float _airHoldTime = 0;
+    protected override void Update()
+    {
+        CheckGround();
+        base.Update();
+    }
 
     public override bool Move(Vector3 direction)
     {
-        if (_isMoving || _isStun) return false;
+        if (_isMoving || _isStun || !_isGround) return false;
         
         int x = Mathf.Clamp((int)(direction.x), -1, 1);
         int z = Mathf.Clamp((int)(direction.z), -1, 1);
@@ -79,4 +88,23 @@ public class PlayerController : AgentMovement
         Gizmos.DrawRay(transform.position, MoveDirection);
         Gizmos.DrawWireCube(newPlatformHit, Vector3.one * 2);
     }
+
+    private void CheckGround()
+    {
+        Physics.BoxCast(transform.position, _groundDetectSize, Vector3.down, out RaycastHit hit, Quaternion.identity, 2f, _groundLayer);
+        if (hit.collider != null)
+        {
+            _isGround = true;
+            _airHoldTime = 0;
+            return;
+        }
+        
+        _airHoldTime += Time.deltaTime;
+        _isGround = false;
+        if (_airHoldTime >= _limitedAirHoldTime)
+        {
+            _agent.HealthCompo.TakeDamage(99);
+        }
+    }
+    
 }
