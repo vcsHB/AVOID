@@ -23,14 +23,14 @@ public abstract class InteractObject : FieldObject
 
     protected virtual void Update()
     {
-        if (isActive || TimeManager.TimeScale == 0)
+        if (isActive)
         {
             return;
         }
 
         if (!canInteract)
         {
-            _currentTime += TimeManager.TimeScale * Time.deltaTime;
+            _currentTime += Time.deltaTime;
             if (_currentTime >= _interactCoolTime)
             {
                 _currentTime = 0;
@@ -60,13 +60,13 @@ public abstract class InteractObject : FieldObject
     }
 
 
-    public virtual void Interact(IInteractable interactable)
+    public virtual bool Interact(IInteractable interactable)
     {
         interactEvent?.Invoke(_logicIndex, true);
-        HandlerInteraction(interactable);
+        return HandlerInteraction(interactable);
     }
 
-    protected abstract void HandlerInteraction(IInteractable interactable);
+    protected abstract bool HandlerInteraction(IInteractable interactable);
 
     public override void ResetItem()
     {

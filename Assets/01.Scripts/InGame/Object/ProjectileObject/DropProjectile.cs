@@ -13,6 +13,6 @@ public class DropProjectile : Projectile
 
     public override void ResetItem()
     {
-        
+        base.ResetItem();
     }
 }

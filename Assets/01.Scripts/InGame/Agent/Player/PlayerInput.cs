@@ -24,8 +24,6 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         _mousePos = Input.mousePosition;
-        //if()
-        //print(_mousePos);
     }
     
     #region Main Player Input
@@ -38,9 +36,5 @@ public class PlayerInput : MonoBehaviour
     }
     
     #endregion
-
-    
-
-
 
 }

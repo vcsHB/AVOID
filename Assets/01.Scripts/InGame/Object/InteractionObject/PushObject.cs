@@ -9,6 +9,8 @@ public class PushObject : InteractObject, IInteractable
     [SerializeField]
     private LayerMask _objectLayer;
 
+    private Vector3 _boxCastSize = Vector3.one * 0.5f;
+    [SerializeField] private LayerMask _obstacleLayer;
     public Vector3 MoveDirection { get; set; }
 
 
@@ -19,15 +21,24 @@ public class PushObject : InteractObject, IInteractable
         _rigid = GetComponent<Rigidbody>();
     }
 
-    protected override void HandlerInteraction(IInteractable interactable)
+    protected override bool HandlerInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
 
-        _collider.enabled = false;
-        DetectInteraction();
-        _collider.enabled = true;
-        Move();
+        if (!DetectObstacle())
+            return false;
 
+        _collider.enabled = false;
+        if (!DetectInteraction())
+        {
+            _collider.enabled = true;
+            return false;
+
+        }
+        _collider.enabled = true;
+        
+        Move();
+        return true;
     }
 
     private void Move()
@@ -54,17 +65,31 @@ public class PushObject : InteractObject, IInteractable
         transform.position = targetPosition;
     }
 
-    public void DetectInteraction()
+    public bool DetectInteraction()
     {
-        RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up, MoveDirection, 4f, _objectLayer);
-        foreach (RaycastHit hit in hits)
+        RaycastHit[] hits = new RaycastHit[5];
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _objectLayer);
+        if (amount == 0) return true;
+
+        for (int i = 0; i < amount; i++)
         {
-            if (hit.transform.TryGetComponent(out InteractObject interactObject))
+            if (hits[i].transform.TryGetComponent(out InteractObject interactObject))
             {
-                interactObject.Interact(this);
+                if (!interactObject.Interact(this)) return false;
             }
         }
+
+        return true;
     }
+    
+    public bool DetectObstacle()
+    {
+        RaycastHit[] hits = new RaycastHit[1];
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _obstacleLayer);
+        return amount == 0;
+    }
+    
+    
 
 
 }

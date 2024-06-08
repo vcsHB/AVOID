@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,10 +32,11 @@ public class ButtonObject : InteractObject
         
     }
 
-    protected override void HandlerInteraction(IInteractable interactable)
+    protected override bool HandlerInteraction(IInteractable interactable)
     {
         print("버튼 눌림");
         StartCoroutine(InteractCoroutine());
+        return true;
     }
 
     private IEnumerator InteractCoroutine()
@@ -79,7 +78,7 @@ public class ButtonObject : InteractObject
             }
             return;
         }
-        print("버튼 빠짐");
+        //print("버튼 빠짐");
         SetButton(false);
         _collider.enabled = true;
         isActive = false;

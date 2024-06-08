@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlatformGroup : MonoBehaviour
 {
-    [SerializeField] private LogicObject mainLogic;
-    [SerializeField] private PlatformObject[] platforms;
     [SerializeField] private Transform _playerStartPositionTrm;
+
+    [SerializeField] private PlatformObject[] platforms;
+    public Vector3 playerStartPos => _playerStartPositionTrm.position;
 
     public void GeneratePlatforms()
     {

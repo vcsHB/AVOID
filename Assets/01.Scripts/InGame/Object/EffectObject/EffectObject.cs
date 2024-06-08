@@ -7,6 +7,7 @@ public class EffectObject : PoolableMono
 {
     [SerializeField] private bool _isOnEnablePlay;
     [SerializeField] private ParticleSystem[] _particles;
+    [SerializeField] private bool _isLoop;
     [SerializeField] private float _lifeTime = 1f;
 
     
@@ -21,6 +22,11 @@ public class EffectObject : PoolableMono
 
     public void Initialize(Vector3 position)
     {
+        SetPosition(position);
+    }
+    
+    public void SetPosition(Vector3 position)
+    {
         transform.position = position;
     }
 
@@ -31,6 +37,8 @@ public class EffectObject : PoolableMono
             _particles[i].Play();
         }
 
+        if (_isLoop) return;
+        
         StartCoroutine(PlayCoroutine());
     }
 

@@ -23,15 +23,12 @@ public class VirtualRigidbody : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (TimeManager.TimeScale == 0)
+        if (!_isStop)
         {
-            if (!_isStop)
-            {
-                _currentVelocity = velocity;
-                velocity = Vector3.zero;
-            }
-            return;
+            _currentVelocity = velocity;
+            velocity = Vector3.zero;
         }
+        
 
         if (_isStop)
         {
