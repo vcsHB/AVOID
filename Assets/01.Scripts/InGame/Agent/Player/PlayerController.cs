@@ -33,7 +33,7 @@ public class PlayerController : AgentMovement
         ).normalized * _moveCell;
         MoveDirection = totalDirection;
         if (totalDirection.magnitude < 0.1f || !DetectObstacle()) return false;
-        DetectInteraction();
+        if (!DetectInteraction()) return false;
 
         _isMoving = true;
 

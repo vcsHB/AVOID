@@ -4944,6 +4944,9 @@ MonoBehaviour:
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &1068472961513403690
 MonoBehaviour:
   m_ObjectHideFlags: 0

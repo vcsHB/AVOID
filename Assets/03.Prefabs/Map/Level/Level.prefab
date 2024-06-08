@@ -1296,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 5805031774585519840, guid: 683a154c7922768439c70e141cc7c469,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7925606954908825507, guid: 683a154c7922768439c70e141cc7c469,
         type: 3}
@@ -1447,7 +1447,7 @@ PrefabInstance:
     - target: {fileID: 1149872800269503967, guid: 6e15dcd1dd63ef74988d353cb614e0c8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1641770861984193650, guid: 6e15dcd1dd63ef74988d353cb614e0c8,
         type: 3}
@@ -1614,6 +1614,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1007665708181937873}
     m_Modifications:
+    - target: {fileID: 1237214709239841597, guid: 3941f639bd4865349bd013a4882ddca0,
+        type: 3}
+      propertyPath: _detectRadius
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237214709239841597, guid: 3941f639bd4865349bd013a4882ddca0,
+        type: 3}
+      propertyPath: _obstacleLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 1354967354615791159, guid: 3941f639bd4865349bd013a4882ddca0,
         type: 3}
       propertyPath: m_LocalScale.x

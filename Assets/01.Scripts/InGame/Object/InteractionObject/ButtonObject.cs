@@ -34,10 +34,11 @@ public class ButtonObject : InteractObject
         
     }
 
-    protected override void HandlerInteraction(IInteractable interactable)
+    protected override bool HandlerInteraction(IInteractable interactable)
     {
         print("버튼 눌림");
         StartCoroutine(InteractCoroutine());
+        return true;
     }
 
     private IEnumerator InteractCoroutine()

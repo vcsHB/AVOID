@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+using DG.Tweening;
 using UnityEngine;
 
 public class AgentMovement : MonoBehaviour, IInteractable
@@ -66,7 +67,7 @@ public class AgentMovement : MonoBehaviour, IInteractable
         ).normalized * _moveCell;
         MoveDirection = totalDirection;
         if (MoveDirection.magnitude < 0.1f) return false;
-        DetectInteraction();
+        if (!DetectInteraction()) return false;
 
         _targetPos = transform.position + totalDirection;
         _targetRotate = Quaternion.Euler(totalDirection.z * 180f, 0, totalDirection.x * -180f);
@@ -85,19 +86,21 @@ public class AgentMovement : MonoBehaviour, IInteractable
     }
 
 
-    public void DetectInteraction()
+    public bool DetectInteraction()
     {
         RaycastHit[] hits = new RaycastHit[5];
         int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _objectLayer);
-        if (amount == 0) return;
+        if (amount == 0) return true;
 
         for (int i = 0; i < amount; i++)
         {
             if (hits[i].transform.TryGetComponent(out InteractObject interactObject))
             {
-                interactObject.Interact(this);
+                if (!interactObject.Interact(this)) return false;
             }
         }
+
+        return true;
     }
 
     public void SetStun(bool value)
