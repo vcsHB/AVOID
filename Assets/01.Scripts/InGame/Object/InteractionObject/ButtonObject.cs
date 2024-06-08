@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -80,7 +78,7 @@ public class ButtonObject : InteractObject
             }
             return;
         }
-        print("버튼 빠짐");
+        //print("버튼 빠짐");
         SetButton(false);
         _collider.enabled = true;
         isActive = false;

@@ -23,9 +23,10 @@ public class PushObject : InteractObject, IInteractable
 
     protected override bool HandlerInteraction(IInteractable interactable)
     {
+        MoveDirection = interactable.MoveDirection;
+
         if (!DetectObstacle())
             return false;
-        MoveDirection = interactable.MoveDirection;
 
         _collider.enabled = false;
         if (!DetectInteraction())
