@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class GameSetting
 {
-    public int bgmVolume;
-    public int sfxVolume;
+    public float bgmVolume;
+    public float sfxVolume;
 
-    private void LoadSetting()
+    public void LoadSetting()
     {
         GameSetting setting = DBManager.GetGameSetting();
         bgmVolume = setting.bgmVolume;

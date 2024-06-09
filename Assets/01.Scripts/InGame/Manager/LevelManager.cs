@@ -1,4 +1,5 @@
 using System.Collections;
+using StageManage;
 using UnityEngine;
 
 public class LevelManager : MonoSingleton<LevelManager>

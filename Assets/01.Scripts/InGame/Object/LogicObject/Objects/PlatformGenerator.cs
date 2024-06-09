@@ -12,10 +12,10 @@ public class PlatformGenerator : LogicObject
     
     private void Start()
     {
-        logicSolvedEvent.AddListener(HandleGeneratePlatform);
+        logicSolvedEvent.AddListener(HandlerGeneratePlatform);
     }
 
-    public void HandleGeneratePlatform()
+    public void HandlerGeneratePlatform()
     {
         if (_useTerm)
         {

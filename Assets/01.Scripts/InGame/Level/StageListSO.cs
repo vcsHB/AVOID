@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
 
-public class StageListSO : ScriptableObject
+namespace StageManage
 {
-    public StageSO[] stageList;
-
-    public StageSO FindStage(int id)
+    [CreateAssetMenu(menuName = "SO/Stage/StageList")]
+    public class StageListSO : ScriptableObject
     {
-        for (int i = 0; i < stageList.Length; i++)
-        {
-            if (stageList[i].id == id)
-            {
-                return stageList[i];
-            }    
-        }
+        public StageSO[] stageList;
 
-        return null;
-    }
+        public StageSO FindStage(int id)
+        {
+            for (int i = 0; i < stageList.Length; i++)
+            {
+                if (stageList[i].id == id)
+                {
+                    return stageList[i];
+                }    
+            }
+
+            return null;
+        }
     
+    }
 }
