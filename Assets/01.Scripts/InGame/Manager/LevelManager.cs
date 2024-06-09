@@ -13,6 +13,12 @@ public class LevelManager : MonoSingleton<LevelManager>
         ResetLevel();
     }
 
+    public void SetStage(StageSO stage)
+    {
+        _currentStage = stage;
+        ResetLevel();
+    }
+
     public Coroutine ResetLevel()
     {
          return StartCoroutine(ResetCoroutine());
