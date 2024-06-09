@@ -29,6 +29,7 @@ public class Player : Agent
     public override void HandleAgentDie()
     {
         base.HandleAgentDie();
+        CameraManager.Instance.Shake(10f,0.15f);
         MovementCompo.SetStun(true);
         PlayerVFXCompo.UpdateFootStep(false);
         gameObject.layer = _deadBodyLayer;
