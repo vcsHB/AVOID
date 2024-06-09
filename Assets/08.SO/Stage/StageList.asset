@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967a5f2b5e1b4f1d9686a5765f71ac59, type: 3}
-  m_Name: Tutorial
+  m_Script: {fileID: 11500000, guid: ad7c402f62b44412b29f4b484a4c24bb, type: 3}
+  m_Name: StageList
   m_EditorClassIdentifier: 
-  id: 1
-  stageName: "\uD29C\uD1A0\uB9AC\uC5BC"
-  levelPrefab: {fileID: 8656967410696623549, guid: ef2af00e99071604d8d86c58dd7e9194,
-    type: 3}
+  stageList:
+  - {fileID: 11400000, guid: eb8dad71035eddc45a4161fd8314f58a, type: 2}
+  - {fileID: 11400000, guid: d38463b1c8624eb46ab85f80bced5d14, type: 2}

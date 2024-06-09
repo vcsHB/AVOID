@@ -56,7 +56,7 @@ public abstract class Projectile : PoolableMono
         EffectObject vfx = PoolManager.Instance.Pop(_destroyVFX) as EffectObject;
         vfx.Initialize(transform.position);
         vfx.Play();
-        
+        CameraManager.Instance.Shake(4, 0.2f);
         if (_isRangeDamage)
         {
             RangeDamage();
