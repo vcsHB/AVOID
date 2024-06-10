@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 8351497606171460645, guid: 50ff5d93f8dbfec4c957c3504493fe9c,
         type: 3}
       propertyPath: m_Name
-      value: Level_Tutorial
+      value: Level_Stage1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2110,7 +2110,7 @@ PrefabInstance:
     - target: {fileID: 6007448750526675944, guid: d86b4c51f93800c40b9c0ba3804a19a7,
         type: 3}
       propertyPath: _targetStageID
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6007448750526675944, guid: d86b4c51f93800c40b9c0ba3804a19a7,
         type: 3}

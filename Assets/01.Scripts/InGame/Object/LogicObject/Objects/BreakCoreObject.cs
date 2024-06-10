@@ -1,18 +1,16 @@
 using UnityEngine;
 
-public class BreakCoreObject : MonoBehaviour
+public class BreakCoreObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private MeshRenderer _energyBendMeshRenderer;
     [SerializeField] private int _shieldAmount = 2;
 
+    [SerializeField] private ParticleSystem _explodeParticle;
     private int _shieldMaterialHash;
-    private Health _health;
 
     private void Awake()
     {
-        _health = GetComponent<Health>();
         _shieldMaterialHash = Shader.PropertyToID("_Amount");
-        _health.OnHealthChanged += HandleShieldRefresh;
     }
 
     
@@ -30,24 +28,40 @@ public class BreakCoreObject : MonoBehaviour
 
     public void DecreaseShield()
     {
+        if (_shieldAmount == 0) return;
+        _explodeParticle.Play();
+
         _shieldAmount--;
         SetShieldAmount();
     }
     
-    private void HandleShieldRefresh(int currentValue, int maxValue)
-    {
-        _shieldAmount = currentValue;
-        SetShieldAmount();
-    }
-    
+   
     private void SetShieldAmount()
     {
         if (_shieldAmount <= 0)
+        {
             _energyBendMeshRenderer.enabled = false;
+        }
         else
             _energyBendMeshRenderer.enabled = true;
         
         _energyBendMeshRenderer.material.SetInt(_shieldMaterialHash, _shieldAmount);
+        
+    }
+
+    public void TakeDamage(int damage)
+    {
+        DecreaseShield();
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        _shieldAmount += amount;
+        SetShieldAmount();
+    }
+
+    public void Die()
+    {
         
     }
 }

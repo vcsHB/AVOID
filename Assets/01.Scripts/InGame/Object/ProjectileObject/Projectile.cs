@@ -67,7 +67,7 @@ public abstract class Projectile : PoolableMono
             return;
         }
         
-        if (other.TryGetComponent(out Health target))
+        if (other.TryGetComponent(out IDamageable target))
         {
             target.TakeDamage(_damage);
         }
