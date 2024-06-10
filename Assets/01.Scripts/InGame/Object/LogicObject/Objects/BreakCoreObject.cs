@@ -6,12 +6,16 @@ public class BreakCoreObject : MonoBehaviour
     [SerializeField] private int _shieldAmount = 2;
 
     private int _shieldMaterialHash;
+    private Health _health;
 
     private void Awake()
     {
+        _health = GetComponent<Health>();
         _shieldMaterialHash = Shader.PropertyToID("_Amount");
-
+        _health.OnHealthChanged += HandleShieldRefresh;
     }
+
+    
 
     private void Start()
     {
@@ -29,7 +33,13 @@ public class BreakCoreObject : MonoBehaviour
         _shieldAmount--;
         SetShieldAmount();
     }
-
+    
+    private void HandleShieldRefresh(int currentValue, int maxValue)
+    {
+        _shieldAmount = currentValue;
+        SetShieldAmount();
+    }
+    
     private void SetShieldAmount()
     {
         if (_shieldAmount <= 0)
