@@ -100,6 +100,7 @@ MonoBehaviour:
   _speed: 4
   _lifeTime: 3
   _visualTrm: {fileID: 6436992885747477772}
+  _shakePower: 1.2
   _isRangeDamage: 0
   _targetLayer:
     serializedVersion: 2

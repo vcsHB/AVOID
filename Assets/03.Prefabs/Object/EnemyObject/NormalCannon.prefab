@@ -4958,15 +4958,15 @@ MonoBehaviour:
   type: 0
   blockMovement: 0
   _damage: 10
-  _projectileSpeed: 5
-  _shootAmount: 0
-  _shootCoolTime: 0
-  _attackStateCoolTime: 0
+  _projectileSpeed: 10
+  _shootAmount: 5
+  _shootCoolTime: 0.1
+  _attackStateCoolTime: 1
   _projectile: 4
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _cannonHeadTrm: {fileID: 0}
+    m_Bits: 256
+  _cannonHeadTrm: {fileID: 3362983331033835781}
 --- !u!1 &8880895318113407746
 GameObject:
   m_ObjectHideFlags: 0

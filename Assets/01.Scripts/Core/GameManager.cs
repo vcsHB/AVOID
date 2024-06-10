@@ -11,8 +11,8 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         _managersTrm = transform.parent;
-        stageManager = _managersTrm.GetComponent<StageManager>();
-        levelManager = _managersTrm.GetComponent<LevelManager>();
+        stageManager = _managersTrm.GetComponentInChildren<StageManager>();
+        levelManager = _managersTrm.GetComponentInChildren<LevelManager>();
         
         
         

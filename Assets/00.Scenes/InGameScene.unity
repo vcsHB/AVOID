@@ -7730,7 +7730,7 @@ PrefabInstance:
     - target: {fileID: 6016097031489475507, guid: 036862a05bb34904da38683fd7578a96,
         type: 3}
       propertyPath: m_Name
-      value: Level_Tutorial
+      value: Level_Stage1
       objectReference: {fileID: 0}
     - target: {fileID: 7131064108959060835, guid: 036862a05bb34904da38683fd7578a96,
         type: 3}
@@ -10680,7 +10680,7 @@ PrefabInstance:
     - target: {fileID: 4555261471755836604, guid: 2ec61c603351f04439be94b151bc033b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4945160469783259751, guid: 2ec61c603351f04439be94b151bc033b,
         type: 3}
