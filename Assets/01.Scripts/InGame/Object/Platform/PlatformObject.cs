@@ -56,7 +56,7 @@ public class PlatformObject : MonoBehaviour
         _platformRenderer.enabled = true;
         _DeadZoneRenderer.enabled = true;
         float currentTime = 0;
-        Vector3 targetPos = _platformTrm.position;
+        Vector3 targetPos = transform.position;
         Vector3 beforePos = targetPos + _platformInfo.NormalDirection * 10;
         while (currentTime <= _generateDuration)
         {
@@ -76,12 +76,12 @@ public class PlatformObject : MonoBehaviour
     {
         float currentTime = 0;
         _DeadZoneRenderer.enabled = true;
-        yield return new WaitForSeconds(_destroyTerm);
-        _DeadZoneRenderer.enabled = false;
-        _collider.enabled = false;
         StartCoroutine(SetDeadZone(true, 0.5f));
-        
-        Vector3 beforePos = _platformTrm.position;
+        yield return new WaitForSeconds(_destroyTerm);
+        _collider.enabled = false;
+        _DeadZoneRenderer.enabled = false;
+
+        Vector3 beforePos = transform.position;
         Vector3 targetPos = beforePos + (-_platformInfo.NormalDirection * 10);
         while (currentTime <= _destoryDuration)
         {
@@ -95,6 +95,7 @@ public class PlatformObject : MonoBehaviour
 
         _platformTrm.position = targetPos;
         yield return new WaitForSeconds(0.2f);
+        _platformRenderer.enabled = false;
         //Destroy(gameObject);
     }
 
