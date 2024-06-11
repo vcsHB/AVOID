@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BreakCoreObject : MonoBehaviour, IDamageable
+public class BreakCoreObject : LogicObject, IDamageable
 {
     [SerializeField] private MeshRenderer _energyBendMeshRenderer;
     [SerializeField] private int _shieldAmount = 2;
@@ -40,7 +40,9 @@ public class BreakCoreObject : MonoBehaviour, IDamageable
     {
         if (_shieldAmount <= 0)
         {
+            // 실드 다뿌숨
             _energyBendMeshRenderer.enabled = false;
+            logicSolvedEvent?.Invoke();
         }
         else
             _energyBendMeshRenderer.enabled = true;

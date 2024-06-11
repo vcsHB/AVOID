@@ -5,6 +5,7 @@ public class Portal : LogicObject
 {
     [Header("Portal Setting")]
     [SerializeField] private int _targetStageID;
+    [SerializeField]
     private bool _isPortalActivate = false;
     [SerializeField] private Transform _visualTrm;
     private float _defaultSize = 0;

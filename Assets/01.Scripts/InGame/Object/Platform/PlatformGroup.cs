@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlatformGroup : MonoBehaviour
@@ -7,6 +8,11 @@ public class PlatformGroup : MonoBehaviour
 
     [SerializeField] private PlatformObject[] platforms;
     public Vector3 playerStartPos => _playerStartPositionTrm.position;
+
+    private void Awake()
+    {
+        platforms = GetComponentsInChildren<PlatformObject>();
+    }
 
     public void GeneratePlatforms()
     {
