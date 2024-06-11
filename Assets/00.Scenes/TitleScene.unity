@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 1274980294}
   - component: {fileID: 1274980293}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Developer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AVOID
+  m_text: <color=#104FAA>A</color>VOID
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9118dc8e60bf6f045b16ada478728796, type: 2}
   m_sharedMaterial: {fileID: 7205093727479449950, guid: 9118dc8e60bf6f045b16ada478728796,
@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -8
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
