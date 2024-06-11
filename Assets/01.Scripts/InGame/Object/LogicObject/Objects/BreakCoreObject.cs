@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class BreakCoreObject : LogicObject, IDamageable
@@ -7,10 +8,12 @@ public class BreakCoreObject : LogicObject, IDamageable
 
     [SerializeField] private ParticleSystem _explodeParticle;
     private int _shieldMaterialHash;
+    [SerializeField] private TextMeshPro _tmp;
 
     private void Awake()
     {
         _shieldMaterialHash = Shader.PropertyToID("_Amount");
+        
     }
 
     
@@ -43,10 +46,15 @@ public class BreakCoreObject : LogicObject, IDamageable
             // 실드 다뿌숨
             _energyBendMeshRenderer.enabled = false;
             logicSolvedEvent?.Invoke();
+            _tmp.color = Color.white;
         }
         else
+        {
             _energyBendMeshRenderer.enabled = true;
-        
+            _tmp.color = Color.magenta;
+        }
+
+        _tmp.text = _shieldAmount.ToString();
         _energyBendMeshRenderer.material.SetInt(_shieldMaterialHash, _shieldAmount);
         
     }
