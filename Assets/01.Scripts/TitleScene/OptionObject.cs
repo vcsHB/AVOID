@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class OptionObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string optionName;
+    [ColorUsage(true,true)] public Color optionColor;
+    public UnityEvent OnSelectEvent;
+    
+    public void Select()
     {
-        
+        OnSelectEvent?.Invoke();    
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
 }
