@@ -13,6 +13,7 @@ public class SelectObject : MonoBehaviour
     [SerializeField] private float _moveCell = 20f;
     [SerializeField] private LayerMask _slotLayer;
     private bool _isMoving;
+    [SerializeField]
     private OptionObject _currentOption;
     private MeshRenderer _selectBoxMesh;
     private int _selectBoxColorHash;
@@ -28,7 +29,7 @@ public class SelectObject : MonoBehaviour
     
     public void OnMove(InputValue inputValue)
     {
-        if (_isMoving) return;
+        if (_isMoving || !TitleSceneManager.Instance.canControl) return;
         Vector3 direction = inputValue.Get<Vector3>();
         if (MoveCheck(direction))
         {

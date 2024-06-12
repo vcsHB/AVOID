@@ -7872,8 +7872,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BGM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8bc0ac0e8ba93764e8acd6eceef39629, type: 2}
-  m_sharedMaterial: {fileID: 6969187320993517398, guid: 8bc0ac0e8ba93764e8acd6eceef39629,
+  m_fontAsset: {fileID: 11400000, guid: 98f1a2df4da070e459353708566ff141, type: 2}
+  m_sharedMaterial: {fileID: -4041658208109672679, guid: 98f1a2df4da070e459353708566ff141,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9746,9 +9746,9 @@ RectTransform:
   - {fileID: 879105599}
   m_Father: {fileID: 1752178288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904748135
