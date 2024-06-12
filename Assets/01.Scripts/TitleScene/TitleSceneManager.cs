@@ -12,6 +12,12 @@ public class TitleSceneManager : MonoSingleton<TitleSceneManager>
         SceneManager.LoadScene(SceneNames.InGame);
     }
 
+    public void StartStageSelect()
+    {
+        SceneManager.LoadScene(SceneNames.InGame);
+    }
+    
+
     public void ShowSettingPanel()
     {
         _settingPanel.ShowUI();
@@ -21,4 +27,6 @@ public class TitleSceneManager : MonoSingleton<TitleSceneManager>
     {
         Application.Quit();
     }
+    
+    
 }
