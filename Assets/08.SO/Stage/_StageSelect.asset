@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   stageName: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD \uB808\uBCA8"
-  levelPrefab: {fileID: 0}
+  levelPrefab: {fileID: 6853927226340952505, guid: 8c5434294b508474987227e336ce37e3,
+    type: 3}

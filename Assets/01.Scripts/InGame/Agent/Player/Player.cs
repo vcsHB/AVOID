@@ -7,7 +7,7 @@ public class Player : Agent
     private MeshRenderer _visualRenderer;
     private int _playerDefaultLayer, _deadBodyLayer;
     private int _playerDissolveHash;
-
+    [SerializeField] private bool _isReviveShield;
 
     protected override void Awake()
     {
@@ -60,7 +60,6 @@ public class Player : Agent
     public void Revive()
     {
         // 부활하는 코드
-        MovementCompo.SetStun(false);
         PlayerVFXCompo.UpdateFootStep(true);
         HealthCompo.Initialize(this);
         StartCoroutine(ReviveCoroutine());
@@ -71,11 +70,13 @@ public class Player : Agent
     {
         yield return LevelManager.Instance.ResetLevel();
         MovementCompo.SetDefaultRotate();
+
         _visualRenderer.material.SetFloat(_playerDissolveHash, 2);
         gameObject.layer = _playerDefaultLayer;
-        PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
-
-
+        if(_isReviveShield)
+            PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
         
+        MovementCompo.SetStun(false);
+
     }
 }
