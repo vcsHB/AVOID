@@ -79,6 +79,6 @@ public class Portal : LogicObject
 
     private void GetPortal()
     {
-        GameManager.Instance.stageManager.ChangeStage(_targetStageID);
+        GameManager.Instance.stageManager.ClearStageByPortal(_targetStageID);
     }
 }

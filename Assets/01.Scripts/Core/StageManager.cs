@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using StageManage;
 using UnityEngine;
@@ -6,10 +7,18 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public StageListSO stageList;
+    public StageDataList dataList { get; private set; }
+
     [SerializeField] private CanvasGroup _backGround;
 
+
     private float _fadeDuration = 0.2f;
-    
+
+    private void Start()
+    {
+        dataList = DBManager.GetStageData();
+    }
+
     public void ChangeStage(int id)
     {
         StageSO stage = stageList.FindStage(id);
@@ -18,9 +27,11 @@ public class StageManager : MonoBehaviour
             Debug.LogError("Stage ID is Not Exist");
             return;
         }
-
+        if(id != 0) // 스테이지 선택 스테이지만 제외
+            dataList.currentPlayedStageId = id;
         StartCoroutine(ChangeStageCoroutine());
         GameManager.Instance.levelManager.SetStage(stage);
+        DBManager.SaveStageData(dataList);
     }
 
     private IEnumerator ChangeStageCoroutine()
@@ -29,4 +40,13 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         _backGround.DOFade(0f, _fadeDuration);
     }
+
+    public void ClearStageByPortal(int id)
+    {
+        int beforeId = GameManager.Instance.levelManager.CurrentStage.id;
+        dataList.Clear(beforeId);
+        ChangeStage(id);
+    }
+
+
 }

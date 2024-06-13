@@ -5,6 +5,7 @@ namespace StageManage
 {
     public class StageDataList
     {
+        public int currentPlayedStageId;
         public List<StageData> stageDataList;
         
         public StageData FindStage(int id)
@@ -18,6 +19,26 @@ namespace StageManage
             }
 
             return null;
+        }
+
+        public bool CheckClear(int id)
+        {
+            StageData data = FindStage(id);
+            if (data == null) return false;
+            
+            return data.isCleared;
+        }
+
+        public void Clear(int id)
+        {
+            StageData data = FindStage(id);
+            if (data == null)
+            {
+                data = new StageData();
+                stageDataList.Add(data);
+            }
+
+            data.isCleared = true;
         }
     }
 }
