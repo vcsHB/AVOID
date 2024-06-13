@@ -27,7 +27,7 @@ public class DBManager
     public static void SaveGameSetting(GameSetting gameSetting)
     {
         CheckLocalPath();
-        string json = JsonUtility.ToJson(gameSetting);
+        string json = JsonUtility.ToJson(gameSetting, true);
         string path = Path.Combine(LOCALPATH, GameSettingFileName);
         File.WriteAllText(path, json);
 
@@ -51,7 +51,7 @@ public class DBManager
     public static void SaveStageData(StageDataList stage)
     {
         CheckLocalPath();
-        string json = JsonUtility.ToJson(stage);
+        string json = JsonUtility.ToJson(stage, true);
         string path = Path.Combine(LOCALPATH, StageSaveFileName);
         File.WriteAllText(path, json);
 

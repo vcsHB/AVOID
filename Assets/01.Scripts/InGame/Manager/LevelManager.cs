@@ -7,7 +7,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     [SerializeField] private StageSO _currentStage;
     [SerializeField] private Transform _stageBaseTrm;
     [SerializeField] private Level _currentStageLevel;
-    public StageSO CurrentStage { get; private set; }
+    public StageSO CurrentStage => _currentStage;
     
     private void Start()
     {

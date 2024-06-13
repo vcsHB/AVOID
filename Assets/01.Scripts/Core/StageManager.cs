@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
 
     private float _fadeDuration = 0.2f;
 
-    private void Start()
+    private void Awake()
     {
         dataList = DBManager.GetStageData();
     }
@@ -44,7 +44,8 @@ public class StageManager : MonoBehaviour
     public void ClearStageByPortal(int id)
     {
         int beforeId = GameManager.Instance.levelManager.CurrentStage.id;
-        dataList.Clear(beforeId);
+        if(beforeId != 0) // 스테이지 선택 레벨 제외
+            dataList.Clear(beforeId);
         ChangeStage(id);
     }
 

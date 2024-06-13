@@ -1,12 +1,13 @@
 ﻿
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace StageManage
 {
     public class StageDataList
     {
         public int currentPlayedStageId;
-        public List<StageData> stageDataList;
+        public List<StageData> stageDataList = new List<StageData>();
         
         public StageData FindStage(int id)
         {
@@ -34,7 +35,8 @@ namespace StageManage
             StageData data = FindStage(id);
             if (data == null)
             {
-                data = new StageData();
+                Debug.Log($"id {id}의 Data가 존재하지 않음 -> 새로만듬");
+                data = new StageData(id);
                 stageDataList.Add(data);
             }
 
