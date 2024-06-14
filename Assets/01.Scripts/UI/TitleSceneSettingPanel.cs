@@ -69,7 +69,7 @@ public class TitleSceneSettingPanel : WindowPanel
 
     public void ControlRight()
     {
-        if (_currentSelect >= 3) return;
+        if (_currentSelect >= 2) return;
         _currentSelect++;
         MoveSelect();
     }
@@ -77,11 +77,32 @@ public class TitleSceneSettingPanel : WindowPanel
     public void ControlUp()
     {
         if (_currentSelect == 0) return;
+
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value += 2;
+                break;
+            
+            case 2:
+                _SFXSlider.value += 2;
+                break;
+        }
     }
     
     public void ControlDown()
     {
         if (_currentSelect == 0) return;
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value -= 2;
+                break;
+            
+            case 2:
+                _SFXSlider.value -= 2;
+                break;
+        }
     }
     
     private void MoveSelect()

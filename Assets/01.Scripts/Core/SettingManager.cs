@@ -5,17 +5,29 @@ public class SettingManager : MonoBehaviour
     private GameSetting _gameSetting;
 
     [SerializeField] private SettingPanel _settingPanel;
-
+    [SerializeField] private TitleSceneSettingPanel _titleSettingPanel;
     private void Start()
     {
         _gameSetting = new GameSetting();
         Load();
-        _settingPanel._BGMSlider.value = _gameSetting.bgmVolume;
-        _settingPanel._SFXSlider.value = _gameSetting.sfxVolume;
+        if (_settingPanel != null)
+        {
+            _settingPanel._BGMSlider.value = _gameSetting.bgmVolume;
+            _settingPanel._SFXSlider.value = _gameSetting.sfxVolume;
         
-        _settingPanel._BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
-        _settingPanel._SFXSlider.onValueChanged.AddListener(HandeSFXSliderValueChanged);
-        _settingPanel._timeSceleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
+            _settingPanel._BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
+            _settingPanel._SFXSlider.onValueChanged.AddListener(HandeSFXSliderValueChanged);
+            _settingPanel._timeSceleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
+        }
+        else
+        {
+            _titleSettingPanel._BGMSlider.value = _gameSetting.bgmVolume;
+            _titleSettingPanel._SFXSlider.value = _gameSetting.sfxVolume;
+        
+            _titleSettingPanel._BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
+            _titleSettingPanel._SFXSlider.onValueChanged.AddListener(HandeSFXSliderValueChanged);
+        }
+        
     }
 
     public void Load()

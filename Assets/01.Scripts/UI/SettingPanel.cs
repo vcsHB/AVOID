@@ -73,11 +73,35 @@ public class SettingPanel : WindowPanel
     public void ControlUp()
     {
         if (_currentSelect == 0) return;
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value += 2;
+                break;
+            case 2:
+                _SFXSlider.value += 2;
+                break;
+            case 3:
+                _timeSceleSlider.value += 0.1f;
+                break;
+        }
     }
     
     public void ControlDown()
     {
         if (_currentSelect == 0) return;
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value -= 2;
+                break;
+            case 2:
+                _SFXSlider.value -= 2;
+                break;
+            case 3:
+                _timeSceleSlider.value -= 0.1f;
+                break;
+        }
     }
     
     private void MoveSelect()
