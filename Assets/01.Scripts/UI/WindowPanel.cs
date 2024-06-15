@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class WindowPanel : MonoBehaviour
@@ -10,6 +11,8 @@ public abstract class WindowPanel : MonoBehaviour
     [SerializeField] protected Vector2 _targetPosition;
     [SerializeField] protected float _onOffTime;
 
+    public Action OnDisableEvent;
+    
     public bool IsActive => _isActive;
     protected CanvasGroup _canvasGroup;
     
@@ -28,7 +31,8 @@ public abstract class WindowPanel : MonoBehaviour
     {
         _canvasGroup.alpha = value ? 1 : 0;
         _canvasGroup.interactable = value;
-        
+        if(value)
+            OnDisableEvent?.Invoke();
     }
 
 }

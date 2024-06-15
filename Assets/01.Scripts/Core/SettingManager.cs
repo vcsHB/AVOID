@@ -18,6 +18,7 @@ public class SettingManager : MonoBehaviour
             _settingPanel._BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
             _settingPanel._SFXSlider.onValueChanged.AddListener(HandeSFXSliderValueChanged);
             _settingPanel._timeSceleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
+            _settingPanel.OnDisableEvent += Save;
         }
         else
         {
@@ -26,6 +27,7 @@ public class SettingManager : MonoBehaviour
         
             _titleSettingPanel._BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
             _titleSettingPanel._SFXSlider.onValueChanged.AddListener(HandeSFXSliderValueChanged);
+            _titleSettingPanel.OnDisableEvent += Save;
         }
         
     }
