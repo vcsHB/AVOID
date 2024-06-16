@@ -4,7 +4,7 @@ using DG.Tweening;
 using StageManage;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class StageManager : MonoSingleton<StageManager>
 {
     public StageListSO stageList;
     public StageDataList dataList { get; private set; }
@@ -30,7 +30,7 @@ public class StageManager : MonoBehaviour
         if(id != 0) // 스테이지 선택 스테이지만 제외
             dataList.currentPlayedStageId = id;
         StartCoroutine(ChangeStageCoroutine());
-        GameManager.Instance.levelManager.SetStage(stage);
+        LevelManager.Instance.SetStage(stage);
         DBManager.SaveStageData(dataList);
     }
 
@@ -43,7 +43,7 @@ public class StageManager : MonoBehaviour
 
     public void ClearStageByPortal(int id)
     {
-        int beforeId = GameManager.Instance.levelManager.CurrentStage.id;
+        int beforeId = LevelManager.Instance.CurrentStage.id;
         if(beforeId != 0) // 스테이지 선택 레벨 제외
             dataList.Clear(beforeId);
         ChangeStage(id);

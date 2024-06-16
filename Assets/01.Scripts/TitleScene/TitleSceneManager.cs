@@ -14,8 +14,13 @@ public class TitleSceneManager : MonoSingleton<TitleSceneManager>
 
     public void StartStageSelect()
     {
+        
         SceneManager.LoadScene(SceneNames.InGame);
-    }
+        LevelManager.Instance.SetStage(StageManager.Instance.stageList.FindStage(0));
+
+    }   
+    
+    
     
 
     public void ShowSettingPanel()

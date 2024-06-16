@@ -2563,6 +2563,54 @@ MonoBehaviour:
       Term: 5
   _isLoop: 1
   _currentSequenceIndex: 0
+--- !u!1 &942577569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942577571}
+  - component: {fileID: 942577570}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &942577570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942577569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8370bd8833a349b429eb9d3e7d53f6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentStage: {fileID: 0}
+  _stageBaseTrm: {fileID: 0}
+  _currentStageLevel: {fileID: 0}
+  _startLevelLoad: 0
+--- !u!4 &942577571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942577569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949970633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +4534,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591495154}
   m_CullTransparentMesh: 1
+--- !u!1 &1600478478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1600478480}
+  - component: {fileID: 1600478479}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1600478479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600478478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183d17af4cf04e13be72155af97fea74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageList: {fileID: 11400000, guid: c99cc0256ff05a44c87590872a6a8b5c, type: 2}
+  _backGround: {fileID: 0}
+--- !u!4 &1600478480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600478478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 77.250565, y: -42.311245, z: 42.554035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609992629
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,7 +6302,7 @@ GameObject:
   - component: {fileID: 2113208799}
   - component: {fileID: 2113208798}
   m_Layer: 9
-  m_Name: EmptyOption
+  m_Name: StageOption
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6266,7 +6360,19 @@ MonoBehaviour:
   optionColor: {r: 3.0315347, g: 2.4268405, b: 0.15729663, a: 1}
   OnSelectEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133522808}
+        m_TargetAssemblyTypeName: TitleSceneManager, Assembly-CSharp
+        m_MethodName: StartStageSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2133522806
 GameObject:
   m_ObjectHideFlags: 0
@@ -6317,6 +6423,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 942577571}
   - {fileID: 2133522807}
   - {fileID: 1432814599}
   - {fileID: 135128478}
@@ -6329,3 +6436,4 @@ SceneRoots:
   - {fileID: 22617860}
   - {fileID: 888630147}
   - {fileID: 1573149159}
+  - {fileID: 1600478480}

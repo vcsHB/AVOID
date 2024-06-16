@@ -8,16 +8,19 @@ public class LevelManager : MonoSingleton<LevelManager>
     [SerializeField] private Transform _stageBaseTrm;
     [SerializeField] private Level _currentStageLevel;
     public StageSO CurrentStage => _currentStage;
+    [SerializeField] private bool _startLevelLoad = true;
     
     private void Start()
     {
-        ResetLevel();
+        if(_startLevelLoad)
+            ResetLevel();
     }
 
     public void SetStage(StageSO stage)
     {
         _currentStage = stage;
-        ResetLevel();
+        if(_startLevelLoad)
+            ResetLevel();
     }
 
     public Coroutine ResetLevel()

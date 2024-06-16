@@ -15,7 +15,7 @@ public class StageChecker : MonoBehaviour
 
     public void Check()
     {
-        if (GameManager.Instance.stageManager.dataList.CheckClear(_checkStageSO.id))
+        if (StageManager.Instance.dataList.CheckClear(_checkStageSO.id))
         {
             stageClearEvent?.Invoke();
         }
