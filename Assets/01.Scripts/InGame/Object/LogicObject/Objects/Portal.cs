@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Portal : LogicObject
 {
+    [Header("Portal Setting")]
+    [SerializeField] private int _targetStageID;
+    [SerializeField]
     private bool _isPortalActivate = false;
     [SerializeField] private Transform _visualTrm;
     private float _defaultSize = 0;
@@ -67,5 +70,15 @@ public class Portal : LogicObject
         if (!_isPortalActivate) return;
         
         // 포탈을 탔을때 이벤트
+        if (other.CompareTag("Player"))
+        {
+            GetPortal();
+            
+        }
+    }
+
+    private void GetPortal()
+    {
+        StageManager.Instance.ClearStageByPortal(_targetStageID);
     }
 }

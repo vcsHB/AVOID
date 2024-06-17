@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5299233428337438823}
+  - component: {fileID: 2250452688289156539}
   m_Layer: 0
   m_Name: TextDisplay
   m_TagString: Untagged
@@ -32,6 +33,24 @@ Transform:
   - {fileID: 3994132529380647517}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2250452688289156539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509528391371870592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fd8573e1e57404ba4dc1aba4373842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logics: []
+  logicSolvedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _showDuration: 1
+  _color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &7765290188162316513
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 620532376197891205, guid: 11a97d50a56ca4746b1ba1f6660a7495, type: 2}
+  - {fileID: 7205093727479449950, guid: 9118dc8e60bf6f045b16ada478728796, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,8 +152,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRESS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 11a97d50a56ca4746b1ba1f6660a7495, type: 2}
-  m_sharedMaterial: {fileID: 620532376197891205, guid: 11a97d50a56ca4746b1ba1f6660a7495,
+  m_fontAsset: {fileID: 11400000, guid: 9118dc8e60bf6f045b16ada478728796, type: 2}
+  m_sharedMaterial: {fileID: 7205093727479449950, guid: 9118dc8e60bf6f045b16ada478728796,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -159,8 +178,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -169,7 +188,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -8
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

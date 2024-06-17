@@ -13,6 +13,7 @@ public class NormalCannon : FieldObject
     [SerializeField] private float _attackStateCoolTime;
     [SerializeField] private PoolingType _projectile;
     [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private bool _isAutoFire = true;
     private bool _isAttackState;
     
     [Header("Essential Setting")]
@@ -34,6 +35,8 @@ public class NormalCannon : FieldObject
     
     private void Update()
     {
+        if (!_isAutoFire) return;
+        
         if (!_isAttackState)
             _currentTime += Time.deltaTime;
         else
@@ -60,7 +63,7 @@ public class NormalCannon : FieldObject
         _isAttackState = false;
     }
 
-    private void Fire()
+    public void Fire()
     {
         _shootParticle.Play();
         Projectile projectile = PoolManager.Instance.Pop(_projectile) as Projectile;

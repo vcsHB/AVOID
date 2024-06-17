@@ -8,9 +8,13 @@ public class SettingPanel : WindowPanel
     [SerializeField] private RectTransform _selectBoxTrm;
     [SerializeField] private RectTransform[] _selectOptions;
     
-    [SerializeField] private Slider _BGMSlider;
-    [SerializeField] private Slider _SFXSlider;
-    [SerializeField] private Slider _timeSceleSlider;
+    public Slider _BGMSlider;
+    public Slider _SFXSlider;
+    public Slider _timeSceleSlider;
+
+    // public Action<float> OnBGMSliderChanged;
+    // public Action<float> OnSFXSliderChanged;
+    // public Action<float> OnTimeScaleSliderChanged;
 
     [Header("Select Setting")]
     [SerializeField] private float _selectMoveDuration = 0.1f;
@@ -28,7 +32,11 @@ public class SettingPanel : WindowPanel
     private void Start()
     {
         _exitBtn.onClick.AddListener(Exit);
+        //_BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
+
     }
+
+    
 
     public override void ShowUI()
     {
@@ -65,11 +73,35 @@ public class SettingPanel : WindowPanel
     public void ControlUp()
     {
         if (_currentSelect == 0) return;
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value += 2;
+                break;
+            case 2:
+                _SFXSlider.value += 2;
+                break;
+            case 3:
+                _timeSceleSlider.value += 0.1f;
+                break;
+        }
     }
     
     public void ControlDown()
     {
         if (_currentSelect == 0) return;
+        switch (_currentSelect)
+        {
+            case 1:
+                _BGMSlider.value -= 2;
+                break;
+            case 2:
+                _SFXSlider.value -= 2;
+                break;
+            case 3:
+                _timeSceleSlider.value -= 0.1f;
+                break;
+        }
     }
     
     private void MoveSelect()
@@ -89,6 +121,7 @@ public class SettingPanel : WindowPanel
             Exit();
         }
     }
+
     
 
     public void Exit()

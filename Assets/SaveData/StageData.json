@@ -1,0 +1,15 @@
+{
+    "currentPlayedStageId": 1,
+    "stageDataList": [
+        {
+            "id": 1,
+            "isOpened": false,
+            "isCleared": true
+        },
+        {
+            "id": 2,
+            "isOpened": false,
+            "isCleared": true
+        }
+    ]
+}

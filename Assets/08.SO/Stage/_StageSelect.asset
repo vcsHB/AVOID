@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 967a5f2b5e1b4f1d9686a5765f71ac59, type: 3}
-  m_Name: Tutorial
+  m_Name: _StageSelect
   m_EditorClassIdentifier: 
   id: 0
-  stageName: "\uD29C\uD1A0\uB9AC\uC5BC"
-  levelPrefab: {fileID: 8656967410696623549, guid: ef2af00e99071604d8d86c58dd7e9194,
+  stageName: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD \uB808\uBCA8"
+  levelPrefab: {fileID: 6853927226340952505, guid: 8c5434294b508474987227e336ce37e3,
     type: 3}

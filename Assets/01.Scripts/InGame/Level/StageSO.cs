@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "SO/Stage")]
-public class StageSO : ScriptableObject
+namespace StageManage
 {
-    public int id;
-    public string stageName;
-    public Level levelPrefab;
+    [CreateAssetMenu(menuName = "SO/Stage/Stage")]
+    public class StageSO : ScriptableObject
+    {
+        public int id;
+        public string stageName;
+        public Level levelPrefab;
+    
+    }
     
 }

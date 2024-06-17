@@ -34,7 +34,6 @@ public class ButtonObject : InteractObject
 
     protected override bool HandlerInteraction(IInteractable interactable)
     {
-        print("버튼 눌림");
         StartCoroutine(InteractCoroutine());
         return true;
     }

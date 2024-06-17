@@ -9,6 +9,7 @@ public abstract class Projectile : PoolableMono
     [SerializeField] protected float _speed = 4f;
     [SerializeField] protected float _lifeTime = 10f;
     [SerializeField] protected Transform _visualTrm;
+    [SerializeField] protected float _shakePower = 3f;
     [Header("Range Setting")]
     [SerializeField] protected bool _isRangeDamage;
     [SerializeField] protected LayerMask _targetLayer;
@@ -56,7 +57,7 @@ public abstract class Projectile : PoolableMono
         EffectObject vfx = PoolManager.Instance.Pop(_destroyVFX) as EffectObject;
         vfx.Initialize(transform.position);
         vfx.Play();
-        
+        CameraManager.Instance.Shake(_shakePower, 0.2f);
         if (_isRangeDamage)
         {
             RangeDamage();
@@ -66,7 +67,7 @@ public abstract class Projectile : PoolableMono
             return;
         }
         
-        if (other.TryGetComponent(out Health target))
+        if (other.TryGetComponent(out IDamageable target))
         {
             target.TakeDamage(_damage);
         }

@@ -17,6 +17,8 @@ public class PlatformObject : MonoBehaviour
     [SerializeField] private float _destoryDuration = 1.5f;
     [SerializeField] private Transform _platformTrm;
     [SerializeField] private bool _isActive;
+    [SerializeField] private float _generateDistance = 10f;
+    [SerializeField] private float _destroyDistance = 10f;
     private Collider _collider;
     private MeshRenderer _platformRenderer;
     private MeshRenderer _DeadZoneRenderer;
@@ -56,8 +58,8 @@ public class PlatformObject : MonoBehaviour
         _platformRenderer.enabled = true;
         _DeadZoneRenderer.enabled = true;
         float currentTime = 0;
-        Vector3 targetPos = _platformTrm.position;
-        Vector3 beforePos = targetPos + _platformInfo.NormalDirection * 10;
+        Vector3 targetPos = transform.position;
+        Vector3 beforePos = targetPos + _platformInfo.NormalDirection * _generateDistance;
         while (currentTime <= _generateDuration)
         {
             //if(TimeManager.TimeScale == 0) continue;
@@ -76,13 +78,13 @@ public class PlatformObject : MonoBehaviour
     {
         float currentTime = 0;
         _DeadZoneRenderer.enabled = true;
-        yield return new WaitForSeconds(_destroyTerm);
-        _DeadZoneRenderer.enabled = false;
-        _collider.enabled = false;
         StartCoroutine(SetDeadZone(true, 0.5f));
-        
-        Vector3 beforePos = _platformTrm.position;
-        Vector3 targetPos = beforePos + (-_platformInfo.NormalDirection * 10);
+        yield return new WaitForSeconds(_destroyTerm);
+        _collider.enabled = false;
+        _DeadZoneRenderer.enabled = false;
+
+        Vector3 beforePos = transform.position;
+        Vector3 targetPos = beforePos + (-_platformInfo.NormalDirection * _destroyDistance);
         while (currentTime <= _destoryDuration)
         {
             //if(TimeManager.TimeScale == 0) continue;
@@ -95,6 +97,7 @@ public class PlatformObject : MonoBehaviour
 
         _platformTrm.position = targetPos;
         yield return new WaitForSeconds(0.2f);
+        _platformRenderer.enabled = false;
         //Destroy(gameObject);
     }
 

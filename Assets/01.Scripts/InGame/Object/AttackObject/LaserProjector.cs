@@ -34,6 +34,14 @@ public class LaserProjector : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        for (int i = 0; i < _collisionEffectObjects.Length; i++)
+        {
+            PoolManager.Instance.Push(_collisionEffectObjects[i]);
+        }
+    }
+
     private void Update()
     {
         if (!_laserActive) return;
@@ -47,6 +55,7 @@ public class LaserProjector : MonoBehaviour
         _lineRenderer.positionCount = _reflectAmount + 2;
         _pointsAmount = _reflectAmount + 2;
         _laserLineAmount = _reflectAmount + 1;
+        
         _lineRenderer.SetPosition(0, _laserFirePosTrm.position);
         _collisionEffectObjects = new EffectObject[_laserLineAmount];
         for (int i = 0; i < _laserLineAmount; i++)
