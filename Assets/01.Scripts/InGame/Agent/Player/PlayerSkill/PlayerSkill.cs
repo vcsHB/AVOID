@@ -11,7 +11,7 @@ public class PlayerSkill : MonoBehaviour
     public event CoolDownInfo CoolDownEvent;
 
     protected float _cooldownTimer;
-    public LayerMask whatIsEnemy;
+    //public LayerMask whatIsEnemy;
 
     public void UnlockSkill()
     {

@@ -1,9 +1,11 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : AgentMovement
 {
+    public Action OnMovementEvent;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
     private Vector3 newPlatformHit;
@@ -14,6 +16,7 @@ public class PlayerController : AgentMovement
     private float _limitedAirHoldTime = 10f;
 
     private float _airHoldTime = 0;
+
     protected override void Update()
     {
         CheckGround();
@@ -59,6 +62,7 @@ public class PlayerController : AgentMovement
         _targetPos = transform.position + totalDirection;
         _targetRotate = Quaternion.Euler(totalDirection.z * 180f, 0, totalDirection.x * -180f);
         transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
+        OnMovementEvent?.Invoke();
         // 새 플랫폼 감지를 추가해야함
         if (CheckNewPlatform())
         {

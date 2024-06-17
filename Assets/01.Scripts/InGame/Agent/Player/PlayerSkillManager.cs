@@ -6,6 +6,7 @@ public enum PlayerSkillEnum
 {
     None = 0,
     Shield = 1,
+    MoveCount
 }
 
 public class PlayerSkillManager : MonoSingleton<PlayerSkillManager>
