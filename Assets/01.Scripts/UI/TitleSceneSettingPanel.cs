@@ -1,10 +1,12 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class TitleSceneSettingPanel : WindowPanel
 {
+    [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private RectTransform _selectBoxTrm;
     [SerializeField] private RectTransform[] _selectOptions;
     
@@ -22,11 +24,20 @@ public class TitleSceneSettingPanel : WindowPanel
     private Button _exitBtn;
     
     private bool _canControl;
+    private GameSetting _gameSetting;
+    private AudioSource _audioSource;
+    
 
     protected override void Awake()
     {
         base.Awake();
         _exitBtn = _selectOptions[0].Find("BtnPanel").GetComponent<Button>();
+        _audioSource = GetComponent<AudioSource>();
+        _gameSetting = DBManager.GetGameSetting();
+        _BGMSlider.value = _gameSetting.bgmVolume;
+        _audioMixer.SetFloat("BGMVolume", _BGMSlider.value);
+        _SFXSlider.value = _gameSetting.sfxVolume;
+        _audioMixer.SetFloat("SFXVolume", _SFXSlider.value);
     }
 
     private void Start()
@@ -78,29 +89,28 @@ public class TitleSceneSettingPanel : WindowPanel
     {
         if (_currentSelect == 0) return;
 
-        switch (_currentSelect)
-        {
-            case 1:
-                _BGMSlider.value += 2;
-                break;
-            
-            case 2:
-                _SFXSlider.value += 2;
-                break;
-        }
+        ChangeValue(2);
     }
     
     public void ControlDown()
     {
         if (_currentSelect == 0) return;
+        ChangeValue(-2);
+    }
+
+    private void ChangeValue(int value)
+    {
+        _audioSource.Play();
         switch (_currentSelect)
         {
             case 1:
-                _BGMSlider.value -= 2;
+                _BGMSlider.value += value;
+                _audioMixer.SetFloat("BGMVolume", _BGMSlider.value);
                 break;
             
             case 2:
-                _SFXSlider.value -= 2;
+                _SFXSlider.value += value;
+                _audioMixer.SetFloat("SFXVolume", _SFXSlider.value);
                 break;
         }
     }
@@ -108,7 +118,7 @@ public class TitleSceneSettingPanel : WindowPanel
     private void MoveSelect()
     {
         _canControl = false;
-
+        _audioSource.Play();
         _selectBoxTrm.DOSizeDelta(_selectOptions[_currentSelect].sizeDelta, _selectMoveDuration).SetUpdate(true);
         _selectBoxTrm.DOAnchorPos(_selectOptions[_currentSelect].anchoredPosition, _selectMoveDuration).SetEase(Ease.InOutExpo).SetUpdate(true).
             OnComplete(() => _canControl = true);
@@ -116,6 +126,7 @@ public class TitleSceneSettingPanel : WindowPanel
 
     public void Select()
     {
+        _audioSource.Play();
         if (_currentSelect == 0)
         {
             // 0번 : Exit 버튼이 선택 상태라면 나가기
@@ -128,5 +139,6 @@ public class TitleSceneSettingPanel : WindowPanel
     public void Exit()
     {
         DisableUI();
+        _gameSetting.SaveSetting();
     }
 }

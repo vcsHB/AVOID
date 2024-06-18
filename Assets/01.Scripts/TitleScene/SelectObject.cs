@@ -1,4 +1,5 @@
 using DG.Tweening;
+using SoundManage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,9 +18,11 @@ public class SelectObject : MonoBehaviour
     private OptionObject _currentOption;
     private MeshRenderer _selectBoxMesh;
     private int _selectBoxColorHash;
+    private SoundObject _soundObject;
 
     private void Awake()
     {
+        _soundObject = GetComponent<SoundObject>();
         _selectBoxMesh = transform.Find("Visual").GetComponent<MeshRenderer>();
         _selectBoxColorHash = Shader.PropertyToID("_Color");
         Initialize();
@@ -70,6 +73,7 @@ public class SelectObject : MonoBehaviour
     public void MoveControl()
     {
         _isMoving = true;
+        _soundObject.Play(0);
         transform.DOMove(_currentOption.transform.position, _moveDuration).SetEase(Ease.InExpo)
             .OnComplete(() =>
             {
