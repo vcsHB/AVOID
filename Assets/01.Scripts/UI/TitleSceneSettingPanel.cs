@@ -100,7 +100,7 @@ public class TitleSceneSettingPanel : WindowPanel
 
     private void ChangeValue(int value)
     {
-        _audioSource.Play();
+        _audioSource.PlayOneShot(_audioSource.clip);
         switch (_currentSelect)
         {
             case 1:
@@ -118,7 +118,7 @@ public class TitleSceneSettingPanel : WindowPanel
     private void MoveSelect()
     {
         _canControl = false;
-        _audioSource.Play();
+        _audioSource.PlayOneShot(_audioSource.clip);
         _selectBoxTrm.DOSizeDelta(_selectOptions[_currentSelect].sizeDelta, _selectMoveDuration).SetUpdate(true);
         _selectBoxTrm.DOAnchorPos(_selectOptions[_currentSelect].anchoredPosition, _selectMoveDuration).SetEase(Ease.InOutExpo).SetUpdate(true).
             OnComplete(() => _canControl = true);
@@ -126,7 +126,7 @@ public class TitleSceneSettingPanel : WindowPanel
 
     public void Select()
     {
-        _audioSource.Play();
+        _audioSource.PlayOneShot(_audioSource.clip);
         if (_currentSelect == 0)
         {
             // 0번 : Exit 버튼이 선택 상태라면 나가기
