@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSoundPack
   m_EditorClassIdentifier: 
   packName: 
+  _audioCells:
+  - id: 0
+    name: 
+    _AudioClip: {fileID: 0}

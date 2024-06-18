@@ -1,6 +1,8 @@
+using SoundManage;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SoundObject))]
 public abstract class InteractObject : FieldObject
 {
     [SerializeField] protected float _interactCoolTime;
@@ -12,12 +14,13 @@ public abstract class InteractObject : FieldObject
     protected Collider _collider;
     public UnityEvent<int, bool> interactEvent;
     [SerializeField] protected int _logicIndex;
-
+    public SoundObject SoundCompo { get; protected set; }
 
     protected override void Awake()
     {
         base.Awake();
         _collider = GetComponent<Collider>();
+        SoundCompo = GetComponent<SoundObject>();
     }
     
 

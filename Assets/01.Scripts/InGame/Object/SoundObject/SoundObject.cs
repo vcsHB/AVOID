@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace SoundManage
 {
-    
+    [RequireComponent(typeof(AudioSource))]
     public class SoundObject : MonoBehaviour
     {
+        [SerializeField]
+        private AudioMixer _audioMixer;
         [SerializeField] private SoundPack _soundPack;
         private AudioSource _audioSource;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
+            //_audioSource.outputAudioMixerGroup = _audioMixer.outputAudioMixerGroup;
         }
 
         public void Play(int id)
