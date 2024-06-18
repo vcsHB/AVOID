@@ -36,7 +36,7 @@ public class SystemCanvas : MonoBehaviour
 
     private void OnDownControl()
     {
-        if (!_pausePanel.IsActive)
+        if (_pausePanel.IsActive)
             _pausePanel.ControlDown();
         else if (_settingPanel.IsActive)
         {

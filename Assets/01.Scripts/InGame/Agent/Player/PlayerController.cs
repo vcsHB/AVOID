@@ -34,7 +34,6 @@ public class PlayerController : AgentMovement
             _visualTrm.rotation = Quaternion.Slerp(Quaternion.identity, _targetRotate, EasingFunction.EaseInCircle(ratio));
             if (ratio >= 1f)
             {
-                print("움직임 끝남");
                 _currentMoveTime = 0;
                 _visualTrm.rotation = Quaternion.identity;
                 _isMoving = false;

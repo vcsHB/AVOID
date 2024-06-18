@@ -33,7 +33,6 @@ public class PlayerInput : MonoBehaviour
     {
         Vector3 dir = value.Get<Vector3>();
         bool result =_playerController.Move(dir);
-        print(result);
     }
     
     #endregion
