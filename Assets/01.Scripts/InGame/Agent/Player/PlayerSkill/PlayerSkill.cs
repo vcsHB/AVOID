@@ -49,4 +49,9 @@ public class PlayerSkill : MonoBehaviour
         _cooldownTimer = _coolDown;
         return true;
     }
+
+    public virtual void DisableSkill()
+    {
+        
+    }
 }

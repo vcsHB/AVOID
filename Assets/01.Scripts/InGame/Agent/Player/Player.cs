@@ -23,8 +23,6 @@ public class Player : Agent
 
     protected override void Start()
     {
-
-        
         HealthCompo.OnDieEvent += HandleAgentDie;
     }
 
@@ -77,8 +75,13 @@ public class Player : Agent
         gameObject.layer = _playerDefaultLayer;
         if(_isReviveShield)
             PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
-        
+        PlayerSkillManager.Instance.GetSkill<PlayerMoveCountSkill>().DisableSkill();
         MovementCompo.SetStun(false);
 
+    }
+
+    private void HandleHit()
+    {
+        
     }
 }

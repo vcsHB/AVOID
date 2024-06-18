@@ -19,7 +19,7 @@ public class PlayerMoveCountSkill : PlayerSkill
         return true;
     }
 
-    public void DisableSkill()
+    public override void DisableSkill()
     {
         _isActive = false;
         player.PlayerVFXCompo.SetMoveCountPanel(false);

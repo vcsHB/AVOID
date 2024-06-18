@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   packName: 
   _audioCells:
-  - id: 0
-    name: 
-    _AudioClip: {fileID: 0}
+  - id: 2
+    name: Hit
+    _AudioClip: {fileID: 8300000, guid: 2aa42690363c83a478e1a64bb75de193, type: 3}
