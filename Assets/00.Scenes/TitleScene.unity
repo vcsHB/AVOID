@@ -424,7 +424,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.050980393, g: 0.050980393, b: 0.050980393, a: 0}
+  m_BackGroundColor: {r: 0.108373046, g: 0.11267707, b: 0.11698109, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -570,7 +570,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5453996071366296728, guid: 4eebf83db629afa4390a5a4d7de4a3eb,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 31a9777af31d40449b96bd466a3a55d8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4be6aaf540680cb41bf81882a75ab26f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5248,7 +5248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -260}
+  m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1744993807
@@ -5258,7 +5258,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744993805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -5362,7 +5362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMoveSpeed: 5
-  _textDefaultYDelta: 400
+  _startTerm: 1
+  _textDefaultYDelta: 300
   _textTimeStep: 0.4
 --- !u!1 &1761275731
 GameObject:
@@ -5960,7 +5961,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d6c1de428870dd949b9254acd6c0b2f5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 2
   Loop: 0
   Mute: 0
@@ -6444,7 +6445,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.728
+  m_Volume: 0.6
   m_Pitch: 2
   Loop: 0
   Mute: 0
