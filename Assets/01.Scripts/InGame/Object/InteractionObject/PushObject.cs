@@ -4,15 +4,12 @@ using UnityEngine;
 public class PushObject : InteractObject, IInteractable
 {
     [SerializeField]
-    private float _moveTime = 0.7f;
-    private Rigidbody _rigid;
-    [SerializeField]
-    private LayerMask _objectLayer;
-
-    private Vector3 _boxCastSize = Vector3.one * 0.5f;
-    [SerializeField] private LayerMask _obstacleLayer;
+    protected float _moveTime = 0.7f;
+    protected Rigidbody _rigid;
+    [SerializeField] protected LayerMask _objectLayer;
+    protected Vector3 _boxCastSize = Vector3.one * 0.5f;
+    [SerializeField] protected LayerMask _obstacleLayer;
     public Vector3 MoveDirection { get; set; }
-
 
     
     protected override void Awake()
@@ -41,12 +38,12 @@ public class PushObject : InteractObject, IInteractable
         return true;
     }
 
-    private void Move()
+    protected void Move()
     {
         StartCoroutine(MoveCoroutine());
     }
 
-    private IEnumerator MoveCoroutine()
+    protected IEnumerator MoveCoroutine()
     {
         float currentTime = 0;
         Vector3 beforePosition = transform.position;
@@ -65,8 +62,9 @@ public class PushObject : InteractObject, IInteractable
         transform.position = targetPosition;
     }
 
-    public bool DetectInteraction()
+    public virtual bool DetectInteraction()
     {
+        
         RaycastHit[] hits = new RaycastHit[5];
         int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _objectLayer);
         if (amount == 0) return true;
@@ -82,10 +80,11 @@ public class PushObject : InteractObject, IInteractable
         return true;
     }
     
-    public bool DetectObstacle()
+    public virtual bool DetectObstacle()
     {
         RaycastHit[] hits = new RaycastHit[1];
         int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _obstacleLayer);
+        
         return amount == 0;
     }
     
