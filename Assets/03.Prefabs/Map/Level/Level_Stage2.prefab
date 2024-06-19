@@ -1455,7 +1455,7 @@ PrefabInstance:
     - target: {fileID: 4945160469783259751, guid: 2ec61c603351f04439be94b151bc033b,
         type: 3}
       propertyPath: logicSolvedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HandlerGeneratePlatform
+      value: HandleGeneratePlatform
       objectReference: {fileID: 0}
     - target: {fileID: 4945160469783259751, guid: 2ec61c603351f04439be94b151bc033b,
         type: 3}
