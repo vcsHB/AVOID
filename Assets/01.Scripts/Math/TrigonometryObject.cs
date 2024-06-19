@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Math;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TrigonometryObject : MonoBehaviour

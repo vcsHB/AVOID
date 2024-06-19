@@ -42,6 +42,11 @@ public class PlayerMoveCountSkill : PlayerSkill
     {
         if (!_isActive)
             return;
+        if (count >= 99)
+        {
+            DisableSkill();
+            return;
+        }
         _count = count;
         player.PlayerVFXCompo.SetMoveCountPanel(true, count);
     }
