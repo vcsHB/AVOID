@@ -14,4 +14,9 @@ public class MoveCountTriggerObject : SkillTriggerObject
             (skill as PlayerMoveCountSkill).SetCount(countLimit);
         }
     }
+
+    public void SetCount(int amount)
+    {
+        countLimit = amount;
+    }
 }
