@@ -21,9 +21,9 @@ public class PushObject : InteractObject, IInteractable
     protected override bool HandlerInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
-
         if (!DetectObstacle())
             return false;
+
 
         _collider.enabled = false;
         if (!DetectInteraction())
@@ -33,8 +33,8 @@ public class PushObject : InteractObject, IInteractable
 
         }
         _collider.enabled = true;
-        
         Move();
+
         return true;
     }
 
@@ -64,16 +64,19 @@ public class PushObject : InteractObject, IInteractable
 
     public virtual bool DetectInteraction()
     {
-        
         RaycastHit[] hits = new RaycastHit[5];
-        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize, MoveDirection.normalized, hits, Quaternion.identity, 4f, _objectLayer);
+        int amount = Physics.BoxCastNonAlloc(transform.position, _boxCastSize * 2, MoveDirection.normalized, hits, Quaternion.identity, 5f, _objectLayer);
         if (amount == 0) return true;
-
+        
         for (int i = 0; i < amount; i++)
-        {
+        { 
             if (hits[i].transform.TryGetComponent(out InteractObject interactObject))
             {
-                if (!interactObject.Interact(this)) return false;
+                if (interactObject is PushObject)
+                {
+                    return interactObject.Interact(this);
+                }
+                interactObject.Interact(this);
             }
         }
 
