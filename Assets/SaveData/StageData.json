@@ -20,6 +20,11 @@
             "id": 4,
             "isOpened": false,
             "isCleared": true
+        },
+        {
+            "id": 5,
+            "isOpened": false,
+            "isCleared": true
         }
     ]
 }
