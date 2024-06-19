@@ -7,6 +7,7 @@ namespace StageManage
     {
         public int id;
         public string stageName;
+        public Sprite stageIcon;
         public Level levelPrefab;
     
     }
