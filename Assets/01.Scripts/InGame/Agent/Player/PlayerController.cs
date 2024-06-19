@@ -1,9 +1,11 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : AgentMovement
 {
+    public Action OnMovementEvent;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private PlatformInfo _currentPlatformInfo;
     private Vector3 newPlatformHit;
@@ -14,10 +16,29 @@ public class PlayerController : AgentMovement
     private float _limitedAirHoldTime = 10f;
 
     private float _airHoldTime = 0;
+
     protected override void Update()
     {
         CheckGround();
-        base.Update();
+        if (_isStun)
+        {
+            return;
+        }
+        
+        if (_isMoving)
+        {
+
+            _currentMoveTime += Time.deltaTime;
+            float ratio = _currentMoveTime / _moveTime;
+            //transform.position = Vector3.Lerp(_beforePosition, _targetPos, ratio);
+            _visualTrm.rotation = Quaternion.Slerp(Quaternion.identity, _targetRotate, EasingFunction.EaseInCircle(ratio));
+            if (ratio >= 1f)
+            {
+                _currentMoveTime = 0;
+                _visualTrm.rotation = Quaternion.identity;
+                _isMoving = false;
+            }
+        }
     }
 
     public override bool Move(Vector3 direction)
@@ -39,7 +60,8 @@ public class PlayerController : AgentMovement
 
         _targetPos = transform.position + totalDirection;
         _targetRotate = Quaternion.Euler(totalDirection.z * 180f, 0, totalDirection.x * -180f);
-        transform.DOJump(_targetPos, _jumpScale, 1, _moveTime).OnComplete(() => _isMoving = false);
+        transform.DOJump(_targetPos, _jumpScale, 1, _moveTime);
+        OnMovementEvent?.Invoke();
         // 새 플랫폼 감지를 추가해야함
         if (CheckNewPlatform())
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : Agent
 {
     public PlayerVFX PlayerVFXCompo { get; protected set; }
+    public PlayerController PlayerMovementCompo { get; protected set; }
     private MeshRenderer _visualRenderer;
     private int _playerDefaultLayer, _deadBodyLayer;
     private int _playerDissolveHash;
@@ -13,6 +14,7 @@ public class Player : Agent
     {
         base.Awake();
         PlayerVFXCompo = VFXCompo as PlayerVFX;
+        PlayerMovementCompo = MovementCompo  as PlayerController;
         _visualRenderer = transform.Find("Visual").GetComponent<MeshRenderer>();
         _playerDissolveHash = Shader.PropertyToID("_DissolveHeight");
         _playerDefaultLayer = LayerMask.NameToLayer("Player");        
@@ -21,8 +23,6 @@ public class Player : Agent
 
     protected override void Start()
     {
-
-        
         HealthCompo.OnDieEvent += HandleAgentDie;
     }
 
@@ -75,8 +75,13 @@ public class Player : Agent
         gameObject.layer = _playerDefaultLayer;
         if(_isReviveShield)
             PlayerSkillManager.Instance.GetSkill(PlayerSkillEnum.Shield).UseSkill();
-        
+        PlayerSkillManager.Instance.GetSkill<PlayerMoveCountSkill>().DisableSkill();
         MovementCompo.SetStun(false);
 
+    }
+
+    private void HandleHit()
+    {
+        
     }
 }

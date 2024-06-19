@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class TitleTextAnimation : MonoBehaviour
     [Header("TextAnimation Setting")] 
     [SerializeField] private float _textMoveSpeed;
 
+    [SerializeField] private float _startTerm = 3f;
     [SerializeField] private float _textDefaultYDelta = 300f;
     [SerializeField] private float _textTimeStep = 0.1f;
     private float _currentTextYDelta = 0;
@@ -16,6 +18,19 @@ public class TitleTextAnimation : MonoBehaviour
     private void Awake()
     {
         _tmpText = GetComponent<TMP_Text>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(TitleStartCoroutine());
+    }
+
+    private IEnumerator TitleStartCoroutine()
+    {
+        yield return new WaitForSeconds(_startTerm);
+        _tmpText.enabled = true;
+
+        Play();
     }
 
     [ContextMenu("Play")]

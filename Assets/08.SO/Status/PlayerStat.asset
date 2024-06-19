@@ -15,4 +15,4 @@ MonoBehaviour:
   atk: 1
   Health: 1
   IsResist: 0
-  MoveCooltime: 0
+  MoveCooltime: 0.2

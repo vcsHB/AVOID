@@ -46,6 +46,7 @@ public class StageManager : MonoSingleton<StageManager>
         int beforeId = LevelManager.Instance.CurrentStage.id;
         if(beforeId != 0) // 스테이지 선택 레벨 제외
             dataList.Clear(beforeId);
+        PlayerSkillManager.Instance.GetSkill<PlayerMoveCountSkill>().DisableSkill();
         ChangeStage(id);
     }
 

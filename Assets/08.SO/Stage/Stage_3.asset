@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   stageName: Stage 3
-  levelPrefab: {fileID: 0}
+  levelPrefab: {fileID: 7216055785550253705, guid: 4899573936ef5fd489f2bd06ecf30cbe,
+    type: 3}

@@ -1,11 +1,14 @@
 ﻿using System;
+using SoundManage;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SoundObject))]
 public class LogicObject : MonoBehaviour
 {
     public Logic[] logics;
     public UnityEvent logicSolvedEvent;
+    public SoundObject soundCompo { get; protected set; }
 
     private bool _isSolvedLogic;
     public bool IsSolvedLogic => _isSolvedLogic;
@@ -26,6 +29,7 @@ public class LogicObject : MonoBehaviour
 
     protected virtual void Awake()
     {
+        soundCompo = GetComponent<SoundObject>();
         for (int i = 0; i < logics.Length; i++)
         {
             logics[i] = Instantiate(logics[i]);

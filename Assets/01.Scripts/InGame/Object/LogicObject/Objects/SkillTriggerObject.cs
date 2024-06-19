@@ -2,14 +2,14 @@
 
 public class SkillTriggerObject : LogicObject
 {
-    [SerializeField] private PlayerSkillEnum[] _triggerSkills;
+    [SerializeField] protected PlayerSkillEnum[] _triggerSkills;
 
     private void Start()
     {
         logicSolvedEvent.AddListener(HandleSkillTrigger);
     }
     
-    public void HandleSkillTrigger()
+    public virtual void HandleSkillTrigger()
     {
         for (int i = 0; i < _triggerSkills.Length; i++)
         {

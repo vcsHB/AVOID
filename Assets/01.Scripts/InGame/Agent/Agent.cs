@@ -1,5 +1,5 @@
-﻿using System;
-using ObjectPooling;
+﻿using ObjectPooling;
+using SoundManage;
 using UnityEngine;
 
 public abstract class Agent : MonoBehaviour
@@ -10,6 +10,7 @@ public abstract class Agent : MonoBehaviour
     public Rigidbody RigidCompo { get; protected set; }
     public Health HealthCompo { get; protected set; }
     public AgentVFX VFXCompo { get; protected set; }
+    public SoundObject SoundCompo { get; protected set; }
 
     #endregion
 
@@ -25,6 +26,7 @@ public abstract class Agent : MonoBehaviour
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody>();
         HealthCompo = GetComponent<Health>();
+        SoundCompo = GetComponent<SoundObject>();
         HealthCompo.Initialize(this);
         VFXCompo = transform.Find("AgentVFX").GetComponent<AgentVFX>();
     }

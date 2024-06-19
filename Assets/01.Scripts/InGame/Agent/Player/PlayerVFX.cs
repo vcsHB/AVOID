@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerVFX : AgentVFX
@@ -8,7 +9,8 @@ public class PlayerVFX : AgentVFX
 
     [SerializeField] private MeshRenderer _shieldMesh;
     [SerializeField] private ParticleSystem _collectParticle;
-
+    [SerializeField] private TextMeshPro _moveCountText;
+    
     [ContextMenu("DebugSetShieldOn")]
     public void DebugSetOnShield()
     {
@@ -42,6 +44,14 @@ public class PlayerVFX : AgentVFX
     {
         _shieldMesh.enabled = value;
     }
+
+    public void SetMoveCountPanel(bool value, int count = 0)
+    {
+        _moveCountText.enabled = value;
+        _moveCountText.text = count.ToString();
+    }
+    
+    
 
     
 

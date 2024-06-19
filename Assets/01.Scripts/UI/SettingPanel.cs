@@ -1,10 +1,12 @@
 ﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SettingPanel : WindowPanel
 {
+    [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private RectTransform _selectBoxTrm;
     [SerializeField] private RectTransform[] _selectOptions;
     
@@ -19,6 +21,8 @@ public class SettingPanel : WindowPanel
     [Header("Select Setting")]
     [SerializeField] private float _selectMoveDuration = 0.1f;
     [SerializeField] private int _currentSelect;
+    private AudioSource _audioSource;
+    private GameSetting _gameSetting;
     private Button _exitBtn;
     
     private bool _canControl;
@@ -27,6 +31,14 @@ public class SettingPanel : WindowPanel
     {
         base.Awake();
         _exitBtn = _selectOptions[0].Find("BtnPanel").GetComponent<Button>();
+        _audioSource = GetComponent<AudioSource>();
+        _gameSetting = DBManager.GetGameSetting();
+        _BGMSlider.value = _gameSetting.bgmVolume;
+        _audioMixer.SetFloat("BGMVolume", _BGMSlider.value);
+        _SFXSlider.value = _gameSetting.sfxVolume;
+        _audioMixer.SetFloat("SFXVolume", _SFXSlider.value);
+        _timeSceleSlider.value = 1;
+        Time.timeScale = 1;
     }
 
     private void Start()
@@ -73,33 +85,31 @@ public class SettingPanel : WindowPanel
     public void ControlUp()
     {
         if (_currentSelect == 0) return;
-        switch (_currentSelect)
-        {
-            case 1:
-                _BGMSlider.value += 2;
-                break;
-            case 2:
-                _SFXSlider.value += 2;
-                break;
-            case 3:
-                _timeSceleSlider.value += 0.1f;
-                break;
-        }
+        ChangeValue(1);
     }
     
     public void ControlDown()
     {
         if (_currentSelect == 0) return;
+       ChangeValue(-1);
+    }
+    
+    private void ChangeValue(int value)
+    {
+        _audioSource.PlayOneShot(_audioSource.clip);
         switch (_currentSelect)
         {
             case 1:
-                _BGMSlider.value -= 2;
+                _BGMSlider.value += value * 2;
+                _audioMixer.SetFloat("BGMVolume", _BGMSlider.value);
                 break;
+            
             case 2:
-                _SFXSlider.value -= 2;
+                _SFXSlider.value += value * 2;
+                _audioMixer.SetFloat("SFXVolume", _SFXSlider.value);
                 break;
             case 3:
-                _timeSceleSlider.value -= 0.1f;
+                _timeSceleSlider.value += 0.1f * value;
                 break;
         }
     }
@@ -107,7 +117,7 @@ public class SettingPanel : WindowPanel
     private void MoveSelect()
     {
         _canControl = false;
-
+        _audioSource.PlayOneShot(_audioSource.clip);
         _selectBoxTrm.DOSizeDelta(_selectOptions[_currentSelect].sizeDelta, _selectMoveDuration).SetUpdate(true);
         _selectBoxTrm.DOAnchorPos(_selectOptions[_currentSelect].anchoredPosition, _selectMoveDuration).SetEase(Ease.InOutExpo).SetUpdate(true).
             OnComplete(() => _canControl = true);
@@ -115,6 +125,7 @@ public class SettingPanel : WindowPanel
 
     public void Select()
     {
+        _audioSource.PlayOneShot(_audioSource.clip);
         if (_currentSelect == 0)
         {
             // 0번 : Exit 버튼이 선택 상태라면 나가기

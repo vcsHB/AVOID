@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector3 dir = value.Get<Vector3>();
-        _playerController.Move(dir);
+        bool result =_playerController.Move(dir);
     }
     
     #endregion
