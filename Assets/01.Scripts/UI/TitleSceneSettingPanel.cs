@@ -139,6 +139,6 @@ public class TitleSceneSettingPanel : WindowPanel
     public void Exit()
     {
         DisableUI();
-        _gameSetting.SaveSetting();
+        DBManager.SaveGameSetting(_gameSetting);
     }
 }

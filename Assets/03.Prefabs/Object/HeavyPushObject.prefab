@@ -4942,7 +4942,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _logicIndex: 0
-  _moveTime: 0.7
+  _moveTime: 0.2
   _objectLayer:
     serializedVersion: 2
     m_Bits: 128
