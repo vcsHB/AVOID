@@ -3,28 +3,38 @@
     "stageDataList": [
         {
             "id": 1,
+            "moveCount": 0,
             "isOpened": false,
-            "isCleared": true
+            "isCleared": true,
+            "dieCount": false
         },
         {
             "id": 2,
+            "moveCount": 0,
             "isOpened": false,
-            "isCleared": true
+            "isCleared": true,
+            "dieCount": false
         },
         {
             "id": 3,
+            "moveCount": 0,
             "isOpened": false,
-            "isCleared": true
+            "isCleared": true,
+            "dieCount": false
         },
         {
             "id": 4,
+            "moveCount": 0,
             "isOpened": false,
-            "isCleared": true
+            "isCleared": true,
+            "dieCount": false
         },
         {
             "id": 5,
+            "moveCount": 0,
             "isOpened": false,
-            "isCleared": true
+            "isCleared": true,
+            "dieCount": false
         }
     ]
 }

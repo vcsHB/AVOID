@@ -11,6 +11,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     [SerializeField] private CanvasGroup _backGround;
 
+    public int moveCount;
 
     private float _fadeDuration = 0.2f;
 
@@ -19,8 +20,19 @@ public class StageManager : MonoSingleton<StageManager>
         dataList = DBManager.GetStageData();
     }
 
+    private void Start()
+    {
+        PlayerManager.Instance.Player.PlayerMovementCompo.OnMovementEvent += HandleMovementEvent;
+    }
+
+    private void HandleMovementEvent()
+    {
+        moveCount++; 
+    }
+
     public void ChangeStage(int id)
     {
+        moveCount = 0;
         StageSO stage = stageList.FindStage(id);
         if (stage == null)
         {
@@ -45,7 +57,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         int beforeId = LevelManager.Instance.CurrentStage.id;
         if(beforeId != 0) // 스테이지 선택 레벨 제외
-            dataList.Clear(beforeId);
+            dataList.Clear(beforeId, moveCount);
         PlayerSkillManager.Instance.GetSkill<PlayerMoveCountSkill>().DisableSkill();
         ChangeStage(id);
     }

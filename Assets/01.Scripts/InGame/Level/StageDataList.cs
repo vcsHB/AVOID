@@ -30,7 +30,7 @@ namespace StageManage
             return data.isCleared;
         }
 
-        public void Clear(int id)
+        public void Clear(int id, int count)
         {
             StageData data = FindStage(id);
             if (data == null)
@@ -40,6 +40,10 @@ namespace StageManage
                 stageDataList.Add(data);
             }
 
+            if (data.moveCount > count)
+            {
+                data.moveCount = count;
+            }
             data.isCleared = true;
         }
     }
