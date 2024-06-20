@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TtileSceneSystemCanvas : MonoBehaviour
@@ -7,13 +5,14 @@ public class TtileSceneSystemCanvas : MonoBehaviour
     private CanvasGroup _canvasGroup;
 
     [SerializeField] private TitleSceneSettingPanel _settingPanel;
-
+    [SerializeField] private LogPanel _logPanel;
 
     private void OnEsc()
     {
         if (_settingPanel.IsActive)
             _settingPanel.DisableUI();
-        
+        if(_logPanel.IsActive)
+            _logPanel.DisableUI();
     }
 
     private void OnUpControl()

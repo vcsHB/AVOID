@@ -55,7 +55,7 @@ public class TitleSceneSettingPanel : WindowPanel
         _isActive = true;
         TitleSceneManager.Instance.canControl = false;
         SetVisible(true);
-        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);;
+        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);
     }
 
     public override void DisableUI()

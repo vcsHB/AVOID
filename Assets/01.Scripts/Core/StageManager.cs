@@ -8,11 +8,9 @@ public class StageManager : MonoSingleton<StageManager>
 {
     public StageListSO stageList;
     public StageDataList dataList { get; private set; }
-
     [SerializeField] private CanvasGroup _backGround;
-
     public int moveCount;
-
+    [SerializeField] private bool _isInGameScene = true;
     private float _fadeDuration = 0.2f;
 
     private void Awake()
@@ -22,7 +20,8 @@ public class StageManager : MonoSingleton<StageManager>
 
     private void Start()
     {
-        PlayerManager.Instance.Player.PlayerMovementCompo.OnMovementEvent += HandleMovementEvent;
+        if(_isInGameScene)
+            PlayerManager.Instance.Player.PlayerMovementCompo.OnMovementEvent += HandleMovementEvent;
     }
 
     private void HandleMovementEvent()
