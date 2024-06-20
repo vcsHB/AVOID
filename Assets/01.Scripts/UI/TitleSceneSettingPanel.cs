@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class TitleSceneSettingPanel : WindowPanel
+public class TitleSceneSettingPanel : NormalPanel
 {
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private RectTransform _selectBoxTrm;
@@ -44,30 +44,6 @@ public class TitleSceneSettingPanel : WindowPanel
     {
         _exitBtn.onClick.AddListener(Exit);
         //_BGMSlider.onValueChanged.AddListener(HandleBGMSliderValueChanged);
-
-    }
-
-    
-
-    public override void ShowUI()
-    {
-        if (_isActive) return;
-        _isActive = true;
-        TitleSceneManager.Instance.canControl = false;
-        SetVisible(true);
-        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);
-    }
-
-    public override void DisableUI()
-    {
-        if (!_isActive) return;
-        
-        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime).SetUpdate(true).OnComplete(() =>
-        {
-            SetVisible(false);
-            TitleSceneManager.Instance.canControl = true;
-            _isActive = false;
-        });
 
     }
 

@@ -34,13 +34,14 @@ public class LaserProjector : MonoBehaviour
         
     }
 
-    private void OnDestroy()
-    {
-        for (int i = 0; i < _collisionEffectObjects.Length; i++)
-        {
-            PoolManager.Instance.Push(_collisionEffectObjects[i]);
-        }
-    }
+    // private void OnDestroy()
+    // {
+    //     for (int i = 0; i < _collisionEffectObjects.Length; i++)
+    //     {
+    //         if(PoolManager.Instance)
+    //         PoolManager.Instance.Push(_collisionEffectObjects[i]);
+    //     }
+    // }
 
     private void Update()
     {

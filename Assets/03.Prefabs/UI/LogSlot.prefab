@@ -95,8 +95,11 @@ MonoBehaviour:
     moveCount: 0
     isOpened: 0
     isCleared: 0
+    dieCount: 0
   _stageNumberingText: {fileID: 245498846885918881}
   _moveAmountText: {fileID: 6873153089868774488}
+  height: 0
+  rectTrm: {fileID: 0}
 --- !u!1 &1292859012887485716
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,8 +302,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0 move
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8bc0ac0e8ba93764e8acd6eceef39629, type: 2}
-  m_sharedMaterial: {fileID: 6969187320993517398, guid: 8bc0ac0e8ba93764e8acd6eceef39629,
+  m_fontAsset: {fileID: 11400000, guid: 98f1a2df4da070e459353708566ff141, type: 2}
+  m_sharedMaterial: {fileID: -4041658208109672679, guid: 98f1a2df4da070e459353708566ff141,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
