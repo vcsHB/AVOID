@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 6007448750526675944, guid: d86b4c51f93800c40b9c0ba3804a19a7,
         type: 3}
       propertyPath: _targetStageID
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007448750526675944, guid: d86b4c51f93800c40b9c0ba3804a19a7,
         type: 3}
