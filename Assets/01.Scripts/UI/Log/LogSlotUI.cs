@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LogSlotUI : MonoBehaviour
 {
@@ -17,7 +14,7 @@ public class LogSlotUI : MonoBehaviour
     {
         _stageData = data;
         _stageNumberingText.text = $"stage {_stageData.id}";
-        _moveAmountText.text = _stageData.moveCount.ToString();
+        _moveAmountText.text = $"{_stageData.moveCount} Moves";
         rectTrm = transform as RectTransform;
         height = rectTrm.rect.size.y;
     }

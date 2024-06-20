@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -16,6 +17,11 @@ public class GameManager : MonoSingleton<GameManager>
         
         
         
+    }
+
+    public void ExitInGame()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
     
 }

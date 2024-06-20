@@ -27,6 +27,7 @@ public class StageManager : MonoSingleton<StageManager>
     private void HandleMovementEvent()
     {
         moveCount++; 
+        print("움직임 카운트 됨");
     }
 
     public void ChangeStage(int id)

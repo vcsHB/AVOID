@@ -36,7 +36,7 @@ namespace StageManage
             if (data == null)
             {
                 Debug.Log($"id {id}의 Data가 존재하지 않음 -> 새로만듬");
-                data = new StageData(id);
+                data = new StageData(id, count);
                 stageDataList.Add(data);
             }
 

@@ -3,21 +3,21 @@
     "stageDataList": [
         {
             "id": 1,
-            "moveCount": 0,
+            "moveCount": 31,
             "isOpened": false,
             "isCleared": true,
             "dieCount": false
         },
         {
             "id": 2,
-            "moveCount": 0,
+            "moveCount": 64,
             "isOpened": false,
             "isCleared": true,
             "dieCount": false
         },
         {
             "id": 3,
-            "moveCount": 0,
+            "moveCount": 29,
             "isOpened": false,
             "isCleared": true,
             "dieCount": false
