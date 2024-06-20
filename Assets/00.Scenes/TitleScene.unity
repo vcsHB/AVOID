@@ -1119,7 +1119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 243981803}
   - component: {fileID: 243981802}
-  - component: {fileID: 243981801}
   - component: {fileID: 243981800}
   - component: {fileID: 243981799}
   - component: {fileID: 243981804}
@@ -1191,29 +1190,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &243981801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243981796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &243981802
 Canvas:
   m_ObjectHideFlags: 0
@@ -1275,6 +1251,10 @@ MonoBehaviour:
   _settingPanel: {fileID: 1904893166}
   _logPanel: {fileID: 680825199}
   _tutorialPanel: {fileID: 745507704}
+  _normalPanels:
+  - {fileID: 745507704}
+  - {fileID: 1478053126}
+  - {fileID: 680825199}
 --- !u!1 &318458854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,7 +4122,19 @@ MonoBehaviour:
   optionColor: {r: 4.5846095, g: 0.12975232, b: 0.12975232, a: 1}
   OnSelectEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2133522808}
+        m_TargetAssemblyTypeName: TitleSceneManager, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!135 &1012392561
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5072,8 +5064,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94
-  m_fontSizeBase: 94
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

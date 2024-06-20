@@ -1,10 +1,8 @@
-using System;
-using DG.Tweening;
 using StageManage;
 using TMPro;
 using UnityEngine;
 
-public class LogPanel : WindowPanel
+public class LogPanel : NormalPanel
 {
     [SerializeField] private LogSlotUI _slotPrefab;
     [SerializeField] private Transform _contentTrm;
@@ -22,28 +20,7 @@ public class LogPanel : WindowPanel
         _dataList = DBManager.GetStageData();
         _canvasGroup = GetComponent<CanvasGroup>();
     }
-
-    public override void ShowUI()
-    { 
-        if (_isActive) return;
-        _isActive = true;
-        TitleSceneManager.Instance.canControl = false;
-        SetVisible(true);
-        _rectTrm.DOAnchorPos(_targetPosition, _onOffTime).SetUpdate(true);
-    }
     
-
-    public override void DisableUI()
-    {
-        if (!_isActive) return;
-        
-        _rectTrm.DOAnchorPos(_defaultPosition, _onOffTime).SetUpdate(true).OnComplete(() =>
-        {
-            SetVisible(false);
-            TitleSceneManager.Instance.canControl = true;
-            _isActive = false;
-        });
-    }
 
     [ContextMenu("DebugRefresh")]
     public void HandleRefreshLog()
