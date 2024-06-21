@@ -44,13 +44,13 @@ public class PlayerController : AgentMovement
     public override bool Move(Vector3 direction)
     {
         if (_isMoving || _isStun || !_isGround) return false;
-        
-        int x = Mathf.Clamp((int)(direction.x), -1, 1);
-        int z = Mathf.Clamp((int)(direction.z), -1, 1);
+
+        float x = Mathf.Abs(direction.x);
+        float z = Mathf.Abs(direction.z);
         Vector3 totalDirection = new Vector3(
-            x,
+            (x > z ? x : 0f) * direction.x,
             0,
-            x == 0 ? z : 0
+            (z > x ? z : 0f) * direction.z
         ).normalized * _moveCell;
         MoveDirection = totalDirection;
         if (totalDirection.magnitude < 0.1f || !DetectObstacle()) return false;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,9 @@ public class PlayerInput : MonoBehaviour
     private Vector3 _mousePos;
     private Vector3 _screenCenter;
     [SerializeField] private bool _isMouseUp;
+    [SerializeField] private LayerMask _detectZoneLayer;
 
+    private Vector3 _rayDirection;
 
     private void Awake()
     {
@@ -30,6 +33,16 @@ public class PlayerInput : MonoBehaviour
     
     #region Main Player Input
 
+    public void OnLeftClick()
+    {
+        print("좌클릭");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out RaycastHit hit, 300f, _detectZoneLayer);
+        if (hit.collider == null) return;
+        print("바닥 맞음");
+        _rayDirection = hit.point - transform.position;
+        _playerController.Move(_rayDirection);
+    }
     
     public void OnMove(InputValue value)
     {
@@ -44,4 +57,9 @@ public class PlayerInput : MonoBehaviour
     
     #endregion
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, _rayDirection);
+    }
 }
