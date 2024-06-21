@@ -115,6 +115,8 @@ public class TitleSceneSettingPanel : NormalPanel
     public void Exit()
     {
         DisableUI();
+        _gameSetting.bgmVolume = _BGMSlider.value;
+        _gameSetting.sfxVolume = _SFXSlider.value;
         DBManager.SaveGameSetting(_gameSetting);
     }
 }

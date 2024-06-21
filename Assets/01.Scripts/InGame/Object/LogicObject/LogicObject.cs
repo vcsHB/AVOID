@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(SoundObject))]
-public class LogicObject : MonoBehaviour
+public class LogicObject : FieldObject
 {
     public Logic[] logics;
     public UnityEvent logicSolvedEvent;
@@ -58,6 +58,10 @@ public class LogicObject : MonoBehaviour
         }
         logicSolvedEvent?.Invoke();
     }
-    
-    
+
+
+    public override void ResetItem()
+    {
+        throw new NotImplementedException();
+    }
 }
