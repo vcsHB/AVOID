@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using ObjectPooling;
-using SoundManage;
 using UnityEngine;
 
 public class EffectObject : PoolableMono
@@ -44,7 +42,6 @@ public class EffectObject : PoolableMono
         }
 
         if (_isLoop) return;
-        
         StartCoroutine(PlayCoroutine());
     }
 

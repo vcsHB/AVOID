@@ -107,7 +107,7 @@ MonoBehaviour:
         m_CallState: 2
   _logicIndex: 0
   _buttonPanel: {fileID: 2967077055542369093}
-  _buttonHoldDuration: 0.5
+  _buttonHoldDuration: 0.1
   _buttonDefaultPosY: 0.09
   _buttonOnPosY: -0.09
   OnButtonTriggerEvent:

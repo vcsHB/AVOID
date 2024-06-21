@@ -31,6 +31,7 @@ public abstract class WindowPanel : MonoBehaviour
     {
         _canvasGroup.alpha = value ? 1 : 0;
         _canvasGroup.interactable = value;
+        _canvasGroup.blocksRaycasts = value;
         if(!value)
             OnDisableEvent?.Invoke();
     }

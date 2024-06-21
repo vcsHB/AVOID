@@ -18,7 +18,7 @@ public class PushObject : InteractObject, IInteractable
         _rigid = GetComponent<Rigidbody>();
     }
 
-    protected override bool HandlerInteraction(IInteractable interactable)
+    protected override bool HandleInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
         if (!DetectObstacle())

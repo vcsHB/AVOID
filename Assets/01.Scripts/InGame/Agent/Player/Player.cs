@@ -72,6 +72,7 @@ public class Player : Agent
 
     private IEnumerator ReviveCoroutine()
     {
+        PlayerMovementCompo._airHoldTime = 0;
         yield return LevelManager.Instance.ResetLevel();
         MovementCompo.SetDefaultRotate();
 

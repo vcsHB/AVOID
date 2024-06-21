@@ -12,6 +12,8 @@ public class ButtonObject : InteractObject
     public UnityEvent<int, bool> OnButtonTriggerEvent;
    
     private Tween _currentTween;
+    private Coroutine _coroutine;
+    private bool _isPressed;
     
     // private void OnTriggerExit(Collider other)
     // {
@@ -22,27 +24,36 @@ public class ButtonObject : InteractObject
 
     protected override void Update()
     {
-        
         base.Update();
         if (isActive)
         {
             DetectTarget();
-            
         }
         
     }
 
-    protected override bool HandlerInteraction(IInteractable interactable)
+    public override bool Interact(IInteractable interactable)
     {
-        StartCoroutine(InteractCoroutine());
+        interactEvent?.Invoke(_logicIndex, true);
+        return HandleInteraction(interactable);
+    }
+    
+    protected override bool HandleInteraction(IInteractable interactable)
+    {
+        if (_isPressed)
+            return true;
+        _coroutine = StartCoroutine(InteractCoroutine());
         return true;
     }
 
     private IEnumerator InteractCoroutine()
     {
+        print("버튼 눌림");
+        _isPressed = true;
         SetButton(true);
         yield return new WaitForSeconds(_buttonHoldDuration);
         isActive = true;
+
         _collider.enabled = false;
         OnButtonTriggerEvent?.Invoke(_logicIndex, true);
 
@@ -59,6 +70,8 @@ public class ButtonObject : InteractObject
         }
         else
         {
+            StopCoroutine(_coroutine);
+            _isPressed = false;
             _currentTween.Complete();
             _currentTween = _buttonPanel.DOMoveY(_buttonDefaultPosY, _buttonHoldDuration);
         }

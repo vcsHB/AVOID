@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Retry",
+                    "type": "Button",
+                    "id": "d4051aa6-6d3f-4bf0-b40c-2bedea20ac85",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -110,6 +119,17 @@
                     "action": "Enter",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad72b5e5-0241-4c2b-b32a-7211a9d0e9cd",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Hold(duration=0.7)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Retry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -166,15 +186,6 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "9637e259-972f-4eb8-b64b-52596d195b04",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Retry",
-                    "type": "Button",
-                    "id": "c3f51d34-2725-4bba-a6b0-fbe7fb194a3f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -289,17 +300,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightControl",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0204c4da-4907-48ed-afc8-6d6ff2b6694f",
-                    "path": "<Keyboard>/r",
-                    "interactions": "Hold(duration=0.7)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Retry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

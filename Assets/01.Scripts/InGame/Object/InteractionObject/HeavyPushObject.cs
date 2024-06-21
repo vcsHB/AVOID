@@ -2,7 +2,7 @@
 
 public class HeavyPushObject: PushObject
 {
-    protected override bool HandlerInteraction(IInteractable interactable)
+    protected override bool HandleInteraction(IInteractable interactable)
     {
         MoveDirection = interactable.MoveDirection;
         

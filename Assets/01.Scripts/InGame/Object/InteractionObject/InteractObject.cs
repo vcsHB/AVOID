@@ -66,10 +66,10 @@ public abstract class InteractObject : FieldObject
     public virtual bool Interact(IInteractable interactable)
     {
         interactEvent?.Invoke(_logicIndex, true);
-        return HandlerInteraction(interactable);
+        return HandleInteraction(interactable);
     }
 
-    protected abstract bool HandlerInteraction(IInteractable interactable);
+    protected abstract bool HandleInteraction(IInteractable interactable);
 
     public override void ResetItem()
     {

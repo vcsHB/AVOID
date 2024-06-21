@@ -1001,7 +1001,7 @@ PrefabInstance:
     - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
@@ -2450,6 +2450,11 @@ PrefabInstance:
     - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
@@ -2469,8 +2474,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1648556467494480037}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleSkillTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MoveCountTriggerObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MoveCountTriggerObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630052630452120884, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: OnButtonTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8950968253959111137, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
@@ -2499,7 +2534,7 @@ PrefabInstance:
     - target: {fileID: 7051518872506126634, guid: 5ea3880431e01194191caed39cb28e38,
         type: 3}
       propertyPath: countLimit
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7613619316746341657, guid: 5ea3880431e01194191caed39cb28e38,
         type: 3}

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    private Player _player;
     private PlayerController _playerController;
     
     private Vector3 _mousePos;
@@ -13,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
+        _player = GetComponent<Player>();
         _playerController = GetComponent<PlayerController>();
     }
 
@@ -33,6 +35,11 @@ public class PlayerInput : MonoBehaviour
     {
         Vector3 dir = value.Get<Vector3>();
         bool result =_playerController.Move(dir);
+    }
+
+    public void OnRetry()
+    {
+        _player.HandleAgentDie();
     }
     
     #endregion

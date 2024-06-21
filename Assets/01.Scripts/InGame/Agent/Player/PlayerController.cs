@@ -15,7 +15,7 @@ public class PlayerController : AgentMovement
     [SerializeField]
     private float _limitedAirHoldTime = 10f;
 
-    private float _airHoldTime = 0;
+    public float _airHoldTime = 0;
 
     protected override void Update()
     {

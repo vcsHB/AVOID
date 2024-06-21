@@ -11,10 +11,12 @@ public class MoveCountTriggerObject : SkillTriggerObject
             skill.UseSkill();
             (skill as PlayerMoveCountSkill).SetCount(countLimit);
         }
+        print($"이동제한 {countLimit}으로 초기화");
     }
 
     public void SetCount(int amount)
     {
+       
         countLimit = amount;
     }
 }

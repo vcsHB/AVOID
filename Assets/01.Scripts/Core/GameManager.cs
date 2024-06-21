@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +23,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ExitInGame()
     {
+        StartCoroutine(ExitCoroutine());
+    }
+
+    private IEnumerator ExitCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("TitleScene");
+
     }
     
 }
