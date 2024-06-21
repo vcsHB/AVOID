@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using ObjectPooling;
 using UnityEngine;
 
@@ -9,9 +8,13 @@ public class EffectObject : PoolableMono
     [SerializeField] private ParticleSystem[] _particles;
     [SerializeField] private bool _isLoop;
     [SerializeField] private float _lifeTime = 1f;
+    private AudioSource _audioSource;
 
-    
-    
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
         if (_isOnEnablePlay)
@@ -32,13 +35,13 @@ public class EffectObject : PoolableMono
 
     public void Play()
     {
+        _audioSource.Play();
         for (int i = 0; i < _particles.Length; i++)
         {
             _particles[i].Play();
         }
 
         if (_isLoop) return;
-        
         StartCoroutine(PlayCoroutine());
     }
 

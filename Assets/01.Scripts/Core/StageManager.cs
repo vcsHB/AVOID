@@ -8,10 +8,9 @@ public class StageManager : MonoSingleton<StageManager>
 {
     public StageListSO stageList;
     public StageDataList dataList { get; private set; }
-
     [SerializeField] private CanvasGroup _backGround;
-
-
+    public int moveCount;
+    [SerializeField] private bool _isInGameScene = true;
     private float _fadeDuration = 0.2f;
 
     private void Awake()
@@ -19,8 +18,20 @@ public class StageManager : MonoSingleton<StageManager>
         dataList = DBManager.GetStageData();
     }
 
+    private void Start()
+    {
+        if(_isInGameScene)
+            PlayerManager.Instance.Player.PlayerMovementCompo.OnMovementEvent += HandleMovementEvent;
+    }
+
+    private void HandleMovementEvent()
+    {
+        moveCount++; 
+    }
+
     public void ChangeStage(int id)
     {
+        moveCount = 0;
         StageSO stage = stageList.FindStage(id);
         if (stage == null)
         {
@@ -45,7 +56,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         int beforeId = LevelManager.Instance.CurrentStage.id;
         if(beforeId != 0) // 스테이지 선택 레벨 제외
-            dataList.Clear(beforeId);
+            dataList.Clear(beforeId, moveCount);
         PlayerSkillManager.Instance.GetSkill<PlayerMoveCountSkill>().DisableSkill();
         ChangeStage(id);
     }

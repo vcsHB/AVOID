@@ -30,16 +30,20 @@ namespace StageManage
             return data.isCleared;
         }
 
-        public void Clear(int id)
+        public void Clear(int id, int count)
         {
             StageData data = FindStage(id);
             if (data == null)
             {
                 Debug.Log($"id {id}의 Data가 존재하지 않음 -> 새로만듬");
-                data = new StageData(id);
+                data = new StageData(id, count);
                 stageDataList.Add(data);
             }
 
+            if (data.moveCount > count)
+            {
+                data.moveCount = count;
+            }
             data.isCleared = true;
         }
     }

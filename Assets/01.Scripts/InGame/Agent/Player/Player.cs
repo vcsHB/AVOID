@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using SoundManage;
 using UnityEngine;
 
 public class Player : Agent
@@ -24,14 +25,17 @@ public class Player : Agent
     protected override void Start()
     {
         HealthCompo.OnDieEvent += HandleAgentDie;
+        PlayerMovementCompo.OnMovementEvent += HandlePlayMoveSound;
     }
 
+    
     public override void HandleAgentDie()
     {
         base.HandleAgentDie();
         CameraManager.Instance.Shake(10f,0.15f);
         MovementCompo.SetStun(true);
         PlayerVFXCompo.UpdateFootStep(false);
+        SoundCompo.Play(2);
         gameObject.layer = _deadBodyLayer;
         StartCoroutine(DieCoroutine());
     }
@@ -68,6 +72,7 @@ public class Player : Agent
 
     private IEnumerator ReviveCoroutine()
     {
+        PlayerMovementCompo._airHoldTime = 0;
         yield return LevelManager.Instance.ResetLevel();
         MovementCompo.SetDefaultRotate();
 
@@ -79,7 +84,13 @@ public class Player : Agent
         MovementCompo.SetStun(false);
 
     }
+    
+    private void HandlePlayMoveSound()
+    {
+        SoundCompo.Play(0);
+    }
 
+    
     private void HandleHit()
     {
         

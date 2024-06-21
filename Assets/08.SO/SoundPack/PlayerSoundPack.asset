@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae91fc35f437457468bd5a11b1a07a82, type: 3}
   m_Name: PlayerSoundPack
   m_EditorClassIdentifier: 
-  packName: 
+  packName: "\uD50C\uB808\uC774\uC5B4 \uC0AC\uC6B4\uB4DC \uD329"
   _audioCells:
+  - id: 0
+    name: Hit
+    _AudioClip: {fileID: 8300000, guid: d6c1de428870dd949b9254acd6c0b2f5, type: 3}
   - id: 2
     name: Hit
     _AudioClip: {fileID: 8300000, guid: 2aa42690363c83a478e1a64bb75de193, type: 3}
