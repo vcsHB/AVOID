@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ObjectPooling;
 using UnityEngine;
@@ -46,4 +44,6 @@ public class PoolManager : MonoSingleton<PoolManager>
         
         _pools[obj.type].Push(obj);
     }
+
+    
 }

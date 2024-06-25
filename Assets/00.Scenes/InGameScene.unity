@@ -278,7 +278,7 @@ MonoBehaviour:
     NearClipPlane: 0.01
     FarClipPlane: 100
     Dutch: 0
-    ModeOverride: 2
+    ModeOverride: 1
     LensShift: {x: 0, y: 0}
     GateFit: 2
     FocusDistance: 10
@@ -5549,7 +5549,7 @@ Camera:
   near clip plane: 0.01
   far clip plane: 100
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 20
   m_Depth: -1
   m_CullingMask:
@@ -7493,7 +7493,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 347724574}
   m_HandleRect: {fileID: 1052159992}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.1
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -10607,6 +10607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level_StageSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258895500988984803, guid: 8c5434294b508474987227e336ce37e3,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

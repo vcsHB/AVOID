@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : PoolableMono
 {
+    public static Action OnProjectilesReset;
     [Header("Projectile Setting")]
     [SerializeField] protected int _damage;
     [SerializeField] protected float _speed = 4f;
@@ -26,6 +27,7 @@ public abstract class Projectile : PoolableMono
     protected virtual void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
+        OnProjectilesReset += ForceDestroy;
     }
 
 
@@ -86,6 +88,14 @@ public abstract class Projectile : PoolableMono
                 rangeTarget.TakeDamage(_damage);
             }
         }
+    }
+
+    public void ForceDestroy()
+    {
+        EffectObject vfx = PoolManager.Instance.Pop(_destroyVFX) as EffectObject;
+        vfx.Initialize(transform.position);
+        vfx.PlayWithoutSFX();
+        PoolManager.Instance.Push(this);
     }
     
     public override void ResetItem()

@@ -45,6 +45,17 @@ public class EffectObject : PoolableMono
         StartCoroutine(PlayCoroutine());
     }
 
+    public void PlayWithoutSFX()
+    {
+        for (int i = 0; i < _particles.Length; i++)
+        {
+            _particles[i].Play();
+        }
+
+        if (_isLoop) return;
+        StartCoroutine(PlayCoroutine());
+    }
+
     private IEnumerator PlayCoroutine()
     {
         yield return new WaitForSeconds(_lifeTime);
