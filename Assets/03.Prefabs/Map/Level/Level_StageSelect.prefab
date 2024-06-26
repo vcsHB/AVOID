@@ -169,7 +169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _checkStageSO
       value: 
-      objectReference: {fileID: 11400000, guid: faf234417dab6d44b8e628928bf57ec5,
+      objectReference: {fileID: 11400000, guid: 4bf17a7bde971d140ae8513ada7676db,
         type: 2}
     - target: {fileID: 3519964912126546833, guid: 69bfd9a88d420f14ca6d92116de0061d,
         type: 3}
@@ -2101,6 +2101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _damageCastCoolTime
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497440077136773251, guid: 6c14044554955ad46b2477757a951be4,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5510165824714637173, guid: 6c14044554955ad46b2477757a951be4,
         type: 3}
