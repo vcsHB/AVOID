@@ -56,9 +56,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -66,23 +66,59 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.033333335
+      value: 0.63217545
+      inSlope: -1.8047202
+      outSlope: -1.8047202
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.109120436
+      value: 0.5346985
+      inSlope: -1.3292689
+      outSlope: -1.3292689
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.26540577
+      value: 0.3159485
+      inSlope: -1.8757496
+      outSlope: -1.8757496
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.39401653
+      value: 0.18743896
+      inSlope: -0.9059733
+      outSlope: -0.9059733
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.86309826
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.53333336
+      value: 0.0625
+      inSlope: -0.11723435
+      outSlope: -0.11723435
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.033333335
+      inSlope: -0.033346657
+      outSlope: -0.033346657
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -157,6 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd535871764f504cbae84c6ccf538d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  blockMovement: 0
   logics: []
   logicSolvedEvent:
     m_PersistentCalls:

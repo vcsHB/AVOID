@@ -32,7 +32,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     {
         if (_currentStageLevel != null) 
             _currentStageLevel.Destroy();
-        
+        Projectile.OnProjectilesReset?.Invoke();
 
         yield return new WaitForSeconds(0.5f);
         Destroy(_currentStageLevel.gameObject);

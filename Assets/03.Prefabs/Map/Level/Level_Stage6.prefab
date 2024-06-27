@@ -1419,6 +1419,11 @@ PrefabInstance:
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7868402040387526446, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e7c9e7bee8d1de4f917a599409e756f, type: 2}
     - target: {fileID: 8950968253959111137, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
       propertyPath: m_Name
@@ -1529,6 +1534,11 @@ PrefabInstance:
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ObjectGenerator, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7868402040387526446, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9bd5808e510dcc4aa2d0f6cdaa6ba19, type: 2}
     - target: {fileID: 8950968253959111137, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
       propertyPath: m_Name
@@ -2073,6 +2083,11 @@ PrefabInstance:
       propertyPath: interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MoveCountTriggerObject, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7868402040387526446, guid: 34f206b81aec78f4c8a37f04691fdf56,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e7c9e7bee8d1de4f917a599409e756f, type: 2}
     - target: {fileID: 8950968253959111137, guid: 34f206b81aec78f4c8a37f04691fdf56,
         type: 3}
       propertyPath: m_Name
