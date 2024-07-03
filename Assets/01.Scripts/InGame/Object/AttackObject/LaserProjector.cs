@@ -34,7 +34,7 @@ public class LaserProjector : MonoBehaviour
         
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         for (int i = 0; i < _collisionEffectObjects.Length; i++)
         {
@@ -43,6 +43,7 @@ public class LaserProjector : MonoBehaviour
         }
     }
 
+   
     private void Update()
     {
         if (!_laserActive) return;
