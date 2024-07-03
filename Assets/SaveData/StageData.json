@@ -1,5 +1,5 @@
 {
-    "currentPlayedStageId": 6,
+    "currentPlayedStageId": 8,
     "stageDataList": [
         {
             "id": 1,
@@ -39,6 +39,20 @@
         {
             "id": 6,
             "moveCount": 150,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 7,
+            "moveCount": 20,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 8,
+            "moveCount": 0,
             "isOpened": false,
             "isCleared": true,
             "dieCount": false
