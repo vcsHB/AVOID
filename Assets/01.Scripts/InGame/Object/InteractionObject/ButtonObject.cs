@@ -66,14 +66,14 @@ public class ButtonObject : InteractObject
         if (value)
         {
             _currentTween.Complete();
-            _currentTween = _buttonPanel.DOMoveY(_buttonOnPosY, _buttonHoldDuration);
+            _currentTween = _buttonPanel.DOLocalMoveY(_buttonOnPosY, _buttonHoldDuration);
         }
         else
         {
             StopCoroutine(_coroutine);
             _isPressed = false;
             _currentTween.Complete();
-            _currentTween = _buttonPanel.DOMoveY(_buttonDefaultPosY, _buttonHoldDuration);
+            _currentTween = _buttonPanel.DOLocalMoveY(_buttonDefaultPosY, _buttonHoldDuration);
         }
         
     }
