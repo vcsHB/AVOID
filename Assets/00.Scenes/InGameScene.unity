@@ -7750,6 +7750,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTrm: {fileID: 1346787090}
   _currentFollowingTarget: {fileID: 0}
+--- !u!1 &1127046913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1484173092694746103, guid: 8c5434294b508474987227e336ce37e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1998678847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1127046918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127046913}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1161524293
 GameObject:
   m_ObjectHideFlags: 0
@@ -10608,7 +10635,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_StageSelect
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4156163855505801316, guid: 8c5434294b508474987227e336ce37e3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -10616,6 +10644,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1484173092694746103, guid: 8c5434294b508474987227e336ce37e3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1127046918}
     - targetCorrespondingSourceObject: {fileID: 5550325456870593713, guid: 8c5434294b508474987227e336ce37e3,
         type: 3}
       insertIndex: -1
