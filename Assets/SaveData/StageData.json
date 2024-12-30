@@ -1,4 +1,68 @@
 {
-    "currentPlayedStageId": 0,
-    "stageDataList": []
+    "currentPlayedStageId": 9,
+    "stageDataList": [
+        {
+            "id": 1,
+            "moveCount": 31,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 2,
+            "moveCount": 64,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 3,
+            "moveCount": 36,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 4,
+            "moveCount": 20,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 5,
+            "moveCount": 27,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 6,
+            "moveCount": 39,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 7,
+            "moveCount": 63,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 8,
+            "moveCount": 32,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        },
+        {
+            "id": 9,
+            "moveCount": 65,
+            "isOpened": false,
+            "isCleared": true,
+            "dieCount": false
+        }
+    ]
 }
