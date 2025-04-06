@@ -11,4 +11,4 @@
 ## 역할
 > 심장훈
 > 
-> Movement Interaction System, Level Design, UI, VFX, Level Load System, Gimmick Objects & Logic System
+> ▶ Movement Interaction System, Level Design, UI, VFX, Level Load System, Gimmick Objects & Logic System
